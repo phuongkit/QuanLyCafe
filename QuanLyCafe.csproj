@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7398CBF9-C6F7-4F72-B6F8-959B541EA324}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLyCafe</RootNamespace>
+    <AssemblyName>QuanLyCafe</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBaccess\AppSetting.cs" />
+    <Compile Include="DBaccess\BanAccess.cs" />
+    <Compile Include="DBaccess\ChiTietHoaDonBanHangAccess.cs" />
+    <Compile Include="DBaccess\ChiTietHoaDonNhapHangAccess.cs" />
+    <Compile Include="DBaccess\ConnectionTools.cs" />
+    <Compile Include="DBaccess\DoanhThuAccess.cs" />
+    <Compile Include="DBaccess\HoaDonBanHangAccess.cs" />
+    <Compile Include="DBaccess\HoaDonNhapHangAccess.cs" />
+    <Compile Include="DBaccess\KhoHangAccess.cs" />
+    <Compile Include="DBaccess\LoaiThucDonAccess.cs" />
+    <Compile Include="DBaccess\LoginNhanVienAccess.cs" />
+    <Compile Include="DBaccess\NhanVienAccess.cs" />
+    <Compile Include="DBaccess\SqlHelper.cs" />
+    <Compile Include="DBaccess\ThucDonAccess.cs" />
+    <Compile Include="MyDatabase\Ban.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\BaoCaoBanHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\BaoCaoNhapHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\ChiTietBanHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\ChiTietHoaDonBanHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\ChiTietHoaDonNhapHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\ChiTietNhapHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_ChiTietHoaDonBanHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_ChiTietHoaDonNhapHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_DoanhThuNgay_BanHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_DoanhThuNgay_NhapHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_DoanhThu_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_KiemTraLoGin_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_LayCTHoaDonBanHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_LayCTHoaDonNhapHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_LayCTLoaiThucDon_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_LayThongTinNhanVien_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TaoIDHoaDonBanHangMoi_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TaoIDHoaDonNhapHangMoi_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TinhTienHoaDonBH_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TinhTienHoaDonNH_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\HoaDonBanHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\HoaDonNhapHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\KhoHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\LoaiThucDon.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\LoginNhanVien.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\NhanVien.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\QuanLyCafeDBContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyCafeDBContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\QuanLyCafeDBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\QuanLyCafeDBContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\sp_helpdiagrams_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\sysdiagram.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\ThucDon.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\TimKiemNhanVien.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_Ban.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_ChiTietHoaDonBanHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_ChiTietHoaDonNhapHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_HoaDonBanHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_HoaDonNhapHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_KhoHang.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\v_ThucDon.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\DoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\DoanhThu.Designer.cs">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\DoanhThuNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\DoanhThuNgay.Designer.cs">
+      <DependentUpon>DoanhThuNgay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmHoaDonBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmHoaDonBanHang.Designer.cs">
+      <DependentUpon>FrmHoaDonBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmHoaDonNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmHoaDonNhapHang.Designer.cs">
+      <DependentUpon>FrmHoaDonNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmNhanVien.Designer.cs">
+      <DependentUpon>FrmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmThucDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmThucDon.Designer.cs">
+      <DependentUpon>FrmThucDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmBan.Designer.cs">
+      <DependentUpon>FrmBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmKhoHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmKhoHang.Designer.cs">
+      <DependentUpon>FrmKhoHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmSuDungNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmSuDungNhapHang.Designer.cs">
+      <DependentUpon>FrmSuDungNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmThongTinNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmThongTinNhanVien.Designer.cs">
+      <DependentUpon>FrmThongTinNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmManHinhChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManHinhChinh.Designer.cs">
+      <DependentUpon>FrmManHinhChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\FrmSuDungDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\FrmSuDungDichVu.Designer.cs">
+      <DependentUpon>FrmSuDungDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MyForm\DoanhThu.resx">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\DoanhThuNgay.resx">
+      <DependentUpon>DoanhThuNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmHoaDonBanHang.resx">
+      <DependentUpon>FrmHoaDonBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmHoaDonNhapHang.resx">
+      <DependentUpon>FrmHoaDonNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmNhanVien.resx">
+      <DependentUpon>FrmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmThucDon.resx">
+      <DependentUpon>FrmThucDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmBan.resx">
+      <DependentUpon>FrmBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManHinhChinh.resx">
+      <DependentUpon>FrmManHinhChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmSuDungDichVu.resx">
+      <DependentUpon>FrmSuDungDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmSuDungNhapHang.resx">
+      <DependentUpon>FrmSuDungNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmThongTinNhanVien.resx">
+      <DependentUpon>FrmThongTinNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\FrmKhoHang.resx">
+      <DependentUpon>FrmKhoHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="MyDatabase\QuanLyCafeDBContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyCafeDBContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MyDatabase\QuanLyCafeDBContext.edmx.diagram">
+      <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MyDatabase\QuanLyCafeDBContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
+      <LastGenOutput>QuanLyCafeDBContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyDatabase\QuanLyCafeDBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
+      <LastGenOutput>QuanLyCafeDBContext.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\payment %281%29.png" />
+    <None Include="Resources\cancel %281%29.png" />
+    <Content Include="Resources\coffee.png" />
+    <None Include="Resources\payment.png" />
+    <None Include="Resources\decrease%281%29.jpg" />
+    <None Include="Resources\decrease.jpg" />
+    <Content Include="Resources\document_view.png" />
+    <None Include="Resources\edit_delete %281%29.png" />
+    <Content Include="Resources\icon.ico" />
+    <None Include="Resources\increase.jpg" />
+    <None Include="Resources\increase %281%29.jpg" />
+    <Content Include="Resources\logo.ico" />
+    <None Include="Resources\resetpassword.jpg" />
+    <None Include="Resources\view-details%281%29.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\save %281%29.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\edit_delete.png" />
+    <None Include="Resources\edit_add.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\button_cancel.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
