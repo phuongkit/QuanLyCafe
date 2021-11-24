@@ -441,7 +441,12 @@ namespace QuanLyCafe.MyForm
                 {
                     hd.DaThanhToan = true;
                     HDBHAc.Sua(hd);
-                    MessageBox.Show("Thanh toán thành công");
+                    DialogResult traloi = MessageBox.Show("Thanh toán thành công! Bạn có muốn in hóa đơn không?","Thông báo",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                    if(traloi == DialogResult.OK)
+                    {
+                        Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
+                        frmReport.ShowDialog();
+                    }
                 }
                 else
                 {
@@ -488,6 +493,12 @@ namespace QuanLyCafe.MyForm
             {
                 DataBind();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
+            frmReport.ShowDialog();
         }
     }
 }

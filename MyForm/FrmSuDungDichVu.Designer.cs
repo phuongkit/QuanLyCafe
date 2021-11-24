@@ -62,6 +62,8 @@ namespace QuanLyCafe.MyForm
             this.grbBan = new System.Windows.Forms.GroupBox();
             this.lsvBan = new System.Windows.Forms.ListView();
             this.trvLoaiThucDon = new System.Windows.Forms.TreeView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDon)).BeginInit();
@@ -131,6 +133,7 @@ namespace QuanLyCafe.MyForm
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.dgvChiTietHoaDon);
             this.panel1.Controls.Add(this.txtBan);
             this.panel1.Controls.Add(this.label6);
@@ -434,6 +437,25 @@ namespace QuanLyCafe.MyForm
             this.trvLoaiThucDon.TabIndex = 3;
             this.trvLoaiThucDon.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvLoaiThucDon_NodeMouseClick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(441, 600);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 80);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FrmSuDungDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -441,6 +463,7 @@ namespace QuanLyCafe.MyForm
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1500, 800);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.trvLoaiThucDon);
             this.Controls.Add(this.grbBan);
             this.Controls.Add(this.panel1);
@@ -496,5 +519,7 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.DataGridViewTextBoxColumn CTDonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTThanhTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTdonViTinh;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
