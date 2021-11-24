@@ -31,9 +31,9 @@ namespace QuanLyCafe.MyForm
         }
         public void InitGUI()
         {
-            if (!frmMHC.getStatusGroupCongCu())
+            if (!frmMHC.getStatusMenuStrip())
             {
-                frmMHC.setStatusGroupCongCu(true);
+                frmMHC.setStatusMenuStrip(true);
             }
             txtIDNhanVien.Enabled = txtID.Enabled = txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = false;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
@@ -116,7 +116,7 @@ namespace QuanLyCafe.MyForm
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             Them = true;
             txtID.Enabled = txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
@@ -125,7 +125,7 @@ namespace QuanLyCafe.MyForm
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             Them = false;
             txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;

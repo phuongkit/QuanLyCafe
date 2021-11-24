@@ -29,9 +29,9 @@ namespace QuanLyCafe.MyForm
         }
         public void InitGUI()
         {
-            if (!frmMHC.getStatusGroupCongCu())
+            if (!frmMHC.getStatusMenuStrip())
             {
-                frmMHC.setStatusGroupCongCu(true);
+                frmMHC.setStatusMenuStrip(true);
             }
             try
             {
@@ -75,7 +75,7 @@ namespace QuanLyCafe.MyForm
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             txtTen.Enabled = true;
             txtSDT.Enabled = true;
             txtCMND.Enabled = true;

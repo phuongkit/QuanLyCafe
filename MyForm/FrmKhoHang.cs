@@ -25,9 +25,9 @@ namespace QuanLyCafe.MyForm
 
         private new void Load()
         {
-            if (!frmMHC.getStatusGroupCongCu())
+            if (!frmMHC.getStatusMenuStrip())
             {
-                frmMHC.setStatusGroupCongCu(true);
+                frmMHC.setStatusMenuStrip(true);
             }
             dgv_main.DataSource = null;
             dgv_main.Rows.Clear();
@@ -64,7 +64,7 @@ namespace QuanLyCafe.MyForm
 
         private void Btn_them_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             btn_them.Enabled = btn_xoa.Enabled = btn_sua.Enabled = false;
             btn_ok.Enabled = btn_huy.Enabled = true;
             txt_id.Text = txt_mathang.Text = txt_soluong.Text = txt_donvi.Text = txt_dongia.Text = "";
@@ -140,7 +140,7 @@ namespace QuanLyCafe.MyForm
 
         private void Btn_sua_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             btn_them.Enabled = btn_xoa.Enabled = btn_sua.Enabled = false;
             btn_ok.Enabled = btn_huy.Enabled = true;
             txt_id.Enabled = txt_mathang.Enabled = txt_soluong.Enabled = txt_donvi.Enabled = txt_dongia.Enabled = true;

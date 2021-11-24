@@ -28,7 +28,6 @@ namespace QuanLyCafe
         }
         public void LoadLogin()
         {
-            btnQuanLyNhanVien.Visible = btnThucDon.Visible = btnBan.Visible = btnHoaDonBanHang.Visible = btnHoaDonNhapHang.Visible = btnKhoHang.Visible = false;
             MyForm.FrmLogin frmLg = new MyForm.FrmLogin(this ,connectionString);
             this.Hide();
             frmLg.ShowDialog();
@@ -48,32 +47,17 @@ namespace QuanLyCafe
             grbChucNang.Controls.Clear();
             InitGUI();
         }
-        //private bool CheckOpened(string name)
-        //{
-        //    FormCollection fc = Application.OpenForms;
-
-        //    foreach (Form frm in fc)
-        //    {
-        //        if (frm.Text == name)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
 
         public void InitGUI()
         {
             NVAc = new DBaccess.NhanVienAccess(connectionString);
-            btnQuanLyNhanVien.Visible = btnThucDon.Visible = btnBan.Visible = btnHoaDonBanHang.Visible = btnHoaDonNhapHang.Visible = btnKhoHang.Visible = false;
-            grbCongCu.Enabled = true;
             MyForm.FrmSuDungDichVu frmThanhToan = new MyForm.FrmSuDungDichVu(IDNhanVien, connectionString);
-            ShowForm(frmThanhToan, btnSuDungDichVu);
+            ShowForm(frmThanhToan);
         }
         private void btnTaiKhoanCuaToi_Click(object sender, EventArgs e)
         {
             MyForm.FrmThongTinNhanVien frmThongTin = new MyForm.FrmThongTinNhanVien(this, IDNhanVien, connectionString);
-            ShowForm(frmThongTin, btnTaiKhoanCuaToi);
+            ShowForm(frmThongTin);
         }
         private bool CheckExistForm(string name)
         {
@@ -96,13 +80,6 @@ namespace QuanLyCafe
             {
                 if (form.Name == frm.Name)
                 {
-                    //switch (frm.Name)
-                    //{
-                    //    case "DoanhThu":
-                    //        form = (MyForm.DoanhThu)form;
-                    //        break;
-                    //}
-                    //form.Show();
                     form.Visible = true;
                 }
                 else
@@ -111,15 +88,8 @@ namespace QuanLyCafe
                     form.Visible = false;
                 }
             }
-            var buttons = grbCongCu.Controls.OfType<Button>();
-            foreach (Button btn in buttons)
-            {
-                btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderColor = Color.LightGray;
-                btn.FlatAppearance.BorderSize = 1;
-            }
         }
-        private void ShowForm(Form frm, Button btn)
+        private void ShowForm(Form frm)
         {
             if (!CheckExistForm(frm.Name))
             {
@@ -127,98 +97,8 @@ namespace QuanLyCafe
                 grbChucNang.Controls.Add(frm);
             }
             ActiveChildForm(frm);
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderColor = Color.Blue;
-            btn.FlatAppearance.BorderSize = 1;
         }
 
-        private void btnSuDungDichVu_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmSuDungDichVu frmThanhToan = new MyForm.FrmSuDungDichVu(IDNhanVien,connectionString);
-            ShowForm(frmThanhToan, btnSuDungDichVu);
-        }
-
-        private void btnNhapHang_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmSuDungNhapHang frmNhapHang = new MyForm.FrmSuDungNhapHang(IDNhanVien, connectionString);
-            ShowForm(frmNhapHang, btnNhapHang);
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.IDNhanVien = null;
-            this.connectionString = null;
-            DialogResult traloi = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (traloi == DialogResult.OK)
-            {
-                LoadLogin();
-            }
-        }
-
-        private void btnKhoHang_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmKhoHang frmKH = new MyForm.FrmKhoHang(this, connectionString);
-            ShowForm(frmKH, btnKhoHang);
-        }
-
-        private void btnBan_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmBan frmB = new MyForm.FrmBan(this, connectionString);
-            ShowForm(frmB, btnBan);
-        }
-
-        private void btnThucDon_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmThucDon frmTD = new MyForm.FrmThucDon(this, connectionString);
-            ShowForm(frmTD, btnThucDon);
-        }
-
-        private void btnDoanhThu_Click(object sender, EventArgs e)
-        {
-            MyForm.DoanhThu frmDT = new MyForm.DoanhThu(connectionString);
-            ShowForm(frmDT, btnDoanhThu);
-        }
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            bool Quyen = NVAc.getQuyen(IDNhanVien);
-            if (!Quyen)
-            {
-                MessageBox.Show("Bạn cần quyền admin để có thể truy cập chức năng này! Vui lòng liên hệ quản lý để cấp quyền");
-            }
-            else
-            {
-                if (btnKhoHang.Visible == false)
-                {
-                    btnQuanLyNhanVien.Visible = btnThucDon.Visible = btnBan.Visible = btnHoaDonBanHang.Visible = 
-                        btnHoaDonNhapHang.Visible = btnKhoHang.Visible = true;
-                }
-                else
-                {
-                    btnQuanLyNhanVien.Visible = btnThucDon.Visible = btnBan.Visible = btnHoaDonBanHang.Visible = 
-                        btnHoaDonNhapHang.Visible = btnKhoHang.Visible = false;
-                    MyForm.FrmSuDungDichVu frmThanhToan = new MyForm.FrmSuDungDichVu(IDNhanVien,connectionString);
-                    ShowForm(frmThanhToan, btnSuDungDichVu);
-                }
-            }
-        }
-
-        private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmNhanVien frmNV = new MyForm.FrmNhanVien(this, IDNhanVien, connectionString);
-            ShowForm(frmNV, btnQuanLyNhanVien);
-        }
-
-        private void btnHoaDonBanHang_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmHoaDonBanHang frmHDBH = new MyForm.FrmHoaDonBanHang(this, connectionString);
-            ShowForm(frmHDBH, btnHoaDonBanHang);
-        }
-        private void btnHoaDonNhapHang_Click(object sender, EventArgs e)
-        {
-            MyForm.FrmHoaDonNhapHang frmHDNH = new MyForm.FrmHoaDonNhapHang(this, connectionString);
-            ShowForm(frmHDNH, btnHoaDonNhapHang);
-        }
         public string getIDNhanVien()
         {
             return IDNhanVien;
@@ -235,14 +115,6 @@ namespace QuanLyCafe
         {
             this.connectionString = connectionString;
         }
-        public bool getStatusGroupCongCu()
-        {
-            return grbCongCu.Enabled;
-        }
-        public void setStatusGroupCongCu(bool Enable)
-        {
-            this.grbCongCu.Enabled = Enable;
-        }
 
         private void FrmManHinhChinh_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -250,6 +122,117 @@ namespace QuanLyCafe
             if (traloi == DialogResult.Cancel)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void sửDụngDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmSuDungDichVu frmThanhToan = new MyForm.FrmSuDungDichVu(IDNhanVien, connectionString);
+            ShowForm(frmThanhToan);
+        }
+
+        private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmSuDungNhapHang frmNhapHang = new MyForm.FrmSuDungNhapHang(IDNhanVien, connectionString);
+            ShowForm(frmNhapHang);
+        }
+
+        private void thôngTinTàiKhoảnVàCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmNhanVien frmNV = new MyForm.FrmNhanVien(this, IDNhanVien, connectionString);
+            ShowForm(frmNV);
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+           {
+                this.IDNhanVien = null;
+                this.connectionString = null;
+                DialogResult traloi = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (traloi == DialogResult.OK)
+                {
+                    LoadLogin();
+                }
+            }
+
+        private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.DoanhThu frmDT = new MyForm.DoanhThu(connectionString);
+            ShowForm(frmDT);
+        }
+
+        private void quảnLýBànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmBan frmB = new MyForm.FrmBan(this, connectionString);
+            ShowForm(frmB);
+        }
+
+        private void quảnLýThựcĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmThucDon frmTD = new MyForm.FrmThucDon(this, connectionString);
+            ShowForm(frmTD);
+        }
+
+        private void quảnLýKhoHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmKhoHang frmKH = new MyForm.FrmKhoHang(this, connectionString);
+            ShowForm(frmKH);
+        }
+
+        private void quảnLýHóaĐơnNhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmHoaDonNhapHang frmHDNH = new MyForm.FrmHoaDonNhapHang(this, connectionString);
+            ShowForm(frmHDNH);
+        }
+
+        private void quảnLýHóaĐơnBánHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmHoaDonBanHang frmHDBH = new MyForm.FrmHoaDonBanHang(this, connectionString);
+            ShowForm(frmHDBH);
+        }
+
+        private void quảnLýTàiKhoảnVàNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.FrmNhanVien frmNV = new MyForm.FrmNhanVien(this, IDNhanVien, connectionString);
+            ShowForm(frmNV);
+        }
+
+        public bool getStatusMenuStrip()
+        {
+            return this.menuStrip1.Enabled;
+        }
+        public void setStatusMenuStrip(bool status)
+        {
+            this.menuStrip1.Enabled = status;
+        }
+
+        private void adminToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            bool Quyen = NVAc.getQuyen(IDNhanVien);
+            if (!Quyen)
+            {
+                adminToolStripMenuItem.DropDown.Enabled = false;
+            }
+            else
+            {
+                adminToolStripMenuItem.DropDown.Enabled = true;
+            }
+        }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool Quyen = NVAc.getQuyen(IDNhanVien);
+            if (!Quyen)
+            {
+                adminToolStripMenuItem.DropDown.Enabled = false;
+                if (adminToolStripMenuItem.DropDown.Visible)
+                {
+                    MessageBox.Show("Bạn cần quyền admin để có thể truy cập chức năng này! Vui lòng liên hệ quản lý để cấp quyền");
+                    adminToolStripMenuItem.DropDown.Visible = false;
+                }
+            }
+            else
+            {
+                adminToolStripMenuItem.DropDown.Enabled = true;
             }
         }
     }

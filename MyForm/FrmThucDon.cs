@@ -29,9 +29,9 @@ namespace QuanLyCafe.MyForm
 
         private void loadData()
         {
-            if (!frmMHC.getStatusGroupCongCu())
+            if (!frmMHC.getStatusMenuStrip())
             {
-                frmMHC.setStatusGroupCongCu(true);
+                frmMHC.setStatusMenuStrip(true);
             }
             List<MyDatabase.LoaiThucDon> listloaimon = new List<MyDatabase.LoaiThucDon>();
             listloaimon.Add(new MyDatabase.LoaiThucDon() { ID = null, TenloaiThucDon = null });
@@ -79,7 +79,7 @@ namespace QuanLyCafe.MyForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Them = true;
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
@@ -149,7 +149,7 @@ namespace QuanLyCafe.MyForm
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Them = false;
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;

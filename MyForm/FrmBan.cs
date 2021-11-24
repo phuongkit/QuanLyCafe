@@ -27,9 +27,9 @@ namespace QuanLyCafe.MyForm
 
         private void dataBiding()
         {
-            if (!frmMHC.getStatusGroupCongCu())
+            if (!frmMHC.getStatusMenuStrip())
             {
-                frmMHC.setStatusGroupCongCu(true);
+                frmMHC.setStatusMenuStrip(true);
             }
             trangthai = new List<Trangthai>()
             {
@@ -69,7 +69,7 @@ namespace QuanLyCafe.MyForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Them = true;
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
@@ -150,7 +150,7 @@ namespace QuanLyCafe.MyForm
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Them = false;
-            frmMHC.setStatusGroupCongCu(false);
+            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
