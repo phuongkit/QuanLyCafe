@@ -31,11 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbbTrangThai = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,6 +43,11 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Trangtha = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -85,66 +85,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1500, 144);
             this.panel2.TabIndex = 0;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Image = global::QuanLyCafe.Properties.Resources.cancel;
-            this.btnCancel.Location = new System.Drawing.Point(523, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(124, 61);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Bỏ qua";
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::QuanLyCafe.Properties.Resources.save__1_;
-            this.btnSave.Location = new System.Drawing.Point(393, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(124, 61);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
-            this.btnDelete.Location = new System.Drawing.Point(263, 3);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(124, 61);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Image = global::QuanLyCafe.Properties.Resources.pencil;
-            this.btnEdit.Location = new System.Drawing.Point(133, 3);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(124, 61);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Image = global::QuanLyCafe.Properties.Resources.edit_add;
-            this.btnCreate.Location = new System.Drawing.Point(3, 3);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(124, 61);
-            this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Thêm mới";
-            this.btnCreate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // panel3
             // 
@@ -271,6 +211,66 @@
             this.Trangtha.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Trangtha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Trangtha.Width = 125;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Image = global::QuanLyCafe.Properties.Resources.cancel;
+            this.btnCancel.Location = new System.Drawing.Point(523, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(124, 61);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Bỏ qua";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::QuanLyCafe.Properties.Resources.save__1_;
+            this.btnSave.Location = new System.Drawing.Point(393, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(124, 61);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
+            this.btnDelete.Location = new System.Drawing.Point(263, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(124, 61);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::QuanLyCafe.Properties.Resources.pencil;
+            this.btnEdit.Location = new System.Drawing.Point(133, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(124, 61);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Image = global::QuanLyCafe.Properties.Resources.edit_add;
+            this.btnCreate.Location = new System.Drawing.Point(3, 3);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(124, 61);
+            this.btnCreate.TabIndex = 1;
+            this.btnCreate.Text = "Thêm mới";
+            this.btnCreate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // FrmBan
             // 

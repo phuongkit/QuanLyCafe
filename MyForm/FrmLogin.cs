@@ -127,6 +127,21 @@ namespace QuanLyCafe.MyForm
             cbbDataSource.Items.Add(string.Format(@"{0}\SQLEXPRESS01", Environment.MachineName));
             cbbDataSource.SelectedIndex = 3;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

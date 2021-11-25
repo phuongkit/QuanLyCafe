@@ -58,6 +58,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>C:\Windows\System32\Microsoft.Office.Interop.Word.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -70,6 +71,8 @@
     <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
     </Reference>
+=======
+>>>>>>> 99e59036fe8cbead07da222c3375ec18d6eb7fb8
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
@@ -389,7 +392,6 @@
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportHoaDonBanHang.rdlc" />
-    <EmbeddedResource Include="Report\ReportHoaDonNhapHang.rdlc" />
     <EntityDeploy Include="MyDatabase\QuanLyCafeDBContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QuanLyCafeDBContext.Designer.cs</LastGenOutput>
@@ -398,8 +400,11 @@
       <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.ChiTietHoaDonNhapHang.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonBanHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonNhapHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonBanHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonNhapHang_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
