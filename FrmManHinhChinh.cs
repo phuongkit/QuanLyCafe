@@ -139,8 +139,8 @@ namespace QuanLyCafe
 
         private void thôngTinTàiKhoảnVàCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MyForm.FrmNhanVien frmNV = new MyForm.FrmNhanVien(this, IDNhanVien, connectionString);
-            ShowForm(frmNV);
+            MyForm.FrmThongTinNhanVien frmTTNV = new MyForm.FrmThongTinNhanVien(this, IDNhanVien, connectionString);
+            ShowForm(frmTTNV);
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

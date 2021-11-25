@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,20 +106,32 @@
             // btnXemChiTiet
             // 
             this.btnXemChiTiet.Image = global::QuanLyCafe.Properties.Resources.view_details_1_;
-            this.btnXemChiTiet.Location = new System.Drawing.Point(426, 90);
+            this.btnXemChiTiet.Location = new System.Drawing.Point(426, 71);
             this.btnXemChiTiet.Name = "btnXemChiTiet";
-            this.btnXemChiTiet.Size = new System.Drawing.Size(138, 54);
+            this.btnXemChiTiet.Size = new System.Drawing.Size(138, 75);
             this.btnXemChiTiet.TabIndex = 12;
             this.btnXemChiTiet.Text = "Xem chi tiết";
             this.btnXemChiTiet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXemChiTiet.UseVisualStyleBackColor = true;
             this.btnXemChiTiet.Click += new System.EventHandler(this.btnXemChiTiet_Click);
             // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
+            this.btnIn.Location = new System.Drawing.Point(595, 71);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(121, 73);
+            this.btnIn.TabIndex = 20;
+            this.btnIn.Text = "In Báo Cáo";
+            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIn.UseVisualStyleBackColor = true;
+            // 
             // DoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1387, 654);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnXemChiTiet);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -145,5 +158,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnXemChiTiet;
+        private System.Windows.Forms.Button btnIn;
     }
 }

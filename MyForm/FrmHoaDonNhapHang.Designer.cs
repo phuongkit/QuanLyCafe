@@ -61,6 +61,8 @@ namespace QuanLyCafe.MyForm
             this.IDhoaDonNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDhang = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_ExportExcel = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.grbHoaDon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.grbChiTiet.SuspendLayout();
@@ -70,6 +72,7 @@ namespace QuanLyCafe.MyForm
             // 
             // grbHoaDon
             // 
+            this.grbHoaDon.Controls.Add(this.button1);
             this.grbHoaDon.Controls.Add(this.cbbNhanVien);
             this.grbHoaDon.Controls.Add(this.dtNgayTao);
             this.grbHoaDon.Controls.Add(this.txtIDHoaDon);
@@ -149,9 +152,9 @@ namespace QuanLyCafe.MyForm
             // btnBoQua
             // 
             this.btnBoQua.Image = global::QuanLyCafe.Properties.Resources.cancel;
-            this.btnBoQua.Location = new System.Drawing.Point(525, 682);
+            this.btnBoQua.Location = new System.Drawing.Point(489, 682);
             this.btnBoQua.Name = "btnBoQua";
-            this.btnBoQua.Size = new System.Drawing.Size(124, 61);
+            this.btnBoQua.Size = new System.Drawing.Size(116, 61);
             this.btnBoQua.TabIndex = 10;
             this.btnBoQua.Text = "Bỏ qua";
             this.btnBoQua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -161,9 +164,9 @@ namespace QuanLyCafe.MyForm
             // btnLuu
             // 
             this.btnLuu.Image = global::QuanLyCafe.Properties.Resources.save__1_;
-            this.btnLuu.Location = new System.Drawing.Point(395, 682);
+            this.btnLuu.Location = new System.Drawing.Point(370, 682);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(124, 61);
+            this.btnLuu.Size = new System.Drawing.Size(110, 61);
             this.btnLuu.TabIndex = 9;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -173,7 +176,7 @@ namespace QuanLyCafe.MyForm
             // btnXoa
             // 
             this.btnXoa.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
-            this.btnXoa.Location = new System.Drawing.Point(265, 682);
+            this.btnXoa.Location = new System.Drawing.Point(239, 681);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(124, 61);
             this.btnXoa.TabIndex = 8;
@@ -185,9 +188,9 @@ namespace QuanLyCafe.MyForm
             // btnSua
             // 
             this.btnSua.Image = global::QuanLyCafe.Properties.Resources.pencil;
-            this.btnSua.Location = new System.Drawing.Point(135, 682);
+            this.btnSua.Location = new System.Drawing.Point(121, 682);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(124, 61);
+            this.btnSua.Size = new System.Drawing.Size(112, 61);
             this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -199,7 +202,7 @@ namespace QuanLyCafe.MyForm
             this.btnThem.Image = global::QuanLyCafe.Properties.Resources.edit_add;
             this.btnThem.Location = new System.Drawing.Point(5, 682);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(124, 61);
+            this.btnThem.Size = new System.Drawing.Size(108, 61);
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -260,6 +263,7 @@ namespace QuanLyCafe.MyForm
             // grbChiTiet
             // 
             this.grbChiTiet.Controls.Add(this.cbbCTKhoHang);
+            this.grbChiTiet.Controls.Add(this.btn_ExportExcel);
             this.grbChiTiet.Controls.Add(this.nmCTSoLuong);
             this.grbChiTiet.Controls.Add(this.txtCTIDHoaDon);
             this.grbChiTiet.Controls.Add(this.label9);
@@ -347,7 +351,7 @@ namespace QuanLyCafe.MyForm
             // btnChiTietBoQua
             // 
             this.btnChiTietBoQua.Image = global::QuanLyCafe.Properties.Resources.cancel;
-            this.btnChiTietBoQua.Location = new System.Drawing.Point(479, 682);
+            this.btnChiTietBoQua.Location = new System.Drawing.Point(490, 681);
             this.btnChiTietBoQua.Name = "btnChiTietBoQua";
             this.btnChiTietBoQua.Size = new System.Drawing.Size(112, 61);
             this.btnChiTietBoQua.TabIndex = 10;
@@ -359,7 +363,7 @@ namespace QuanLyCafe.MyForm
             // btnChiTietLuu
             // 
             this.btnChiTietLuu.Image = global::QuanLyCafe.Properties.Resources.save__1_;
-            this.btnChiTietLuu.Location = new System.Drawing.Point(361, 682);
+            this.btnChiTietLuu.Location = new System.Drawing.Point(361, 681);
             this.btnChiTietLuu.Name = "btnChiTietLuu";
             this.btnChiTietLuu.Size = new System.Drawing.Size(112, 61);
             this.btnChiTietLuu.TabIndex = 9;
@@ -454,6 +458,30 @@ namespace QuanLyCafe.MyForm
             this.soLuong.ReadOnly = true;
             this.soLuong.Width = 125;
             // 
+            // btn_ExportExcel
+            // 
+            this.btn_ExportExcel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ExportExcel.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
+            this.btn_ExportExcel.Location = new System.Drawing.Point(608, 682);
+            this.btn_ExportExcel.Name = "btn_ExportExcel";
+            this.btn_ExportExcel.Size = new System.Drawing.Size(113, 61);
+            this.btn_ExportExcel.TabIndex = 26;
+            this.btn_ExportExcel.Text = "Xuất Excel";
+            this.btn_ExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_ExportExcel.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
+            this.button1.Location = new System.Drawing.Point(611, 681);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 61);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Xuất Excel";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmHoaDonNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -511,5 +539,7 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.DataGridViewTextBoxColumn IDhoaDonNH;
         private System.Windows.Forms.DataGridViewComboBoxColumn IDhang;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_ExportExcel;
     }
 }

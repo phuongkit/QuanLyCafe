@@ -59,6 +59,7 @@ namespace QuanLyCafe.MyForm
             this.DonViTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIn = new System.Windows.Forms.Button();
             this.grbChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietNhapHang)).BeginInit();
@@ -68,6 +69,7 @@ namespace QuanLyCafe.MyForm
             // 
             // grbChucNang
             // 
+            this.grbChucNang.Controls.Add(this.btnIn);
             this.grbChucNang.Controls.Add(this.dtNgayTao);
             this.grbChucNang.Controls.Add(this.txtSoHD);
             this.grbChucNang.Controls.Add(this.txtNhanVien);
@@ -139,9 +141,9 @@ namespace QuanLyCafe.MyForm
             // btnHuy
             // 
             this.btnHuy.Image = global::QuanLyCafe.Properties.Resources.cancel;
-            this.btnHuy.Location = new System.Drawing.Point(578, 644);
+            this.btnHuy.Location = new System.Drawing.Point(560, 661);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(129, 71);
+            this.btnHuy.Size = new System.Drawing.Size(129, 80);
             this.btnHuy.TabIndex = 10;
             this.btnHuy.Text = "Hủy hóa đơn";
             this.btnHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -151,9 +153,9 @@ namespace QuanLyCafe.MyForm
             // btnTaoHoaDon
             // 
             this.btnTaoHoaDon.Image = global::QuanLyCafe.Properties.Resources.payment__1_;
-            this.btnTaoHoaDon.Location = new System.Drawing.Point(362, 644);
+            this.btnTaoHoaDon.Location = new System.Drawing.Point(393, 661);
             this.btnTaoHoaDon.Name = "btnTaoHoaDon";
-            this.btnTaoHoaDon.Size = new System.Drawing.Size(129, 71);
+            this.btnTaoHoaDon.Size = new System.Drawing.Size(129, 81);
             this.btnTaoHoaDon.TabIndex = 9;
             this.btnTaoHoaDon.Text = "Tạo hóa đơn";
             this.btnTaoHoaDon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -415,6 +417,17 @@ namespace QuanLyCafe.MyForm
             this.DonGia.ReadOnly = true;
             this.DonGia.Width = 60;
             // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
+            this.btnIn.Location = new System.Drawing.Point(730, 661);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(129, 80);
+            this.btnIn.TabIndex = 20;
+            this.btnIn.Text = "In Hóa Đơn";
+            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIn.UseVisualStyleBackColor = true;
+            // 
             // FrmSuDungNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -470,5 +483,6 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.DataGridViewTextBoxColumn DonViTinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
+        private System.Windows.Forms.Button btnIn;
     }
 }

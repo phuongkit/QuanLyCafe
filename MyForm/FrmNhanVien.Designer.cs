@@ -74,6 +74,7 @@ namespace QuanLyCafe.MyForm
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblDNhanVien = new System.Windows.Forms.Label();
             this.lblLoginName = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -90,6 +91,7 @@ namespace QuanLyCafe.MyForm
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.dgvNhanVien);
             this.groupBox2.Controls.Add(this.dtNgayNghiViec);
             this.groupBox2.Controls.Add(this.dtNgayVaoLam);
@@ -338,9 +340,9 @@ namespace QuanLyCafe.MyForm
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
-            this.btnXoa.Location = new System.Drawing.Point(318, 644);
+            this.btnXoa.Location = new System.Drawing.Point(251, 644);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(129, 87);
+            this.btnXoa.Size = new System.Drawing.Size(110, 87);
             this.btnXoa.TabIndex = 16;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -351,9 +353,9 @@ namespace QuanLyCafe.MyForm
             // 
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.Image = global::QuanLyCafe.Properties.Resources.save__1_;
-            this.btnLuu.Location = new System.Drawing.Point(453, 644);
+            this.btnLuu.Location = new System.Drawing.Point(367, 644);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(120, 87);
+            this.btnLuu.Size = new System.Drawing.Size(107, 87);
             this.btnLuu.TabIndex = 15;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -364,9 +366,9 @@ namespace QuanLyCafe.MyForm
             // 
             this.btnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.Image = global::QuanLyCafe.Properties.Resources.cancel;
-            this.btnHuy.Location = new System.Drawing.Point(598, 644);
+            this.btnHuy.Location = new System.Drawing.Point(480, 644);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(136, 87);
+            this.btnHuy.Size = new System.Drawing.Size(128, 87);
             this.btnHuy.TabIndex = 14;
             this.btnHuy.Text = "Bỏ qua";
             this.btnHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -377,9 +379,9 @@ namespace QuanLyCafe.MyForm
             // 
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.Image = global::QuanLyCafe.Properties.Resources.pencil;
-            this.btnSua.Location = new System.Drawing.Point(168, 644);
+            this.btnSua.Location = new System.Drawing.Point(141, 644);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(127, 87);
+            this.btnSua.Size = new System.Drawing.Size(101, 87);
             this.btnSua.TabIndex = 13;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -392,7 +394,7 @@ namespace QuanLyCafe.MyForm
             this.btnThem.Image = global::QuanLyCafe.Properties.Resources.edit_add;
             this.btnThem.Location = new System.Drawing.Point(24, 644);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(123, 87);
+            this.btnThem.Size = new System.Drawing.Size(99, 87);
             this.btnThem.TabIndex = 12;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -577,6 +579,18 @@ namespace QuanLyCafe.MyForm
             this.lblLoginName.TabIndex = 0;
             this.lblLoginName.Text = "LoginName:";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
+            this.button1.Location = new System.Drawing.Point(614, 644);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 87);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Xuất Excel";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -646,5 +660,6 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.Label lbTaiKhoan;
         private System.Windows.Forms.ComboBox cbbQuyen;
         private System.Windows.Forms.Button btnResetMatKhau;
+        private System.Windows.Forms.Button button1;
     }
 }
