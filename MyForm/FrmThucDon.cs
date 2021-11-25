@@ -196,8 +196,13 @@ namespace QuanLyCafe.MyForm
             saveFileDialog.Filter = "Excel|*.xls|Excel 2010|*.xlsx";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-
                 ExportExcel(DGV, saveFileDialog.FileName);
+                DialogResult traloi = MessageBox.Show("Đã xuất thành công, bạn có muốn gửi mail không?", " Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if(traloi == DialogResult.OK)
+                {
+                    Report.InputMesseageBox frmIMB = new Report.InputMesseageBox("Báo cáo danh sách thực đơn", "Báo cáo danh sách thực đơn ngày " + new DateTime(), saveFileDialog.FileName);
+                    frmIMB.ShowDialog();
+                }
             }
         }
 
@@ -228,7 +233,6 @@ namespace QuanLyCafe.MyForm
 
 
                 obj.ActiveWorkbook.SaveCopyAs(fileName);
-                MessageBox.Show("Export successful.!");
             }
             catch (Exception ex)
             {

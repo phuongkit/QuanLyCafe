@@ -330,6 +330,12 @@
     <Compile Include="Report\FrmReport.Designer.cs">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\InputMesseageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\InputMesseageBox.Designer.cs">
+      <DependentUpon>InputMesseageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="MyForm\DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
@@ -382,6 +388,9 @@
     </Compile>
     <EmbeddedResource Include="Report\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\InputMesseageBox.resx">
+      <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportHoaDonBanHang.rdlc" />
     <EntityDeploy Include="MyDatabase\QuanLyCafeDBContext.edmx">
