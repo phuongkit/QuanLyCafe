@@ -29,6 +29,7 @@ namespace QuanLyCafe.MyForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.chkShow = new System.Windows.Forms.CheckBox();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,141 +37,138 @@ namespace QuanLyCafe.MyForm
             this.label2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.cbbDataSource = new System.Windows.Forms.ComboBox();
-            this.groupBox1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkShow
             // 
             this.chkShow.AutoSize = true;
-            this.chkShow.Location = new System.Drawing.Point(174, 210);
+            this.chkShow.BackColor = System.Drawing.Color.Transparent;
+            this.chkShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkShow.ForeColor = System.Drawing.Color.White;
+            this.chkShow.Location = new System.Drawing.Point(212, 229);
             this.chkShow.Margin = new System.Windows.Forms.Padding(2);
             this.chkShow.Name = "chkShow";
-            this.chkShow.Size = new System.Drawing.Size(140, 21);
+            this.chkShow.Size = new System.Drawing.Size(126, 17);
             this.chkShow.TabIndex = 17;
             this.chkShow.Text = "Hiển thị mật khẩu";
-            this.chkShow.UseVisualStyleBackColor = true;
+            this.chkShow.UseVisualStyleBackColor = false;
             this.chkShow.CheckedChanged += new System.EventHandler(this.chkShow_CheckedChanged);
             // 
             // txbUserName
             // 
-            this.txbUserName.Location = new System.Drawing.Point(174, 84);
-            this.txbUserName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbUserName.Location = new System.Drawing.Point(239, 140);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(248, 22);
+            this.txbUserName.Size = new System.Drawing.Size(187, 20);
             this.txbUserName.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(7, 84);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(114, 140);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 24);
+            this.label1.Size = new System.Drawing.Size(90, 19);
             this.label1.TabIndex = 11;
             this.label1.Text = "Tài khoản:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txbPassWord
             // 
-            this.txbPassWord.Location = new System.Drawing.Point(174, 145);
-            this.txbPassWord.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPassWord.Location = new System.Drawing.Point(239, 190);
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.PasswordChar = '*';
-            this.txbPassWord.Size = new System.Drawing.Size(213, 22);
+            this.txbPassWord.Size = new System.Drawing.Size(161, 20);
             this.txbPassWord.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(13, 145);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(119, 190);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 24);
+            this.label2.Size = new System.Drawing.Size(84, 19);
             this.label2.TabIndex = 12;
             this.label2.Text = "Mật khẩu:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.Color.SeaShell;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(341, 283);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Location = new System.Drawing.Point(336, 266);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(120, 53);
+            this.btnExit.Size = new System.Drawing.Size(90, 43);
             this.btnExit.TabIndex = 16;
             this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(110, 283);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogin.BackColor = System.Drawing.Color.SeaShell;
+            this.btnLogin.Location = new System.Drawing.Point(118, 266);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(132, 53);
+            this.btnLogin.Size = new System.Drawing.Size(99, 43);
             this.btnLogin.TabIndex = 15;
             this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cbbDataSource);
-            this.groupBox1.Controls.Add(this.chkShow);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txbPassWord);
-            this.groupBox1.Controls.Add(this.txbUserName);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 250);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(7, 34);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 24);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Data Source:";
             // 
             // cbbDataSource
             // 
             this.cbbDataSource.FormattingEnabled = true;
-            this.cbbDataSource.Location = new System.Drawing.Point(174, 34);
+            this.cbbDataSource.Location = new System.Drawing.Point(239, 100);
+            this.cbbDataSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbbDataSource.Name = "cbbDataSource";
-            this.cbbDataSource.Size = new System.Drawing.Size(369, 24);
+            this.cbbDataSource.Size = new System.Drawing.Size(278, 21);
             this.cbbDataSource.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(114, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 19);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Data Source:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(579, 343);
+            this.ClientSize = new System.Drawing.Size(641, 420);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cbbDataSource);
+            this.Controls.Add(this.chkShow);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txbPassWord);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txbUserName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,7 +181,6 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbbDataSource;
     }
