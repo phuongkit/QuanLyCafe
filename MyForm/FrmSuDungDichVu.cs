@@ -500,5 +500,10 @@ namespace QuanLyCafe.MyForm
             Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
             frmReport.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

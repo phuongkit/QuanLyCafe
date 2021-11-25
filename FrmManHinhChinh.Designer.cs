@@ -52,6 +52,7 @@ namespace QuanLyCafe
             // 
             // grbChucNang
             // 
+            this.grbChucNang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.grbChucNang.Location = new System.Drawing.Point(0, 37);
             this.grbChucNang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grbChucNang.Name = "grbChucNang";
@@ -60,6 +61,7 @@ namespace QuanLyCafe
             this.grbChucNang.TabIndex = 8;
             this.grbChucNang.TabStop = false;
             this.grbChucNang.Text = "Nhóm chức năng";
+            this.grbChucNang.Enter += new System.EventHandler(this.grbChucNang_Enter);
             // 
             // menuStrip1
             // 
@@ -211,7 +213,6 @@ namespace QuanLyCafe
             this.ClientSize = new System.Drawing.Size(1028, 609);
             this.Controls.Add(this.grbChucNang);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;

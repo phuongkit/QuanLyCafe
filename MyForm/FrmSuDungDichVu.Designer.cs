@@ -29,12 +29,14 @@ namespace QuanLyCafe.MyForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSuDungDichVu));
             this.dgvThucDon = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonViTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.dgvChiTietHoaDon = new System.Windows.Forms.DataGridView();
             this.IDThucDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenThucDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,8 +64,6 @@ namespace QuanLyCafe.MyForm
             this.grbBan = new System.Windows.Forms.GroupBox();
             this.lsvBan = new System.Windows.Forms.ListView();
             this.trvLoaiThucDon = new System.Windows.Forms.TreeView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDon)).BeginInit();
@@ -82,7 +82,8 @@ namespace QuanLyCafe.MyForm
             this.DonViTinh,
             this.DonGia});
             this.dgvThucDon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvThucDon.Location = new System.Drawing.Point(1057, 373);
+            this.dgvThucDon.Location = new System.Drawing.Point(793, 303);
+            this.dgvThucDon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvThucDon.MultiSelect = false;
             this.dgvThucDon.Name = "dgvThucDon";
             this.dgvThucDon.ReadOnly = true;
@@ -91,7 +92,7 @@ namespace QuanLyCafe.MyForm
             this.dgvThucDon.RowTemplate.Height = 24;
             this.dgvThucDon.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvThucDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThucDon.Size = new System.Drawing.Size(431, 423);
+            this.dgvThucDon.Size = new System.Drawing.Size(323, 344);
             this.dgvThucDon.TabIndex = 0;
             this.dgvThucDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThucDon_CellClick);
             // 
@@ -133,6 +134,7 @@ namespace QuanLyCafe.MyForm
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.dgvChiTietHoaDon);
             this.panel1.Controls.Add(this.txtBan);
@@ -152,10 +154,22 @@ namespace QuanLyCafe.MyForm
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dtNgay);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(527, 3);
+            this.panel1.Location = new System.Drawing.Point(395, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(524, 793);
+            this.panel1.Size = new System.Drawing.Size(393, 644);
             this.panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(331, 488);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(56, 65);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dgvChiTietHoaDon
             // 
@@ -171,7 +185,8 @@ namespace QuanLyCafe.MyForm
             this.CTThanhTien,
             this.CTdonViTinh});
             this.dgvChiTietHoaDon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvChiTietHoaDon.Location = new System.Drawing.Point(0, 100);
+            this.dgvChiTietHoaDon.Location = new System.Drawing.Point(0, 81);
+            this.dgvChiTietHoaDon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvChiTietHoaDon.MultiSelect = false;
             this.dgvChiTietHoaDon.Name = "dgvChiTietHoaDon";
             this.dgvChiTietHoaDon.ReadOnly = true;
@@ -180,7 +195,7 @@ namespace QuanLyCafe.MyForm
             this.dgvChiTietHoaDon.RowTemplate.Height = 24;
             this.dgvChiTietHoaDon.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvChiTietHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChiTietHoaDon.Size = new System.Drawing.Size(432, 556);
+            this.dgvChiTietHoaDon.Size = new System.Drawing.Size(324, 452);
             this.dgvChiTietHoaDon.TabIndex = 1;
             this.dgvChiTietHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTietHoaDon_CellClick);
             // 
@@ -241,77 +256,86 @@ namespace QuanLyCafe.MyForm
             // txtBan
             // 
             this.txtBan.Enabled = false;
-            this.txtBan.Location = new System.Drawing.Point(70, 10);
+            this.txtBan.Location = new System.Drawing.Point(52, 8);
+            this.txtBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBan.Name = "txtBan";
-            this.txtBan.Size = new System.Drawing.Size(100, 22);
+            this.txtBan.Size = new System.Drawing.Size(76, 20);
             this.txtBan.TabIndex = 18;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(307, 10);
+            this.label6.Location = new System.Drawing.Point(230, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 17);
+            this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Ngày:";
             // 
             // txtSoHD
             // 
             this.txtSoHD.Enabled = false;
-            this.txtSoHD.Location = new System.Drawing.Point(384, 56);
+            this.txtSoHD.Location = new System.Drawing.Point(288, 46);
+            this.txtSoHD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSoHD.Name = "txtSoHD";
-            this.txtSoHD.Size = new System.Drawing.Size(108, 22);
+            this.txtSoHD.Size = new System.Drawing.Size(82, 20);
             this.txtSoHD.TabIndex = 16;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(307, 56);
+            this.label5.Location = new System.Drawing.Point(230, 46);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Số HĐ:";
             // 
             // txtNhanVien
             // 
             this.txtNhanVien.Enabled = false;
-            this.txtNhanVien.Location = new System.Drawing.Point(85, 53);
+            this.txtNhanVien.Location = new System.Drawing.Point(64, 43);
+            this.txtNhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNhanVien.Name = "txtNhanVien";
-            this.txtNhanVien.Size = new System.Drawing.Size(172, 22);
+            this.txtNhanVien.Size = new System.Drawing.Size(130, 20);
             this.txtNhanVien.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 53);
+            this.label4.Location = new System.Drawing.Point(2, 43);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 17);
+            this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "Nhân viên:";
             // 
             // txtThanhTien
             // 
             this.txtThanhTien.Enabled = false;
-            this.txtThanhTien.Location = new System.Drawing.Point(100, 711);
+            this.txtThanhTien.Location = new System.Drawing.Point(75, 578);
+            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(143, 22);
+            this.txtThanhTien.Size = new System.Drawing.Size(108, 20);
             this.txtThanhTien.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 716);
+            this.label3.Location = new System.Drawing.Point(10, 582);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 17);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Thành tiền:";
             // 
             // btnHuy
             // 
             this.btnHuy.Image = global::QuanLyCafe.Properties.Resources.cancel__1_;
-            this.btnHuy.Location = new System.Drawing.Point(390, 686);
+            this.btnHuy.Location = new System.Drawing.Point(292, 557);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(116, 77);
+            this.btnHuy.Size = new System.Drawing.Size(87, 63);
             this.btnHuy.TabIndex = 10;
             this.btnHuy.Text = "Hủy Hóa Đơn";
             this.btnHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -321,9 +345,10 @@ namespace QuanLyCafe.MyForm
             // btnThanhToan
             // 
             this.btnThanhToan.Image = global::QuanLyCafe.Properties.Resources.payment;
-            this.btnThanhToan.Location = new System.Drawing.Point(266, 686);
+            this.btnThanhToan.Location = new System.Drawing.Point(200, 557);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(110, 77);
+            this.btnThanhToan.Size = new System.Drawing.Size(82, 63);
             this.btnThanhToan.TabIndex = 9;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -333,9 +358,10 @@ namespace QuanLyCafe.MyForm
             // btnXoa
             // 
             this.btnXoa.Image = global::QuanLyCafe.Properties.Resources.edit_delete__1_;
-            this.btnXoa.Location = new System.Drawing.Point(441, 380);
+            this.btnXoa.Location = new System.Drawing.Point(331, 309);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(80, 63);
+            this.btnXoa.Size = new System.Drawing.Size(60, 51);
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "X Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -345,9 +371,10 @@ namespace QuanLyCafe.MyForm
             // btnGiam
             // 
             this.btnGiam.Image = global::QuanLyCafe.Properties.Resources.decrease_1_;
-            this.btnGiam.Location = new System.Drawing.Point(441, 297);
+            this.btnGiam.Location = new System.Drawing.Point(331, 241);
+            this.btnGiam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGiam.Name = "btnGiam";
-            this.btnGiam.Size = new System.Drawing.Size(80, 67);
+            this.btnGiam.Size = new System.Drawing.Size(60, 54);
             this.btnGiam.TabIndex = 7;
             this.btnGiam.Text = "Giảm >>";
             this.btnGiam.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -357,9 +384,10 @@ namespace QuanLyCafe.MyForm
             // btnThem
             // 
             this.btnThem.Image = global::QuanLyCafe.Properties.Resources.increase__1_;
-            this.btnThem.Location = new System.Drawing.Point(441, 213);
+            this.btnThem.Location = new System.Drawing.Point(331, 173);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(80, 68);
+            this.btnThem.Size = new System.Drawing.Size(60, 55);
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm <<";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -368,14 +396,15 @@ namespace QuanLyCafe.MyForm
             // 
             // nmSoLuong
             // 
-            this.nmSoLuong.Location = new System.Drawing.Point(441, 163);
+            this.nmSoLuong.Location = new System.Drawing.Point(331, 132);
+            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nmSoLuong.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nmSoLuong.Name = "nmSoLuong";
-            this.nmSoLuong.Size = new System.Drawing.Size(80, 22);
+            this.nmSoLuong.Size = new System.Drawing.Size(60, 20);
             this.nmSoLuong.TabIndex = 5;
             this.nmSoLuong.Value = new decimal(new int[] {
             1,
@@ -386,89 +415,81 @@ namespace QuanLyCafe.MyForm
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(438, 123);
+            this.label2.Location = new System.Drawing.Point(328, 100);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Số lượng:";
             // 
             // dtNgay
             // 
             this.dtNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtNgay.Location = new System.Drawing.Point(384, 5);
+            this.dtNgay.Location = new System.Drawing.Point(288, 4);
+            this.dtNgay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtNgay.Name = "dtNgay";
-            this.dtNgay.Size = new System.Drawing.Size(108, 22);
+            this.dtNgay.Size = new System.Drawing.Size(82, 20);
             this.dtNgay.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 10);
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Bàn:";
             // 
             // grbBan
             // 
+            this.grbBan.BackColor = System.Drawing.Color.Transparent;
             this.grbBan.Controls.Add(this.lsvBan);
-            this.grbBan.Location = new System.Drawing.Point(12, 3);
+            this.grbBan.Location = new System.Drawing.Point(9, 2);
+            this.grbBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grbBan.Name = "grbBan";
-            this.grbBan.Size = new System.Drawing.Size(509, 793);
+            this.grbBan.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbBan.Size = new System.Drawing.Size(382, 644);
             this.grbBan.TabIndex = 2;
             this.grbBan.TabStop = false;
             this.grbBan.Text = "Quản Lý Bàn";
             // 
             // lsvBan
             // 
+            this.lsvBan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lsvBan.BackgroundImage")));
+            this.lsvBan.BackgroundImageTiled = true;
             this.lsvBan.HideSelection = false;
-            this.lsvBan.Location = new System.Drawing.Point(6, 21);
+            this.lsvBan.Location = new System.Drawing.Point(4, 17);
+            this.lsvBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lsvBan.Name = "lsvBan";
-            this.lsvBan.Size = new System.Drawing.Size(496, 764);
+            this.lsvBan.Size = new System.Drawing.Size(373, 622);
             this.lsvBan.TabIndex = 0;
             this.lsvBan.UseCompatibleStateImageBehavior = false;
             this.lsvBan.SelectedIndexChanged += new System.EventHandler(this.lsvBan_SelectedIndexChanged);
             // 
             // trvLoaiThucDon
             // 
-            this.trvLoaiThucDon.Location = new System.Drawing.Point(1057, 12);
+            this.trvLoaiThucDon.Location = new System.Drawing.Point(793, 10);
+            this.trvLoaiThucDon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.trvLoaiThucDon.Name = "trvLoaiThucDon";
-            this.trvLoaiThucDon.Size = new System.Drawing.Size(431, 355);
+            this.trvLoaiThucDon.Size = new System.Drawing.Size(324, 289);
             this.trvLoaiThucDon.TabIndex = 3;
             this.trvLoaiThucDon.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvLoaiThucDon_NodeMouseClick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(441, 600);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 80);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // FrmSuDungDichVu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1500, 800);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1040, 640);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.trvLoaiThucDon);
             this.Controls.Add(this.grbBan);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvThucDon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmSuDungDichVu";
             this.RightToLeftLayout = true;
             this.Text = "FrmSuDungDichVu";
@@ -520,6 +541,5 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.DataGridViewTextBoxColumn CTThanhTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTdonViTinh;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
     }
 }

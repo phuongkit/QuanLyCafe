@@ -240,5 +240,11 @@ namespace QuanLyCafe
         {
 
         }
+
+        private void grbChucNang_Enter(object sender, EventArgs e)
+        {
+         
+
+        }
     }
 }
