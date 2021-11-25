@@ -124,6 +124,7 @@ namespace QuanLyCafe.MyForm
             cbbDataSource.Items.Add("(local)");
             cbbDataSource.Items.Add(@".\SQLEXPRESS");
             cbbDataSource.Items.Add(string.Format(@"{0}\SQLEXPRESS", Environment.MachineName));
+            cbbDataSource.Items.Add(string.Format(@"{0}\SQLEXPRESS01", Environment.MachineName));
             cbbDataSource.SelectedIndex = 3;
         }
     }

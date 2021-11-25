@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.Office.Interop.Excel;
+using app = Microsoft.Office.Interop.Excel.Application;
 
 namespace QuanLyCafe.MyForm
 {
@@ -42,13 +44,14 @@ namespace QuanLyCafe.MyForm
             cbbLoaiMon.DataSource = listloaimon;
             cbbLoaiMon.DisplayMember = "TenLoaiThucDon";
             cbbLoaiMon.ValueMember = "ID";
-
+            
             (DGV.Columns["IDLoaiThucDon"] as DataGridViewComboBoxColumn).DataSource = listloaimon;
             (DGV.Columns["IDLoaiThucDon"] as DataGridViewComboBoxColumn).DisplayMember = "TenLoaiThucDon";
             (DGV.Columns["IDLoaiThucDon"] as DataGridViewComboBoxColumn).ValueMember = "ID";
             DGV.DataSource = TDAc.Get();
             DGV.Columns["ChiTietHoaDonBanHangs"].Visible = false;
             DGV.Columns["LoaiThucDon"].Visible = false;
+            
             clear();
             btnCreate.Enabled = true;
             btnEdit.Enabled = true;
@@ -56,6 +59,7 @@ namespace QuanLyCafe.MyForm
             btnSave.Enabled = false;
             btnCancel.Enabled = false;
             txtID.Enabled = false;
+            DGV.AutoGenerateColumns = false;
         }      
         private void dataBinding()
         {
@@ -184,6 +188,52 @@ namespace QuanLyCafe.MyForm
             btnCancel.Enabled = false;
             btnSave.Enabled = false;
             dataBinding();
+        }
+
+        private void btn_ExportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel|*.xls|Excel 2010|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                ExportExcel(DGV, saveFileDialog.FileName);
+            }
+        }
+
+        private void ExportExcel(DataGridView dgv, string fileName)
+        {
+            
+            try
+            {
+                app obj = new app();
+                obj.Application.Workbooks.Add(Type.Missing);
+                obj.Columns.ColumnWidth = 35;
+
+                
+                for (int i = 0; i < dgv.ColumnCount-2; i++)
+                {
+                    obj.Cells[1, i + 1] = dgv.Columns[i].HeaderText;
+                }
+
+
+                for (int i = 0; i < dgv.RowCount; i++)
+                {
+                    obj.Cells[i + 2, 1] = dgv.Rows[i].Cells[0].Value.ToString();
+                    obj.Cells[i + 2, 2] = dgv.Rows[i].Cells[1].Value.ToString();
+                    obj.Cells[i + 2, 3] = dgv.Rows[i].Cells[2].Value.ToString();
+                    obj.Cells[i + 2, 4] = dgv.Rows[i].Cells[3].Value.ToString();
+                    obj.Cells[i + 2, 5] = dgv.Rows[i].Cells[4].EditedFormattedValue.ToString();
+                }
+
+
+                obj.ActiveWorkbook.SaveCopyAs(fileName);
+                MessageBox.Show("Export successful.!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
