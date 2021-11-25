@@ -495,15 +495,17 @@ namespace QuanLyCafe.MyForm
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnIn_Click(object sender, EventArgs e)
         {
-            Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
-            frmReport.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            if (!txtSoHD.Text.Equals(""))
+            {
+                Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
+                frmReport.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn cần in!");
+            }
         }
     }
 }

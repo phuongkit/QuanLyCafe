@@ -454,6 +454,7 @@
       <LastGenOutput>QuanLyCafeDBContext.cs</LastGenOutput>
     </Content>
     <None Include="Resources\icons8-export-excel-48.png" />
+    <Content Include="Resources\printer-icon-simple-style-3219886.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

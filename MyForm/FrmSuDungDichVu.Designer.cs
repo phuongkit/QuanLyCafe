@@ -55,6 +55,7 @@ namespace QuanLyCafe.MyForm
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnGiam = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
             this.nmSoLuong = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.dtNgay = new System.Windows.Forms.DateTimePicker();
@@ -78,8 +79,8 @@ namespace QuanLyCafe.MyForm
             this.DonViTinh,
             this.DonGia});
             this.dgvThucDon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvThucDon.Location = new System.Drawing.Point(793, 303);
-            this.dgvThucDon.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvThucDon.Location = new System.Drawing.Point(1057, 373);
+            this.dgvThucDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvThucDon.MultiSelect = false;
             this.dgvThucDon.Name = "dgvThucDon";
             this.dgvThucDon.ReadOnly = true;
@@ -88,7 +89,7 @@ namespace QuanLyCafe.MyForm
             this.dgvThucDon.RowTemplate.Height = 24;
             this.dgvThucDon.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvThucDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThucDon.Size = new System.Drawing.Size(323, 344);
+            this.dgvThucDon.Size = new System.Drawing.Size(431, 423);
             this.dgvThucDon.TabIndex = 0;
             this.dgvThucDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThucDon_CellClick);
             // 
@@ -143,8 +144,8 @@ namespace QuanLyCafe.MyForm
             this.CTThanhTien,
             this.CTdonViTinh});
             this.dgvChiTietHoaDon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvChiTietHoaDon.Location = new System.Drawing.Point(383, 83);
-            this.dgvChiTietHoaDon.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvChiTietHoaDon.Location = new System.Drawing.Point(511, 102);
+            this.dgvChiTietHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvChiTietHoaDon.MultiSelect = false;
             this.dgvChiTietHoaDon.Name = "dgvChiTietHoaDon";
             this.dgvChiTietHoaDon.ReadOnly = true;
@@ -153,7 +154,7 @@ namespace QuanLyCafe.MyForm
             this.dgvChiTietHoaDon.RowTemplate.Height = 24;
             this.dgvChiTietHoaDon.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvChiTietHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChiTietHoaDon.Size = new System.Drawing.Size(324, 452);
+            this.dgvChiTietHoaDon.Size = new System.Drawing.Size(432, 490);
             this.dgvChiTietHoaDon.TabIndex = 1;
             this.dgvChiTietHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTietHoaDon_CellClick);
             // 
@@ -215,10 +216,10 @@ namespace QuanLyCafe.MyForm
             // 
             this.txtBan.BackColor = System.Drawing.Color.White;
             this.txtBan.Enabled = false;
-            this.txtBan.Location = new System.Drawing.Point(423, 3);
-            this.txtBan.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBan.Location = new System.Drawing.Point(564, 4);
+            this.txtBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBan.Name = "txtBan";
-            this.txtBan.Size = new System.Drawing.Size(76, 20);
+            this.txtBan.Size = new System.Drawing.Size(100, 22);
             this.txtBan.TabIndex = 18;
             // 
             // label6
@@ -227,10 +228,9 @@ namespace QuanLyCafe.MyForm
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(613, 10);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(817, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(50, 17);
             this.label6.TabIndex = 17;
             this.label6.Text = "Ngày:";
             // 
@@ -238,10 +238,10 @@ namespace QuanLyCafe.MyForm
             // 
             this.txtSoHD.BackColor = System.Drawing.Color.White;
             this.txtSoHD.Enabled = false;
-            this.txtSoHD.Location = new System.Drawing.Point(671, 45);
-            this.txtSoHD.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSoHD.Location = new System.Drawing.Point(895, 55);
+            this.txtSoHD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoHD.Name = "txtSoHD";
-            this.txtSoHD.Size = new System.Drawing.Size(82, 20);
+            this.txtSoHD.Size = new System.Drawing.Size(108, 22);
             this.txtSoHD.TabIndex = 16;
             // 
             // label5
@@ -250,10 +250,9 @@ namespace QuanLyCafe.MyForm
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(613, 48);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(817, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.Size = new System.Drawing.Size(59, 17);
             this.label5.TabIndex = 15;
             this.label5.Text = "Số HĐ:";
             // 
@@ -261,10 +260,10 @@ namespace QuanLyCafe.MyForm
             // 
             this.txtNhanVien.BackColor = System.Drawing.Color.White;
             this.txtNhanVien.Enabled = false;
-            this.txtNhanVien.Location = new System.Drawing.Point(458, 38);
-            this.txtNhanVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNhanVien.Location = new System.Drawing.Point(611, 47);
+            this.txtNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNhanVien.Name = "txtNhanVien";
-            this.txtNhanVien.Size = new System.Drawing.Size(130, 20);
+            this.txtNhanVien.Size = new System.Drawing.Size(172, 22);
             this.txtNhanVien.TabIndex = 14;
             // 
             // label4
@@ -273,10 +272,9 @@ namespace QuanLyCafe.MyForm
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(385, 45);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(513, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(86, 17);
             this.label4.TabIndex = 13;
             this.label4.Text = "Nhân viên:";
             // 
@@ -284,10 +282,10 @@ namespace QuanLyCafe.MyForm
             // 
             this.txtThanhTien.BackColor = System.Drawing.Color.White;
             this.txtThanhTien.Enabled = false;
-            this.txtThanhTien.Location = new System.Drawing.Point(461, 580);
-            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(2);
+            this.txtThanhTien.Location = new System.Drawing.Point(611, 709);
+            this.txtThanhTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(108, 20);
+            this.txtThanhTien.Size = new System.Drawing.Size(143, 22);
             this.txtThanhTien.TabIndex = 12;
             // 
             // label3
@@ -296,20 +294,19 @@ namespace QuanLyCafe.MyForm
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(390, 584);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(508, 714);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.Size = new System.Drawing.Size(91, 17);
             this.label3.TabIndex = 11;
             this.label3.Text = "Thành tiền:";
             // 
             // btnHuy
             // 
             this.btnHuy.Image = global::QuanLyCafe.Properties.Resources.cancel__1_;
-            this.btnHuy.Location = new System.Drawing.Point(675, 559);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHuy.Location = new System.Drawing.Point(773, 600);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(87, 63);
+            this.btnHuy.Size = new System.Drawing.Size(122, 77);
             this.btnHuy.TabIndex = 10;
             this.btnHuy.Text = "Hủy Hóa Đơn";
             this.btnHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -318,11 +315,13 @@ namespace QuanLyCafe.MyForm
             // 
             // btnThanhToan
             // 
+            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.ForeColor = System.Drawing.Color.Red;
             this.btnThanhToan.Image = global::QuanLyCafe.Properties.Resources.payment;
-            this.btnThanhToan.Location = new System.Drawing.Point(583, 559);
-            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThanhToan.Location = new System.Drawing.Point(773, 697);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(82, 63);
+            this.btnThanhToan.Size = new System.Drawing.Size(259, 80);
             this.btnThanhToan.TabIndex = 9;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -332,10 +331,10 @@ namespace QuanLyCafe.MyForm
             // btnXoa
             // 
             this.btnXoa.Image = global::QuanLyCafe.Properties.Resources.edit_delete__1_;
-            this.btnXoa.Location = new System.Drawing.Point(714, 311);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXoa.Location = new System.Drawing.Point(952, 383);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(60, 51);
+            this.btnXoa.Size = new System.Drawing.Size(80, 63);
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -345,10 +344,10 @@ namespace QuanLyCafe.MyForm
             // btnGiam
             // 
             this.btnGiam.Image = global::QuanLyCafe.Properties.Resources.decrease_1_;
-            this.btnGiam.Location = new System.Drawing.Point(714, 243);
-            this.btnGiam.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGiam.Location = new System.Drawing.Point(952, 299);
+            this.btnGiam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGiam.Name = "btnGiam";
-            this.btnGiam.Size = new System.Drawing.Size(60, 54);
+            this.btnGiam.Size = new System.Drawing.Size(80, 66);
             this.btnGiam.TabIndex = 7;
             this.btnGiam.Text = "Giảm >>";
             this.btnGiam.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -358,28 +357,40 @@ namespace QuanLyCafe.MyForm
             // btnThem
             // 
             this.btnThem.Image = global::QuanLyCafe.Properties.Resources.increase__1_;
-            this.btnThem.Location = new System.Drawing.Point(714, 175);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThem.Location = new System.Drawing.Point(952, 215);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(60, 55);
+            this.btnThem.Size = new System.Drawing.Size(80, 68);
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm <<";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
+            this.btnIn.Location = new System.Drawing.Point(916, 600);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(116, 80);
+            this.btnIn.TabIndex = 19;
+            this.btnIn.Text = "In Hóa Đơn";
+            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // nmSoLuong
             // 
             this.nmSoLuong.BackColor = System.Drawing.Color.White;
-            this.nmSoLuong.Location = new System.Drawing.Point(714, 120);
-            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(2);
+            this.nmSoLuong.Location = new System.Drawing.Point(952, 148);
+            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmSoLuong.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nmSoLuong.Name = "nmSoLuong";
-            this.nmSoLuong.Size = new System.Drawing.Size(60, 20);
+            this.nmSoLuong.Size = new System.Drawing.Size(80, 22);
             this.nmSoLuong.TabIndex = 5;
             this.nmSoLuong.Value = new decimal(new int[] {
             1,
@@ -393,10 +404,9 @@ namespace QuanLyCafe.MyForm
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(711, 102);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(948, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(77, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Số lượng:";
             // 
@@ -404,10 +414,10 @@ namespace QuanLyCafe.MyForm
             // 
             this.dtNgay.CalendarMonthBackground = System.Drawing.Color.White;
             this.dtNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtNgay.Location = new System.Drawing.Point(671, 6);
-            this.dtNgay.Margin = new System.Windows.Forms.Padding(2);
+            this.dtNgay.Location = new System.Drawing.Point(895, 7);
+            this.dtNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtNgay.Name = "dtNgay";
-            this.dtNgay.Size = new System.Drawing.Size(82, 20);
+            this.dtNgay.Size = new System.Drawing.Size(108, 22);
             this.dtNgay.TabIndex = 3;
             // 
             // label1
@@ -416,10 +426,9 @@ namespace QuanLyCafe.MyForm
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(386, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(515, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(41, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Bàn:";
             // 
@@ -428,31 +437,31 @@ namespace QuanLyCafe.MyForm
             this.lsvBan.BackColor = System.Drawing.Color.White;
             this.lsvBan.BackgroundImageTiled = true;
             this.lsvBan.HideSelection = false;
-            this.lsvBan.Location = new System.Drawing.Point(-2, 0);
-            this.lsvBan.Margin = new System.Windows.Forms.Padding(2);
+            this.lsvBan.Location = new System.Drawing.Point(-3, 0);
+            this.lsvBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsvBan.Name = "lsvBan";
-            this.lsvBan.Size = new System.Drawing.Size(373, 622);
+            this.lsvBan.Size = new System.Drawing.Size(496, 765);
             this.lsvBan.TabIndex = 0;
             this.lsvBan.UseCompatibleStateImageBehavior = false;
             this.lsvBan.SelectedIndexChanged += new System.EventHandler(this.lsvBan_SelectedIndexChanged);
             // 
             // trvLoaiThucDon
             // 
-            this.trvLoaiThucDon.Location = new System.Drawing.Point(793, 10);
-            this.trvLoaiThucDon.Margin = new System.Windows.Forms.Padding(2);
+            this.trvLoaiThucDon.Location = new System.Drawing.Point(1057, 12);
+            this.trvLoaiThucDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trvLoaiThucDon.Name = "trvLoaiThucDon";
-            this.trvLoaiThucDon.Size = new System.Drawing.Size(324, 289);
+            this.trvLoaiThucDon.Size = new System.Drawing.Size(431, 355);
             this.trvLoaiThucDon.TabIndex = 3;
             this.trvLoaiThucDon.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvLoaiThucDon_NodeMouseClick);
             // 
             // FrmSuDungDichVu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1040, 640);
+            this.ClientSize = new System.Drawing.Size(1387, 788);
             this.ControlBox = false;
             this.Controls.Add(this.dgvChiTietHoaDon);
             this.Controls.Add(this.lsvBan);
@@ -473,10 +482,11 @@ namespace QuanLyCafe.MyForm
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnThanhToan);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnGiam);
             this.Controls.Add(this.btnXoa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmSuDungDichVu";
             this.RightToLeftLayout = true;
             this.Text = "FrmSuDungDichVu";
@@ -499,6 +509,7 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnThanhToan;
+        private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnGiam;
         private System.Windows.Forms.Button btnThem;

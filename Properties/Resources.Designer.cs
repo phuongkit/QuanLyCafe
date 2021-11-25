@@ -213,6 +213,16 @@ namespace QuanLyCafe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap printer_icon_simple_style_3219886 {
+            get {
+                object obj = ResourceManager.GetObject("printer-icon-simple-style-3219886", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap resetpassword {
             get {
                 object obj = ResourceManager.GetObject("resetpassword", resourceCulture);
