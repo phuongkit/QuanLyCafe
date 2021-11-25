@@ -235,5 +235,10 @@ namespace QuanLyCafe
                 adminToolStripMenuItem.DropDown.Enabled = true;
             }
         }
+
+        private void FrmManHinhChinh_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
