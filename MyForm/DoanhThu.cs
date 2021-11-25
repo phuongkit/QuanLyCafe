@@ -21,7 +21,7 @@ namespace QuanLyCafe.MyForm
 
         private new void Load()
         {
-            DBaccess.DoanhThuAccess dthu = new DBaccess.DoanhThuAccess(connectionString);
+            DBaccess.DoanhThuAccess dthu = new  DBaccess.DoanhThuAccess(connectionString);
             dgv_main.DataSource = null;
             dgv_main.Rows.Clear();
             dgv_main.DataSource = dthu.GetDoanhThu(Date_from.Value, Date_to.Value);
