@@ -46,8 +46,8 @@ namespace QuanLyCafe.MyForm
             this.chkShow.AutoSize = true;
             this.chkShow.BackColor = System.Drawing.Color.Transparent;
             this.chkShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShow.ForeColor = System.Drawing.Color.White;
-            this.chkShow.Location = new System.Drawing.Point(212, 229);
+            this.chkShow.ForeColor = System.Drawing.Color.Peru;
+            this.chkShow.Location = new System.Drawing.Point(458, 266);
             this.chkShow.Margin = new System.Windows.Forms.Padding(2);
             this.chkShow.Name = "chkShow";
             this.chkShow.Size = new System.Drawing.Size(126, 17);
@@ -58,7 +58,7 @@ namespace QuanLyCafe.MyForm
             // 
             // txbUserName
             // 
-            this.txbUserName.Location = new System.Drawing.Point(239, 140);
+            this.txbUserName.Location = new System.Drawing.Point(485, 177);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(187, 20);
             this.txbUserName.TabIndex = 13;
@@ -68,8 +68,8 @@ namespace QuanLyCafe.MyForm
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(114, 140);
+            this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label1.Location = new System.Drawing.Point(360, 177);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 19);
             this.label1.TabIndex = 11;
@@ -78,7 +78,7 @@ namespace QuanLyCafe.MyForm
             // 
             // txbPassWord
             // 
-            this.txbPassWord.Location = new System.Drawing.Point(239, 190);
+            this.txbPassWord.Location = new System.Drawing.Point(485, 227);
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.PasswordChar = '*';
             this.txbPassWord.Size = new System.Drawing.Size(161, 20);
@@ -89,8 +89,8 @@ namespace QuanLyCafe.MyForm
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(119, 190);
+            this.label2.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label2.Location = new System.Drawing.Point(365, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 19);
             this.label2.TabIndex = 12;
@@ -99,9 +99,9 @@ namespace QuanLyCafe.MyForm
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.SeaShell;
+            this.btnExit.BackColor = System.Drawing.Color.PeachPuff;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(336, 266);
+            this.btnExit.Location = new System.Drawing.Point(582, 303);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 43);
             this.btnExit.TabIndex = 16;
@@ -111,8 +111,8 @@ namespace QuanLyCafe.MyForm
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.SeaShell;
-            this.btnLogin.Location = new System.Drawing.Point(118, 266);
+            this.btnLogin.BackColor = System.Drawing.Color.PeachPuff;
+            this.btnLogin.Location = new System.Drawing.Point(364, 303);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(99, 43);
             this.btnLogin.TabIndex = 15;
@@ -123,10 +123,10 @@ namespace QuanLyCafe.MyForm
             // cbbDataSource
             // 
             this.cbbDataSource.FormattingEnabled = true;
-            this.cbbDataSource.Location = new System.Drawing.Point(239, 100);
-            this.cbbDataSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbDataSource.Location = new System.Drawing.Point(485, 137);
+            this.cbbDataSource.Margin = new System.Windows.Forms.Padding(2);
             this.cbbDataSource.Name = "cbbDataSource";
-            this.cbbDataSource.Size = new System.Drawing.Size(278, 21);
+            this.cbbDataSource.Size = new System.Drawing.Size(242, 21);
             this.cbbDataSource.TabIndex = 18;
             // 
             // label3
@@ -134,8 +134,8 @@ namespace QuanLyCafe.MyForm
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(114, 100);
+            this.label3.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label3.Location = new System.Drawing.Point(360, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 19);
             this.label3.TabIndex = 15;
@@ -148,8 +148,9 @@ namespace QuanLyCafe.MyForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(641, 420);
+            this.ClientSize = new System.Drawing.Size(738, 416);
             this.ControlBox = false;
             this.Controls.Add(this.cbbDataSource);
             this.Controls.Add(this.chkShow);
