@@ -444,7 +444,7 @@ namespace QuanLyCafe.MyForm
                     DialogResult traloi = MessageBox.Show("Thanh toán thành công! Bạn có muốn in hóa đơn không?","Thông báo",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
                     if(traloi == DialogResult.OK)
                     {
-                        Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
+                        Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, true);
                         frmReport.ShowDialog();
                     }
                 }
@@ -499,7 +499,7 @@ namespace QuanLyCafe.MyForm
         {
             if (!txtSoHD.Text.Equals(""))
             {
-                Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text);
+                Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, true);
                 frmReport.ShowDialog();
             }
             else

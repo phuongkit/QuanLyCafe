@@ -46,7 +46,7 @@ namespace QuanLyCafe.Report
             this.btnPrint.Image = global::QuanLyCafe.Properties.Resources.Send_mail;
             this.btnPrint.Location = new System.Drawing.Point(806, 12);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(112, 62);
+            this.btnPrint.Size = new System.Drawing.Size(139, 62);
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "Send Mail";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -57,7 +57,7 @@ namespace QuanLyCafe.Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 443);
+            this.ClientSize = new System.Drawing.Size(957, 443);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FrmReport";

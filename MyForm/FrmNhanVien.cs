@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using app = Microsoft.Office.Interop.Excel.Application;
 
 namespace QuanLyCafe.MyForm
 {
@@ -422,6 +423,73 @@ namespace QuanLyCafe.MyForm
             {
                 InitGUI();
                 DataBind();
+            }
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel|*.xls|Excel 2010|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportExcel(dgvNhanVien, saveFileDialog.FileName);
+                DialogResult traloi = MessageBox.Show("Đã xuất thành công, bạn có muốn gửi mail không?", " Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (traloi == DialogResult.OK)
+                {
+                    Report.InputMesseageBox frmIMB = new Report.InputMesseageBox("Báo cáo danh sách nhân viên", "Báo cáo danh sách nhân viên " + new DateTime(), saveFileDialog.FileName);
+                    frmIMB.ShowDialog();
+                }
+            }
+        }
+
+        private void ExportExcel(DataGridView dgv, string fileName)
+        {
+
+            try
+            {
+                app obj = new app();
+                obj.Application.Workbooks.Add(Type.Missing);
+                obj.Columns.ColumnWidth = 20;
+
+                obj.Cells[1, 1] = "Báo cáo danh sách nhân viên trong quán";
+                obj.Cells[2, 1] = "Ngày tạo:" + DateTime.Now.ToShortDateString();
+
+                for (int i = 0; i < dgv.ColumnCount - 2; i++)
+                {
+                    obj.Cells[3, i + 1] = dgv.Columns[i].HeaderText;
+                }
+                obj.Cells[3, dgv.ColumnCount - 2] = "Tên đăng nhập";
+                obj.Cells[3, dgv.ColumnCount - 1] = "Quyền";
+
+                for (int i = 0; i < dgv.RowCount; i++)
+                {
+                    string ID = dgv.Rows[i].Cells[0].Value.ToString();
+                    obj.Cells[i + 4, 1] = ID;
+                    obj.Cells[i + 4, 2] = dgv.Rows[i].Cells[1].Value.ToString();
+                    obj.Cells[i + 4, 3] = dgv.Rows[i].Cells[2].Value.ToString();
+                    obj.Cells[i + 4, 4] = dgv.Rows[i].Cells[3].Value.ToString();
+                    obj.Cells[i + 4, 5] = dgv.Rows[i].Cells[4].Value.ToString();
+                    obj.Cells[i + 4, 6] = dgv.Rows[i].Cells[5].Value.ToString();
+                    obj.Cells[i + 4, 7] = dgv.Rows[i].Cells[6].Value == null ? "Không có thông tin" : dgv.Rows[i].Cells[6].Value.ToString();
+                    try
+                    {
+                        MyDatabase.LoginNhanVien lgNV = NVAc.getLoginNhanVien(ID);
+                        obj.Cells[i + 4, 8] = lgNV == null ? "Chưa tạo tài khoản" : lgNV.LoginName;
+                        obj.Cells[i + 4, 9] = lgNV == null ? "Chưa tạo tài khoản" : (lgNV.Permission == true ? "Admin" : "Nhân viên");
+                    }
+                    catch(Exception ex) 
+                    {
+                        MessageBox.Show("Có lỗi xảy ra trong quá trình in. Vui lòng thử lại sau!");
+                        return;
+                    }
+                }
+
+
+                obj.ActiveWorkbook.SaveCopyAs(fileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

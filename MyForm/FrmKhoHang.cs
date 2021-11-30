@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using app = Microsoft.Office.Interop.Excel.Application;
 
 namespace QuanLyCafe.MyForm
 {
@@ -168,6 +169,56 @@ namespace QuanLyCafe.MyForm
             if (this.Visible)
             {
                 Load();
+            }
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel|*.xls|Excel 2010|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportExcel(dgv_main, saveFileDialog.FileName);
+                DialogResult traloi = MessageBox.Show("Đã xuất thành công, bạn có muốn gửi mail không?", " Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (traloi == DialogResult.OK)
+                {
+                    Report.InputMesseageBox frmIMB = new Report.InputMesseageBox("Báo cáo danh sách thực đơn", "Báo cáo danh sách thực đơn ngày " + new DateTime(), saveFileDialog.FileName);
+                    frmIMB.ShowDialog();
+                }
+            }
+        }
+
+        private void ExportExcel(DataGridView dgv, string fileName)
+        {
+
+            try
+            {
+                app obj = new app();
+                obj.Application.Workbooks.Add(Type.Missing);
+                obj.Columns.ColumnWidth = 35;
+                obj.Cells[1, 1] = "Báo cáo danh sách nguyên liệu trong quán";
+                obj.Cells[2, 1] = "Ngày tạo:" + DateTime.Now.ToShortDateString();
+
+                for (int i = 0; i < dgv.ColumnCount - 1; i++)
+                {
+                    obj.Cells[3, i + 1] = dgv.Columns[i].HeaderText;
+                }
+
+                for (int i = 0; i < dgv.RowCount; i++)
+                {
+                    obj.Cells[i + 4, 1] = dgv.Rows[i].Cells[0].Value.ToString();
+                    obj.Cells[i + 4, 2] = dgv.Rows[i].Cells[1].Value.ToString();
+                    obj.Cells[i + 4, 3] = dgv.Rows[i].Cells[2].Value.ToString();
+                    obj.Cells[i + 4, 4] = dgv.Rows[i].Cells[3].Value.ToString();
+                    obj.Cells[i + 4, 5] = dgv.Rows[i].Cells[4].Value.ToString() + " đồng";
+                }
+
+
+                obj.ActiveWorkbook.SaveCopyAs(fileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

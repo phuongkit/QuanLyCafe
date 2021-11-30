@@ -214,21 +214,22 @@ namespace QuanLyCafe.MyForm
                 app obj = new app();
                 obj.Application.Workbooks.Add(Type.Missing);
                 obj.Columns.ColumnWidth = 35;
+                obj.Cells[1, 1] = "Báo cáo danh sách thực đơn trong quán";
+                obj.Cells[2, 1] = "Ngày tạo:" + DateTime.Now.ToShortDateString();
 
-                
                 for (int i = 0; i < dgv.ColumnCount-2; i++)
                 {
-                    obj.Cells[1, i + 1] = dgv.Columns[i].HeaderText;
+                    obj.Cells[3, i + 1] = dgv.Columns[i].HeaderText;
                 }
 
 
                 for (int i = 0; i < dgv.RowCount; i++)
                 {
-                    obj.Cells[i + 2, 1] = dgv.Rows[i].Cells[0].Value.ToString();
-                    obj.Cells[i + 2, 2] = dgv.Rows[i].Cells[1].Value.ToString();
-                    obj.Cells[i + 2, 3] = dgv.Rows[i].Cells[2].Value.ToString();
-                    obj.Cells[i + 2, 4] = dgv.Rows[i].Cells[3].Value.ToString();
-                    obj.Cells[i + 2, 5] = dgv.Rows[i].Cells[4].EditedFormattedValue.ToString();
+                    obj.Cells[i + 4, 1] = dgv.Rows[i].Cells[0].Value.ToString();
+                    obj.Cells[i + 4, 2] = dgv.Rows[i].Cells[1].Value.ToString();
+                    obj.Cells[i + 4, 3] = dgv.Rows[i].Cells[2].Value.ToString();
+                    obj.Cells[i + 4, 4] = dgv.Rows[i].Cells[3].Value.ToString();
+                    obj.Cells[i + 4, 5] = dgv.Rows[i].Cells[4].EditedFormattedValue.ToString();
                 }
 
 

@@ -30,6 +30,7 @@ namespace QuanLyCafe.MyForm
         private void InitializeComponent()
         {
             this.grbChucNang = new System.Windows.Forms.GroupBox();
+            this.btnIn = new System.Windows.Forms.Button();
             this.dtNgayTao = new System.Windows.Forms.DateTimePicker();
             this.txtSoHD = new System.Windows.Forms.TextBox();
             this.txtNhanVien = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@ namespace QuanLyCafe.MyForm
             this.DonViTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
             this.grbChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietNhapHang)).BeginInit();
@@ -92,6 +92,18 @@ namespace QuanLyCafe.MyForm
             this.grbChucNang.TabIndex = 1;
             this.grbChucNang.TabStop = false;
             this.grbChucNang.Text = "Nhóm chức năng";
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
+            this.btnIn.Location = new System.Drawing.Point(730, 661);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(129, 80);
+            this.btnIn.TabIndex = 20;
+            this.btnIn.Text = "In Hóa Đơn";
+            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // dtNgayTao
             // 
@@ -416,17 +428,6 @@ namespace QuanLyCafe.MyForm
             this.DonGia.Name = "DonGia";
             this.DonGia.ReadOnly = true;
             this.DonGia.Width = 60;
-            // 
-            // btnIn
-            // 
-            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
-            this.btnIn.Location = new System.Drawing.Point(730, 661);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(129, 80);
-            this.btnIn.TabIndex = 20;
-            this.btnIn.Text = "In Hóa Đơn";
-            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIn.UseVisualStyleBackColor = true;
             // 
             // FrmSuDungNhapHang
             // 

@@ -49,7 +49,7 @@
             this.btn_huy = new System.Windows.Forms.Button();
             this.txt_donvi = new System.Windows.Forms.TextBox();
             this.lb_donvithem = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -279,24 +279,25 @@
             this.lb_donvithem.TabIndex = 15;
             this.lb_donvithem.Text = "Đơn vị";
             // 
-            // button1
+            // btnExportExcel
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
-            this.button1.Location = new System.Drawing.Point(778, 714);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 61);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Xuất Excel";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportExcel.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
+            this.btnExportExcel.Location = new System.Drawing.Point(778, 714);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(138, 61);
+            this.btnExportExcel.TabIndex = 28;
+            this.btnExportExcel.Text = "Xuất Excel";
+            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // FrmKhoHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1942, 985);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.lb_donvithem);
             this.Controls.Add(this.txt_donvi);
             this.Controls.Add(this.txt_id);
@@ -347,6 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DonViTinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExportExcel;
     }
 }

@@ -401,6 +401,7 @@
     <EmbeddedResource Include="Report\InputMesseageBox.resx">
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportHoaDonNhapHang.rdlc" />
     <EmbeddedResource Include="Report\ReportHoaDonBanHang.rdlc" />
     <EntityDeploy Include="MyDatabase\QuanLyCafeDBContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -473,8 +474,11 @@
     </Content>
     <None Include="Resources\icons8-export-excel-48.png" />
     <None Include="Resources\message_send_email_icon_191636.png" />
+    <None Include="Resources\add.bmp" />
     <Content Include="Resources\printer-icon-simple-style-3219886.jpg" />
     <None Include="Resources\Send_mail.jpg" />
+    <None Include="Resources\printer.bmp" />
+    <None Include="Resources\view.bmp" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

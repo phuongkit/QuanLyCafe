@@ -102,7 +102,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Image = global::QuanLyCafe.Properties.Resources.save__1_;
+            this.btnSave.Image = global::QuanLyCafe.Properties.Resources.save;
             this.btnSave.Location = new System.Drawing.Point(393, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(124, 61);
@@ -159,6 +159,7 @@
             this.btn_ExportExcel.Text = "Xuất Excel";
             this.btn_ExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_ExportExcel.UseVisualStyleBackColor = true;
+            this.btn_ExportExcel.Click += new System.EventHandler(this.btn_ExportExcel_Click);
             // 
             // panel3
             // 

@@ -303,5 +303,18 @@ namespace QuanLyCafe.MyForm
                 InitGUI();
             }
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (!txtSoHD.Text.Equals(""))
+            {
+                Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, false);
+                frmReport.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn cần in!");
+            }
+        }
     }
 }

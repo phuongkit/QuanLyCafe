@@ -31,6 +31,7 @@ namespace QuanLyCafe.MyForm
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +75,6 @@ namespace QuanLyCafe.MyForm
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblDNhanVien = new System.Windows.Forms.Label();
             this.lblLoginName = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -91,7 +91,7 @@ namespace QuanLyCafe.MyForm
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnExportExcel);
             this.groupBox2.Controls.Add(this.dgvNhanVien);
             this.groupBox2.Controls.Add(this.dtNgayNghiViec);
             this.groupBox2.Controls.Add(this.dtNgayVaoLam);
@@ -118,6 +118,19 @@ namespace QuanLyCafe.MyForm
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách nhân viên";
+            // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportExcel.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
+            this.btnExportExcel.Location = new System.Drawing.Point(614, 644);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(125, 87);
+            this.btnExportExcel.TabIndex = 33;
+            this.btnExportExcel.Text = "Xuất Excel";
+            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // dgvNhanVien
             // 
@@ -579,18 +592,6 @@ namespace QuanLyCafe.MyForm
             this.lblLoginName.TabIndex = 0;
             this.lblLoginName.Text = "LoginName:";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::QuanLyCafe.Properties.Resources.icons8_export_excel_48;
-            this.button1.Location = new System.Drawing.Point(614, 644);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 87);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Xuất Excel";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -660,6 +661,6 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.Label lbTaiKhoan;
         private System.Windows.Forms.ComboBox cbbQuyen;
         private System.Windows.Forms.Button btnResetMatKhau;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExportExcel;
     }
 }
