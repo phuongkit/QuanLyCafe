@@ -89,7 +89,7 @@ namespace QuanLyCafe
                 }
             }
         }
-        private void ShowForm(Form frm)
+        public void ShowForm(Form frm)
         {
             if (!CheckExistForm(frm.Name))
             {
@@ -156,8 +156,8 @@ namespace QuanLyCafe
 
         private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MyForm.DoanhThu frmDT = new MyForm.DoanhThu(connectionString);
-            ShowForm(frmDT);
+            MyForm.BaoCaoBieuDoDoanhThu frmBDDT = new MyForm.BaoCaoBieuDoDoanhThu(connectionString, this);
+            ShowForm(frmBDDT);
         }
 
         private void quảnLýBànToolStripMenuItem_Click(object sender, EventArgs e)

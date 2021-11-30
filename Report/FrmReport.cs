@@ -21,7 +21,7 @@ namespace QuanLyCafe.Report
         DBaccess.HoaDonBanHangAccess HDBHAc;
         DBaccess.HoaDonNhapHangAccess HDNHAc;
         DBaccess.NhanVienAccess NVAc;
-        string connectionString;
+        string connectionString = "";
         string soHD;
         string tenNhanVien;
         string tenBan;
@@ -30,6 +30,7 @@ namespace QuanLyCafe.Report
         //private static int m_currentPageIndex = 0;
         public FrmReport(string connectionString, string soHD, bool loaiHoaDon)
         {
+            InitializeComponent();
             this.soHD = soHD;
             this.loaiHoaDon = loaiHoaDon;
             this.connectionString = connectionString;
@@ -38,7 +39,6 @@ namespace QuanLyCafe.Report
             this.HDBHAc = new DBaccess.HoaDonBanHangAccess(connectionString);
             this.HDNHAc = new DBaccess.HoaDonNhapHangAccess(connectionString);
             this.NVAc = new DBaccess.NhanVienAccess(connectionString);
-            InitializeComponent();
         }
 
         private void FrmReport_Load(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace QuanLyCafe.Report
             {
                 reportViewer1.RefreshReport();
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+                reportViewer1.SetDisplayMode(DisplayMode.Normal);
                 reportViewer1.ZoomPercent = 100;
                 if (loaiHoaDon)
                 {
@@ -152,6 +152,23 @@ namespace QuanLyCafe.Report
             }
             return filename;
 
+        }
+
+        private void FrmReport_Resize(object sender, EventArgs e)
+        {
+            if (!connectionString.Equals(""))
+            {
+                int width = this.Width, height = this.Height;
+                reportViewer1.Width = width - 150;
+                reportViewer1.Height = height - 10;
+                reportViewer1.Location = new Point(0, 0);
+                reportViewer1.Refresh();
+
+                btnPrint.Width = 140;
+                btnPrint.Height = 60;
+                btnPrint.Location = new Point(width - 145, 10);
+                this.Refresh();
+            }
         }
     }
 }

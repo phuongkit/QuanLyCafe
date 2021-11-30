@@ -34,8 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnXemChiTiet = new System.Windows.Forms.Button();
+            this.btnBieuDoDoanhThu = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
+            this.btnXemChiTiet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +104,29 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Lọc";
             // 
+            // btnBieuDoDoanhThu
+            // 
+            this.btnBieuDoDoanhThu.Image = global::QuanLyCafe.Properties.Resources.chart_bar;
+            this.btnBieuDoDoanhThu.Location = new System.Drawing.Point(763, 66);
+            this.btnBieuDoDoanhThu.Name = "btnBieuDoDoanhThu";
+            this.btnBieuDoDoanhThu.Size = new System.Drawing.Size(138, 75);
+            this.btnBieuDoDoanhThu.TabIndex = 21;
+            this.btnBieuDoDoanhThu.Text = "Xem biểu đồ";
+            this.btnBieuDoDoanhThu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBieuDoDoanhThu.UseVisualStyleBackColor = true;
+            this.btnBieuDoDoanhThu.Click += new System.EventHandler(this.btnBieuDoDoanhThu_Click);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
+            this.btnIn.Location = new System.Drawing.Point(595, 71);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(137, 73);
+            this.btnIn.TabIndex = 20;
+            this.btnIn.Text = "In Báo Cáo";
+            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIn.UseVisualStyleBackColor = true;
+            // 
             // btnXemChiTiet
             // 
             this.btnXemChiTiet.Image = global::QuanLyCafe.Properties.Resources.view_details_1_;
@@ -115,22 +139,12 @@
             this.btnXemChiTiet.UseVisualStyleBackColor = true;
             this.btnXemChiTiet.Click += new System.EventHandler(this.btnXemChiTiet_Click);
             // 
-            // btnIn
-            // 
-            this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
-            this.btnIn.Location = new System.Drawing.Point(595, 71);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(121, 73);
-            this.btnIn.TabIndex = 20;
-            this.btnIn.Text = "In Báo Cáo";
-            this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIn.UseVisualStyleBackColor = true;
-            // 
             // DoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1387, 654);
+            this.Controls.Add(this.btnBieuDoDoanhThu);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnXemChiTiet);
             this.Controls.Add(this.label3);
@@ -159,5 +173,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnXemChiTiet;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnBieuDoDoanhThu;
     }
 }

@@ -12,9 +12,11 @@ namespace QuanLyCafe.MyForm
 {
     public partial class DoanhThu : Form
     {
-        string connectionString;
-        public DoanhThu(string connectionString)
+        private string connectionString;
+        private FrmManHinhChinh frmMHC;
+        public DoanhThu(string connectionString, FrmManHinhChinh frmMHC)
         {
+            this.frmMHC = frmMHC;
             this.connectionString = connectionString;
             InitializeComponent();
         }
@@ -66,6 +68,12 @@ namespace QuanLyCafe.MyForm
             {
                 Load();
             }
+        }
+
+        private void btnBieuDoDoanhThu_Click(object sender, EventArgs e)
+        {
+            MyForm.BaoCaoBieuDoDoanhThu frmBDDT = new MyForm.BaoCaoBieuDoDoanhThu(connectionString, frmMHC);
+            frmMHC.ShowForm(frmBDDT);
         }
     }
 }

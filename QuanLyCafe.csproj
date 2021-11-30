@@ -243,6 +243,12 @@
     <Compile Include="MyDatabase\v_ThucDon.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyForm\BaoCaoBieuDoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\BaoCaoBieuDoDoanhThu.Designer.cs">
+      <DependentUpon>BaoCaoBieuDoDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyForm\DoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,12 +330,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\CustomReportCredentials.cs" />
-    <Compile Include="Report\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +343,9 @@
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="MyForm\BaoCaoBieuDoDoanhThu.resx">
+      <DependentUpon>BaoCaoBieuDoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm\DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,15 +395,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\InputMesseageBox.resx">
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportDoanhThuBanHang.rdlc" />
     <EmbeddedResource Include="Report\ReportHoaDonNhapHang.rdlc" />
     <EmbeddedResource Include="Report\ReportHoaDonBanHang.rdlc" />
     <EntityDeploy Include="MyDatabase\QuanLyCafeDBContext.edmx">
@@ -414,6 +415,7 @@
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.ChiTietHoaDonNhapHang.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonBanHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonNhapHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThu_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonBanHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonNhapHang_Result.datasource" />
     <None Include="Properties\Settings.settings">
@@ -475,6 +477,7 @@
     <None Include="Resources\icons8-export-excel-48.png" />
     <None Include="Resources\message_send_email_icon_191636.png" />
     <None Include="Resources\add.bmp" />
+    <None Include="Resources\chart_bar.png" />
     <Content Include="Resources\printer-icon-simple-style-3219886.jpg" />
     <None Include="Resources\Send_mail.jpg" />
     <None Include="Resources\printer.bmp" />

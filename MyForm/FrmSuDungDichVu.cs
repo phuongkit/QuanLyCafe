@@ -506,6 +506,8 @@ namespace QuanLyCafe.MyForm
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn cần in!");
             }
+            //BaoCaoBieuDoDoanhThu BCBDDT = new BaoCaoBieuDoDoanhThu(connectionString);
+            //BCBDDT.ShowDialog();
         }
     }
 }
