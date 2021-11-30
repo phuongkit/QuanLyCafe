@@ -64,7 +64,6 @@ namespace QuanLyCafe.Report
             this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Subject:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -166,19 +165,23 @@ namespace QuanLyCafe.Report
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(301, 468);
+            this.btnSend.BackColor = System.Drawing.Color.Aqua;
+            this.btnSend.ForeColor = System.Drawing.Color.Blue;
+            this.btnSend.Image = global::QuanLyCafe.Properties.Resources.message_send_email_icon_191636;
+            this.btnSend.Location = new System.Drawing.Point(295, 468);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(126, 42);
+            this.btnSend.Size = new System.Drawing.Size(128, 69);
             this.btnSend.TabIndex = 13;
             this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // InputMesseageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 533);
+            this.ClientSize = new System.Drawing.Size(607, 549);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.txtSMTP);

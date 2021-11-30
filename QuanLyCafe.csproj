@@ -324,6 +324,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\CustomReportCredentials.cs" />
+    <Compile Include="Report\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +392,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -463,7 +472,9 @@
       <LastGenOutput>QuanLyCafeDBContext.cs</LastGenOutput>
     </Content>
     <None Include="Resources\icons8-export-excel-48.png" />
+    <None Include="Resources\message_send_email_icon_191636.png" />
     <Content Include="Resources\printer-icon-simple-style-3219886.jpg" />
+    <None Include="Resources\Send_mail.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -499,6 +510,9 @@
     <None Include="Resources\edit_add.png" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\button_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ExportedReport\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

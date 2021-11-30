@@ -578,7 +578,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!TongGia.value &amp;" đồng"</Value>
+                    <Value>=Parameters!TongGia.Value</Value>
                     <Style>
                       <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>

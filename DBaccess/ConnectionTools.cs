@@ -63,6 +63,7 @@ namespace QuanLyCafe.DBaccess
             catch (Exception ex)
             {
                 // set log item if required
+                throw ex;
             }
         }
     }

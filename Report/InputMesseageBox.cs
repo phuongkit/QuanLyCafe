@@ -27,6 +27,7 @@ namespace QuanLyCafe.Report
             InitializeComponent();
             InitGUI();
         }
+
         public void InitGUI()
         {
             txtFrom.Text = "newkitblue01@gmail.com";
@@ -38,10 +39,6 @@ namespace QuanLyCafe.Report
             txtMessage.Text = message;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSend_Click(object sender, EventArgs e)
         {

@@ -63,38 +63,30 @@ namespace QuanLyCafe.MyForm
             DBaccess.AppSetting setting = new DBaccess.AppSetting();
 
             connectionString = setting.getConnectionString(dataSource, initialCatalog, userName, passWord);
-            try
+            using (var db = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                using (var db = new MyDatabase.QuanLyCafeEntities(connectionString))
+                try
                 {
-                    try
+                    DBaccess.LoginNhanVienAccess lgnv = new DBaccess.LoginNhanVienAccess(connectionString);
+                    if (lgnv.getLoginNhanVien(userName) != null)
                     {
-                        DBaccess.LoginNhanVienAccess lgnv = new DBaccess.LoginNhanVienAccess(connectionString);
-                        if (lgnv.getLoginNhanVien(userName) != null)
-                        {
-                            this.IDNhanVien = lgnv.getIDNhanVien(userName);
-                            this.Hide();
-                            frmMHC.Show();
-                            frmMHC.setIDNhanVien(this.IDNhanVien);
-                            frmMHC.setConnectionString(connectionString);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Tài khoản này không trùng khớp với tài khoản trên CSDL! Vui lòng thử lại với tài khoản khác!");
-                            return;
-                        }
+                        this.IDNhanVien = lgnv.getIDNhanVien(userName);
+                        this.Hide();
+                        frmMHC.Show();
+                        frmMHC.setIDNhanVien(this.IDNhanVien);
+                        frmMHC.setConnectionString(connectionString);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Tài khoản này không trùng khớp với tài khoản trên CSDL! Vui lòng thử lại với tài khoản khác!");
                         return;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Data Source hay tài khoản này không trùng khớp với tài khoản trên hệ thống! Vui lòng thử lại với tài khoản khác!");
-                return;
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Data Source hay tài khoản này không trùng khớp với tài khoản trên hệ thống! Vui lòng thử lại với tài khoản khác!");
+                    return;
+                }
             }
         }
 
