@@ -168,7 +168,7 @@ namespace QuanLyCafe.Report
             this.btnSend.BackColor = System.Drawing.Color.Aqua;
             this.btnSend.ForeColor = System.Drawing.Color.Blue;
             this.btnSend.Image = global::QuanLyCafe.Properties.Resources.message_send_email_icon_191636;
-            this.btnSend.Location = new System.Drawing.Point(295, 468);
+            this.btnSend.Location = new System.Drawing.Point(245, 468);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(128, 69);
             this.btnSend.TabIndex = 13;

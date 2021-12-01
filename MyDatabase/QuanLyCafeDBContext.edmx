@@ -384,6 +384,19 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_LaySoLuongThucDonTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IDThucDon" Type="nvarchar" MaxLength="10" />
+                <Property Name="SoLuong" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="f_LayThongTinNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
           <ReturnType>
@@ -436,6 +449,19 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               <RowType>
                 <Property Name="ID" Type="nvarchar" MaxLength="10" />
                 <Property Name="TongGia" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_TopThucDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TenThucDon" Type="nvarchar" MaxLength="50" />
+                <Property Name="SoLuong" Type="real" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -741,6 +767,10 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="DonViTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="DonGia" Type="Single" />
         </ComplexType>
+        <ComplexType Name="f_LaySoLuongThucDonTheoNgay_Result">
+          <Property Name="IDThucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Single" />
+        </ComplexType>
         <ComplexType Name="f_LayThongTinNhanVien_Result">
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -765,6 +795,10 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
         <ComplexType Name="f_TinhTienHoaDonNH_Result">
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="TongGia" Type="Single" />
+        </ComplexType>
+        <ComplexType Name="f_TopThucDon_Result">
+          <Property Name="TenThucDon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Single" />
         </ComplexType>
         <EntityType Name="Ban">
           <Key>
@@ -1106,6 +1140,11 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="f_LayCTLoaiThucDon" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LayCTLoaiThucDon_Result)">
             <Parameter Name="IDloaiThucDon" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="f_LaySoLuongThucDonTheoNgay" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LaySoLuongThucDonTheoNgay_Result)">
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="f_LayThongTinNhanVien" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LayThongTinNhanVien_Result)">
             <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
@@ -1113,6 +1152,11 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="f_TaoIDHoaDonNhapHangMoi" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TaoIDHoaDonNhapHangMoi_Result)" />
           <FunctionImport Name="f_TinhTienHoaDonBH" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TinhTienHoaDonBH_Result)" />
           <FunctionImport Name="f_TinhTienHoaDonNH" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TinhTienHoaDonNH_Result)" />
+          <FunctionImport Name="f_TopThucDon" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TopThucDon_Result)">
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1533,6 +1577,14 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_LaySoLuongThucDonTheoNgay" FunctionImportName="f_LaySoLuongThucDonTheoNgay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_LaySoLuongThucDonTheoNgay_Result">
+                <ScalarProperty Name="IDThucDon" ColumnName="IDThucDon" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_LayThongTinNhanVien" FunctionImportName="f_LayThongTinNhanVien">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QuanLyCafeModel.f_LayThongTinNhanVien_Result">
@@ -1575,6 +1627,14 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               <ComplexTypeMapping TypeName="QuanLyCafeModel.f_TinhTienHoaDonNH_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TongGia" ColumnName="TongGia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_TopThucDon" FunctionImportName="f_TopThucDon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_TopThucDon_Result">
+                <ScalarProperty Name="TenThucDon" ColumnName="TenThucDon" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

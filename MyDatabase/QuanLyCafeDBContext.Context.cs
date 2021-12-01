@@ -161,6 +161,24 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LayCTLoaiThucDon_Result>("[QuanLyCafeEntities].[f_LayCTLoaiThucDon](@IDloaiThucDon)", iDloaiThucDonParameter);
         }
     
+        [DbFunction("QuanLyCafeEntities", "f_LaySoLuongThucDonTheoNgay")]
+        public virtual IQueryable<f_LaySoLuongThucDonTheoNgay_Result> f_LaySoLuongThucDonTheoNgay(Nullable<int> day, Nullable<int> month, Nullable<int> year)
+        {
+            var dayParameter = day.HasValue ?
+                new ObjectParameter("day", day) :
+                new ObjectParameter("day", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LaySoLuongThucDonTheoNgay_Result>("[QuanLyCafeEntities].[f_LaySoLuongThucDonTheoNgay](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
+        }
+    
         [DbFunction("QuanLyCafeEntities", "f_LayThongTinNhanVien")]
         public virtual IQueryable<f_LayThongTinNhanVien_Result> f_LayThongTinNhanVien(string iD)
         {
@@ -193,6 +211,24 @@ namespace QuanLyCafe.MyDatabase
         public virtual IQueryable<f_TinhTienHoaDonNH_Result> f_TinhTienHoaDonNH()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_TinhTienHoaDonNH_Result>("[QuanLyCafeEntities].[f_TinhTienHoaDonNH]()");
+        }
+    
+        [DbFunction("QuanLyCafeEntities", "f_TopThucDon")]
+        public virtual IQueryable<f_TopThucDon_Result> f_TopThucDon(Nullable<int> day, Nullable<int> month, Nullable<int> year)
+        {
+            var dayParameter = day.HasValue ?
+                new ObjectParameter("day", day) :
+                new ObjectParameter("day", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_TopThucDon_Result>("[QuanLyCafeEntities].[f_TopThucDon](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyCafe.MyForm
 {
-    partial class BaoCaoBieuDoDoanhThu
+    partial class BaoCaoThucDon
     {
         /// <summary>
         /// Required designer variable.
@@ -31,9 +31,7 @@ namespace QuanLyCafe.MyForm
         {
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Date_to = new System.Windows.Forms.DateTimePicker();
             this.Date_from = new System.Windows.Forms.DateTimePicker();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
@@ -47,60 +45,42 @@ namespace QuanLyCafe.MyForm
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(1340, 641);
             this.reportViewer1.TabIndex = 0;
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 11);
+            this.label3.Location = new System.Drawing.Point(28, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 17);
             this.label3.TabIndex = 16;
             this.label3.Text = "Lọc";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 73);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Đến Ngày";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 41);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(27, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Từ Ngày";
-            // 
-            // Date_to
-            // 
-            this.Date_to.Location = new System.Drawing.Point(112, 66);
-            this.Date_to.Margin = new System.Windows.Forms.Padding(4);
-            this.Date_to.Name = "Date_to";
-            this.Date_to.Size = new System.Drawing.Size(265, 22);
-            this.Date_to.TabIndex = 12;
-            this.Date_to.ValueChanged += new System.EventHandler(this.Date_to_ValueChanged);
+            this.label1.Text = "Ngày:";
             // 
             // Date_from
             // 
-            this.Date_from.Location = new System.Drawing.Point(112, 34);
+            this.Date_from.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Date_from.Location = new System.Drawing.Point(106, 51);
             this.Date_from.Margin = new System.Windows.Forms.Padding(4);
             this.Date_from.Name = "Date_from";
-            this.Date_from.Size = new System.Drawing.Size(265, 22);
+            this.Date_from.Size = new System.Drawing.Size(369, 27);
             this.Date_from.TabIndex = 13;
             this.Date_from.ValueChanged += new System.EventHandler(this.Date_from_ValueChanged);
             // 
             // btnIn
             // 
             this.btnIn.Image = global::QuanLyCafe.Properties.Resources.printer_icon_simple_style_3219886;
-            this.btnIn.Location = new System.Drawing.Point(580, 15);
+            this.btnIn.Location = new System.Drawing.Point(662, 11);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(137, 73);
             this.btnIn.TabIndex = 22;
@@ -112,7 +92,7 @@ namespace QuanLyCafe.MyForm
             // btnXemChiTiet
             // 
             this.btnXemChiTiet.Image = global::QuanLyCafe.Properties.Resources.view_details_1_;
-            this.btnXemChiTiet.Location = new System.Drawing.Point(411, 15);
+            this.btnXemChiTiet.Location = new System.Drawing.Point(493, 11);
             this.btnXemChiTiet.Name = "btnXemChiTiet";
             this.btnXemChiTiet.Size = new System.Drawing.Size(138, 75);
             this.btnXemChiTiet.TabIndex = 21;
@@ -123,7 +103,7 @@ namespace QuanLyCafe.MyForm
             // 
             // btnLoai
             // 
-            this.btnLoai.Location = new System.Drawing.Point(737, 15);
+            this.btnLoai.Location = new System.Drawing.Point(819, 11);
             this.btnLoai.Name = "btnLoai";
             this.btnLoai.Size = new System.Drawing.Size(119, 73);
             this.btnLoai.TabIndex = 23;
@@ -131,7 +111,7 @@ namespace QuanLyCafe.MyForm
             this.btnLoai.UseVisualStyleBackColor = true;
             this.btnLoai.Click += new System.EventHandler(this.btnLoai_Click);
             // 
-            // BaoCaoBieuDoDoanhThu
+            // BaoCaoThucDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,15 +120,13 @@ namespace QuanLyCafe.MyForm
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnXemChiTiet);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Date_to);
             this.Controls.Add(this.Date_from);
             this.Controls.Add(this.reportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BaoCaoBieuDoDoanhThu";
-            this.Text = "BaoCaoBieuDoDoanhThu";
-            this.Load += new System.EventHandler(this.BaoCaoBieuDoDoanhThu_Load);
+            this.Name = "BaoCaoThucDon";
+            this.Text = "BaoCaoThucDon";
+            this.Load += new System.EventHandler(this.BaoCaoThucDon_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,9 +136,7 @@ namespace QuanLyCafe.MyForm
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker Date_to;
         private System.Windows.Forms.DateTimePicker Date_from;
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Button btnXemChiTiet;

@@ -246,5 +246,11 @@ namespace QuanLyCafe
          
 
         }
+
+        private void topThựcĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyForm.BaoCaoThucDon frmBCTD = new MyForm.BaoCaoThucDon(connectionString, this);
+            ShowForm(frmBCTD);
+        }
     }
 }

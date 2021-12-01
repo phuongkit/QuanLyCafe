@@ -156,6 +156,9 @@
     <Compile Include="MyDatabase\f_LayCTLoaiThucDon_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyDatabase\f_LaySoLuongThucDonTheoNgay_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="MyDatabase\f_LayThongTinNhanVien_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_TinhTienHoaDonNH_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TopThucDon_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\HoaDonBanHang.cs">
@@ -215,6 +221,12 @@
     </Compile>
     <Compile Include="MyDatabase\ThucDon.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyForm\BaoCaoThucDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\BaoCaoThucDon.Designer.cs">
+      <DependentUpon>BaoCaoThucDon.cs</DependentUpon>
     </Compile>
     <Compile Include="MyForm\BaoCaoBieuDoDoanhThu.cs">
       <SubType>Form</SubType>
@@ -316,6 +328,9 @@
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="MyForm\BaoCaoThucDon.resx">
+      <DependentUpon>BaoCaoThucDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm\BaoCaoBieuDoDoanhThu.resx">
       <DependentUpon>BaoCaoBieuDoDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +389,7 @@
     <EmbeddedResource Include="Report\InputMesseageBox.resx">
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportBaoCaoThucDon.rdlc" />
     <EmbeddedResource Include="Report\ReportDoanhThuBanHang.rdlc" />
     <EmbeddedResource Include="Report\ReportDoanhThuBanHangThang.rdlc" />
     <EmbeddedResource Include="Report\ReportHoaDonNhapHang.rdlc" />
@@ -386,13 +402,38 @@
       <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.Ban.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.BaoCaoBanHang.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.BaoCaoNhapHang.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.ChiTietHoaDonBanHang.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.ChiTietHoaDonNhapHang.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonBanHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonNhapHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThuNgay_BanHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThuNgay_NhapHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThuThang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThu_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_KiemTraLoGin_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonBanHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonNhapHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTLoaiThucDon_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayThongTinNhanVien_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TaoIDHoaDonBanHangMoi_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TaoIDHoaDonNhapHangMoi_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TinhTienHoaDonBH_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TinhTienHoaDonNH_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TopThucDon_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.HoaDonBanHang.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.HoaDonNhapHang.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.KhoHang.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.LoaiThucDon.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.LoginNhanVien.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.NhanVien.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.QuanLyCafeEntities.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.sp_helpdiagramdefinition_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.sp_helpdiagrams_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.sysdiagram.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.ThucDon.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -495,6 +536,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExportedReport\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

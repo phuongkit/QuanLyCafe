@@ -12,15 +12,15 @@ using System.IO;
 
 namespace QuanLyCafe.MyForm
 {
-    public partial class BaoCaoBieuDoDoanhThu : Form
+    public partial class BaoCaoThucDon : Form
     {
         private DBaccess.DoanhThuAccess DTAc;
         private string connectionString;
         private FrmManHinhChinh frmMHC;
-        private bool loai;  //true ngay, false thang
-        public BaoCaoBieuDoDoanhThu(string connectionString, FrmManHinhChinh frmMHC)
+        private int loai;  //true ngay, false thang
+        public BaoCaoThucDon(string connectionString, FrmManHinhChinh frmMHC)
         {
-            loai = true;
+            loai = 0;
             this.connectionString = connectionString;
             this.frmMHC = frmMHC;
             DTAc = new DBaccess.DoanhThuAccess(connectionString);
@@ -33,20 +33,22 @@ namespace QuanLyCafe.MyForm
             {
                 reportViewer1.RefreshReport();
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.SetDisplayMode(DisplayMode.Normal);
+                reportViewer1.SetDisplayMode(DisplayMode.Normal
+                    );
                 reportViewer1.ZoomPercent = 100;
                 ReportDataSource reportDataSource = new ReportDataSource();
                 reportDataSource.Name = "DataSet1";
-                if (loai)
+                int ngay = 0, thang = 0, nam = int.Parse(Date_from.Value.Year.ToString());
+                if (loai < 2)
                 {
-                    reportDataSource.Value = DTAc.GetDoanhThu(Date_from.Value, Date_to.Value);
-                    reportViewer1.LocalReport.ReportEmbeddedResource = "QuanLyCafe.Report.ReportDoanhThuBanHang.rdlc";
+                    thang = int.Parse(Date_from.Value.Month.ToString());
+                    if (loai < 1)
+                    {
+                        ngay = int.Parse(Date_from.Value.Day.ToString());
+                    }
                 }
-                else
-                {
-                    reportDataSource.Value = DTAc.GetDoanhThuThang(int.Parse(Date_from.Value.Month.ToString()), int.Parse(Date_from.Value.Year.ToString()), int.Parse(Date_to.Value.Month.ToString()), int.Parse(Date_to.Value.Year.ToString()));
-                    reportViewer1.LocalReport.ReportEmbeddedResource = "QuanLyCafe.Report.ReportDoanhThuBanHangThang.rdlc";
-                }
+                reportDataSource.Value = DTAc.GetTopThucDon(ngay, thang, nam);
+                reportViewer1.LocalReport.ReportEmbeddedResource = "QuanLyCafe.Report.ReportBaoCaoThucDon.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(reportDataSource);
                 reportViewer1.RefreshReport();
@@ -58,7 +60,7 @@ namespace QuanLyCafe.MyForm
             }
         }
 
-        private void BaoCaoBieuDoDoanhThu_Load(object sender, EventArgs e)
+        private void BaoCaoThucDon_Load(object sender, EventArgs e)
         {
 
             this.reportViewer1.RefreshReport();
@@ -67,16 +69,6 @@ namespace QuanLyCafe.MyForm
         private void Date_from_ValueChanged(object sender, EventArgs e)
         {
             DataBind();
-        }
-
-        private void Date_to_ValueChanged(object sender, EventArgs e)
-        {
-            DataBind();
-        }
-
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnXemChiTiet_Click(object sender, EventArgs e)
@@ -98,7 +90,7 @@ namespace QuanLyCafe.MyForm
                 link = link.Substring(0, link.Length - 10);
                 string path, subject, message;
                 path = ExportReportToPDF(link + "\\EXportedReport\\", "BieuDoDoanhThu");
-                subject = "Báo cáo doanh thu vào lúc " + DateTime.Now.ToString();
+                subject = "Top thực đơn bán hàng vào lúc " + DateTime.Now.ToString();
                 //message = "Hóa đơn bán hàng vào lúc " + DateTime.Now.ToString();
                 message = subject;
 
@@ -132,28 +124,34 @@ namespace QuanLyCafe.MyForm
 
         private void btnLoai_Click(object sender, EventArgs e)
         {
-            loai = !loai;
-            if (loai)
+            loai++;
+            if (loai == 3)
             {
-                Date_from.Format = DateTimePickerFormat.Custom;
-                // Display the date as "Mon 27 Feb 2012".  
-                Date_from.CustomFormat = "dddd dd MMMM yyyy";
-                Date_to.Format = DateTimePickerFormat.Custom;
-                // Display the date as "Mon 27 Feb 2012".  
-                Date_to.CustomFormat = "dddd dd MMMM yyyy";
-                btnLoai.Text = "Ngày";
-                DataBind();
+                loai = 0;
             }
-            else
+            switch (loai)
             {
-                Date_from.Format = DateTimePickerFormat.Custom;
-                // Display the date as "Mon 27 Feb 2012".  
-                Date_from.CustomFormat = "MMMM yyyy";
-                Date_to.Format = DateTimePickerFormat.Custom;
-                // Display the date as "Mon 27 Feb 2012".  
-                Date_to.CustomFormat = "MMMM yyyy";
-                btnLoai.Text = "Tháng";
-                DataBind();
+                case 0:
+                    Date_from.Format = DateTimePickerFormat.Custom;
+                    // Display the date as "Mon 27 Feb 2012".  
+                    Date_from.CustomFormat = "dddd dd MMMM yyyy";
+                    btnLoai.Text = "Ngày";
+                    DataBind();
+                    break;
+                case 1:
+                    Date_from.Format = DateTimePickerFormat.Custom;
+                    // Display the date as "Mon 27 Feb 2012".  
+                    Date_from.CustomFormat = "MMMM yyyy";
+                    btnLoai.Text = "Tháng";
+                    DataBind();
+                    break;
+                default:
+                    Date_from.Format = DateTimePickerFormat.Custom;
+                    // Display the date as "Mon 27 Feb 2012".  
+                    Date_from.CustomFormat = "yyyy";
+                    btnLoai.Text = "Năm";
+                    DataBind();
+                    break;
             }
         }
     }
