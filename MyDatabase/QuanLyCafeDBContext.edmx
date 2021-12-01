@@ -132,135 +132,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="Ngaytao" Type="datetime" Nullable="false" />
           <Property Name="ThanhTien" Type="real" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.ChiTietBanHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChiTietBanHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonBH" />
-            <PropertyRef Name="Ngaytao" />
-          </Key>
-          <Property Name="IDhoaDonBH" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDnhanVien" Type="nvarchar" MaxLength="10" />
-          <Property Name="Ngaytao" Type="datetime" Nullable="false" />
-          <Property Name="SoLuong" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.ChiTietNhapHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChiTietNhapHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonNH" />
-            <PropertyRef Name="Ngaytao" />
-          </Key>
-          <Property Name="IDhoaDonNH" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDnhanVien" Type="nvarchar" MaxLength="10" />
-          <Property Name="Ngaytao" Type="datetime" Nullable="false" />
-          <Property Name="SoLuong" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.TimKiemNhanVien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="TimKiemNhanVien">
-          <Key>
-            <PropertyRef Name="HoTen" />
-            <PropertyRef Name="LoginName" />
-            <PropertyRef Name="Permission" />
-          </Key>
-          <Property Name="IDNhanVien" Type="nvarchar" MaxLength="10" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Permission" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_Ban' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_Ban">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="TenBan" />
-            <PropertyRef Name="TrangThai" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="TenBan" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="TrangThai" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_ChiTietHoaDonBanHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_ChiTietHoaDonBanHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonBH" />
-            <PropertyRef Name="IDthucDon" />
-            <PropertyRef Name="soLuong" />
-          </Key>
-          <Property Name="IDhoaDonBH" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDthucDon" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="soLuong" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_ChiTietHoaDonNhapHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_ChiTietHoaDonNhapHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonNH" />
-            <PropertyRef Name="IDhang" />
-            <PropertyRef Name="soLuong" />
-          </Key>
-          <Property Name="IDhoaDonNH" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDhang" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="soLuong" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_HoaDonBanHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_HoaDonBanHang">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Ngaytao" />
-            <PropertyRef Name="DaThanhToan" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDnhanVien" Type="nvarchar" MaxLength="10" />
-          <Property Name="IDban" Type="nvarchar" MaxLength="10" />
-          <Property Name="Ngaytao" Type="datetime" Nullable="false" />
-          <Property Name="DaThanhToan" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_HoaDonNhapHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_HoaDonNhapHang">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="NgayTao" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDnhanVien" Type="nvarchar" MaxLength="10" />
-          <Property Name="NgayTao" Type="datetime" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_KhoHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_KhoHang">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Ten" />
-            <PropertyRef Name="DonViTinh" />
-            <PropertyRef Name="soLuong" />
-            <PropertyRef Name="DonGia" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DonViTinh" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="soLuong" Type="int" Nullable="false" />
-          <Property Name="DonGia" Type="real" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="v_ThucDon">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Ten" />
-            <PropertyRef Name="DonViTinh" />
-            <PropertyRef Name="DonGia" />
-          </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DonViTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="DonGia" Type="real" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__ChiTietHo__IDhan__4CA06362">
+        <Association Name="FK__ChiTietHo__IDhan__571DF1D5">
           <End Role="KhoHang" Type="Self.KhoHang" Multiplicity="1" />
           <End Role="ChiTietHoaDonNhapHang" Type="Self.ChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -272,7 +144,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__4222D4EF">
+        <Association Name="FK__ChiTietHo__IDhoa__5535A963">
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -286,7 +158,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__4BAC3F29">
+        <Association Name="FK__ChiTietHo__IDhoa__5812160E">
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -300,7 +172,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDthu__4316F928">
+        <Association Name="FK__ChiTietHo__IDthu__5629CD9C">
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
           <End Role="ChiTietHoaDonBanHang" Type="Self.ChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -312,7 +184,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__IDban__3C69FB99">
+        <Association Name="FK__HoaDonBan__IDban__59063A47">
           <End Role="Ban" Type="Self.Ban" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -324,7 +196,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__IDnha__3D5E1FD2">
+        <Association Name="FK__HoaDonBan__IDnha__59FA5E80">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -336,7 +208,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__IDnha__46E78A0C">
+        <Association Name="FK__HoaDonNha__IDnha__5AEE82B9">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -348,7 +220,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LoginNhan__IDNha__37A5467C">
+        <Association Name="FK__LoginNhan__IDNha__5BE2A6F2">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -362,7 +234,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThucDon__IDloaiT__30F848ED">
+        <Association Name="FK__ThucDon__IDloaiT__5CD6CB2B">
           <End Role="LoaiThucDon" Type="Self.LoaiThucDon" Multiplicity="0..1" />
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -439,6 +311,30 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="f_DoanhThuThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monthBegin" Type="int" Mode="In" />
+          <Parameter Name="yearBegin" Type="int" Mode="In" />
+          <Parameter Name="monthEnd" Type="int" Mode="In" />
+          <Parameter Name="yearEnd" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ngay" Type="nvarchar" MaxLength="10" />
+                <Property Name="tienBanHang" Type="int" />
+                <Property Name="tienNhapHang" Type="int" />
+                <Property Name="thunhap" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_DoanhThuThang_BanHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="real">
+          <Parameter Name="monthDate" Type="int" Mode="In" />
+          <Parameter Name="yearDate" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_DoanhThuThang_NhapHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="real">
+          <Parameter Name="monthDate" Type="int" Mode="In" />
+          <Parameter Name="yearDate" Type="int" Mode="In" />
         </Function>
         <Function Name="f_KiemTraLoGin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="LoginName" Type="nvarchar" Mode="In" />
@@ -748,117 +644,39 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
     [BaoCaoNhapHang].[ThanhTien] AS [ThanhTien]
     FROM [dbo].[BaoCaoNhapHang] AS [BaoCaoNhapHang]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="ChiTietBanHang" EntityType="Self.ChiTietBanHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChiTietBanHang].[IDhoaDonBH] AS [IDhoaDonBH], 
-    [ChiTietBanHang].[IDnhanVien] AS [IDnhanVien], 
-    [ChiTietBanHang].[Ngaytao] AS [Ngaytao], 
-    [ChiTietBanHang].[SoLuong] AS [SoLuong]
-    FROM [dbo].[ChiTietBanHang] AS [ChiTietBanHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChiTietNhapHang" EntityType="Self.ChiTietNhapHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChiTietNhapHang].[IDhoaDonNH] AS [IDhoaDonNH], 
-    [ChiTietNhapHang].[IDnhanVien] AS [IDnhanVien], 
-    [ChiTietNhapHang].[Ngaytao] AS [Ngaytao], 
-    [ChiTietNhapHang].[SoLuong] AS [SoLuong]
-    FROM [dbo].[ChiTietNhapHang] AS [ChiTietNhapHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TimKiemNhanVien" EntityType="Self.TimKiemNhanVien" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TimKiemNhanVien].[IDNhanVien] AS [IDNhanVien], 
-    [TimKiemNhanVien].[HoTen] AS [HoTen], 
-    [TimKiemNhanVien].[LoginName] AS [LoginName], 
-    [TimKiemNhanVien].[Permission] AS [Permission]
-    FROM [dbo].[TimKiemNhanVien] AS [TimKiemNhanVien]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_Ban" EntityType="Self.v_Ban" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_Ban].[ID] AS [ID], 
-    [v_Ban].[TenBan] AS [TenBan], 
-    [v_Ban].[TrangThai] AS [TrangThai]
-    FROM [dbo].[v_Ban] AS [v_Ban]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_ChiTietHoaDonBanHang" EntityType="Self.v_ChiTietHoaDonBanHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_ChiTietHoaDonBanHang].[IDhoaDonBH] AS [IDhoaDonBH], 
-    [v_ChiTietHoaDonBanHang].[IDthucDon] AS [IDthucDon], 
-    [v_ChiTietHoaDonBanHang].[soLuong] AS [soLuong]
-    FROM [dbo].[v_ChiTietHoaDonBanHang] AS [v_ChiTietHoaDonBanHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_ChiTietHoaDonNhapHang" EntityType="Self.v_ChiTietHoaDonNhapHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_ChiTietHoaDonNhapHang].[IDhoaDonNH] AS [IDhoaDonNH], 
-    [v_ChiTietHoaDonNhapHang].[IDhang] AS [IDhang], 
-    [v_ChiTietHoaDonNhapHang].[soLuong] AS [soLuong]
-    FROM [dbo].[v_ChiTietHoaDonNhapHang] AS [v_ChiTietHoaDonNhapHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_HoaDonBanHang" EntityType="Self.v_HoaDonBanHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_HoaDonBanHang].[ID] AS [ID], 
-    [v_HoaDonBanHang].[IDnhanVien] AS [IDnhanVien], 
-    [v_HoaDonBanHang].[IDban] AS [IDban], 
-    [v_HoaDonBanHang].[Ngaytao] AS [Ngaytao], 
-    [v_HoaDonBanHang].[DaThanhToan] AS [DaThanhToan]
-    FROM [dbo].[v_HoaDonBanHang] AS [v_HoaDonBanHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_HoaDonNhapHang" EntityType="Self.v_HoaDonNhapHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_HoaDonNhapHang].[ID] AS [ID], 
-    [v_HoaDonNhapHang].[IDnhanVien] AS [IDnhanVien], 
-    [v_HoaDonNhapHang].[NgayTao] AS [NgayTao]
-    FROM [dbo].[v_HoaDonNhapHang] AS [v_HoaDonNhapHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_KhoHang" EntityType="Self.v_KhoHang" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_KhoHang].[ID] AS [ID], 
-    [v_KhoHang].[Ten] AS [Ten], 
-    [v_KhoHang].[DonViTinh] AS [DonViTinh], 
-    [v_KhoHang].[soLuong] AS [soLuong], 
-    [v_KhoHang].[DonGia] AS [DonGia]
-    FROM [dbo].[v_KhoHang] AS [v_KhoHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="v_ThucDon" EntityType="Self.v_ThucDon" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [v_ThucDon].[ID] AS [ID], 
-    [v_ThucDon].[Ten] AS [Ten], 
-    [v_ThucDon].[DonViTinh] AS [DonViTinh], 
-    [v_ThucDon].[DonGia] AS [DonGia]
-    FROM [dbo].[v_ThucDon] AS [v_ThucDon]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__ChiTietHo__IDhan__4CA06362" Association="Self.FK__ChiTietHo__IDhan__4CA06362">
+          <AssociationSet Name="FK__ChiTietHo__IDhan__571DF1D5" Association="Self.FK__ChiTietHo__IDhan__571DF1D5">
             <End Role="KhoHang" EntitySet="KhoHang" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__4222D4EF" Association="Self.FK__ChiTietHo__IDhoa__4222D4EF">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__5535A963" Association="Self.FK__ChiTietHo__IDhoa__5535A963">
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__4BAC3F29" Association="Self.FK__ChiTietHo__IDhoa__4BAC3F29">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__5812160E" Association="Self.FK__ChiTietHo__IDhoa__5812160E">
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHang" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDthu__4316F928" Association="Self.FK__ChiTietHo__IDthu__4316F928">
+          <AssociationSet Name="FK__ChiTietHo__IDthu__5629CD9C" Association="Self.FK__ChiTietHo__IDthu__5629CD9C">
             <End Role="ThucDon" EntitySet="ThucDon" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__IDban__3C69FB99" Association="Self.FK__HoaDonBan__IDban__3C69FB99">
+          <AssociationSet Name="FK__HoaDonBan__IDban__59063A47" Association="Self.FK__HoaDonBan__IDban__59063A47">
             <End Role="Ban" EntitySet="Ban" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__IDnha__3D5E1FD2" Association="Self.FK__HoaDonBan__IDnha__3D5E1FD2">
+          <AssociationSet Name="FK__HoaDonBan__IDnha__59FA5E80" Association="Self.FK__HoaDonBan__IDnha__59FA5E80">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__IDnha__46E78A0C" Association="Self.FK__HoaDonNha__IDnha__46E78A0C">
+          <AssociationSet Name="FK__HoaDonNha__IDnha__5AEE82B9" Association="Self.FK__HoaDonNha__IDnha__5AEE82B9">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__LoginNhan__IDNha__37A5467C" Association="Self.FK__LoginNhan__IDNha__37A5467C">
+          <AssociationSet Name="FK__LoginNhan__IDNha__5BE2A6F2" Association="Self.FK__LoginNhan__IDNha__5BE2A6F2">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="LoginNhanVien" EntitySet="LoginNhanVien" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThucDon__IDloaiT__30F848ED" Association="Self.FK__ThucDon__IDloaiT__30F848ED">
+          <AssociationSet Name="FK__ThucDon__IDloaiT__5CD6CB2B" Association="Self.FK__ThucDon__IDloaiT__5CD6CB2B">
             <End Role="LoaiThucDon" EntitySet="LoaiThucDon" />
             <End Role="ThucDon" EntitySet="ThucDon" />
           </AssociationSet>
@@ -897,6 +715,12 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
         <ComplexType Name="f_DoanhThuNgay_NhapHang_Result">
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" />
           <Property Name="ChiPhi" Type="Double" />
+        </ComplexType>
+        <ComplexType Name="f_DoanhThuThang_Result">
+          <Property Name="ngay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tienBanHang" Type="Int32" />
+          <Property Name="tienNhapHang" Type="Int32" />
+          <Property Name="thunhap" Type="Int32" />
         </ComplexType>
         <ComplexType Name="f_KiemTraLoGin_Result">
           <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -949,7 +773,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenBan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDban__3C69FB99" FromRole="Ban" ToRole="HoaDonBanHang" />
+          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDban__59063A47" FromRole="Ban" ToRole="HoaDonBanHang" />
         </EntityType>
         <EntityType Name="ChiTietHoaDonBanHang">
           <Key>
@@ -959,8 +783,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="IDhoaDonBH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDthucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HoaDonBanHang" Relationship="Self.FK__ChiTietHo__IDhoa__4222D4EF" FromRole="ChiTietHoaDonBanHang" ToRole="HoaDonBanHang" />
-          <NavigationProperty Name="ThucDon" Relationship="Self.FK__ChiTietHo__IDthu__4316F928" FromRole="ChiTietHoaDonBanHang" ToRole="ThucDon" />
+          <NavigationProperty Name="HoaDonBanHang" Relationship="Self.FK__ChiTietHo__IDhoa__5535A963" FromRole="ChiTietHoaDonBanHang" ToRole="HoaDonBanHang" />
+          <NavigationProperty Name="ThucDon" Relationship="Self.FK__ChiTietHo__IDthu__5629CD9C" FromRole="ChiTietHoaDonBanHang" ToRole="ThucDon" />
         </EntityType>
         <EntityType Name="ChiTietHoaDonNhapHang">
           <Key>
@@ -970,8 +794,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="IDhoaDonNH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDhang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="KhoHang" Relationship="Self.FK__ChiTietHo__IDhan__4CA06362" FromRole="ChiTietHoaDonNhapHang" ToRole="KhoHang" />
-          <NavigationProperty Name="HoaDonNhapHang" Relationship="Self.FK__ChiTietHo__IDhoa__4BAC3F29" FromRole="ChiTietHoaDonNhapHang" ToRole="HoaDonNhapHang" />
+          <NavigationProperty Name="KhoHang" Relationship="Self.FK__ChiTietHo__IDhan__571DF1D5" FromRole="ChiTietHoaDonNhapHang" ToRole="KhoHang" />
+          <NavigationProperty Name="HoaDonNhapHang" Relationship="Self.FK__ChiTietHo__IDhoa__5812160E" FromRole="ChiTietHoaDonNhapHang" ToRole="HoaDonNhapHang" />
         </EntityType>
         <EntityType Name="HoaDonBanHang">
           <Key>
@@ -982,9 +806,9 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="IDban" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DaThanhToan" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDonBan__IDban__3C69FB99" FromRole="HoaDonBanHang" ToRole="Ban" />
-          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDhoa__4222D4EF" FromRole="HoaDonBanHang" ToRole="ChiTietHoaDonBanHang" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__IDnha__3D5E1FD2" FromRole="HoaDonBanHang" ToRole="NhanVien" />
+          <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDonBan__IDban__59063A47" FromRole="HoaDonBanHang" ToRole="Ban" />
+          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDhoa__5535A963" FromRole="HoaDonBanHang" ToRole="ChiTietHoaDonBanHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__IDnha__59FA5E80" FromRole="HoaDonBanHang" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="HoaDonNhapHang">
           <Key>
@@ -993,8 +817,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhoa__4BAC3F29" FromRole="HoaDonNhapHang" ToRole="ChiTietHoaDonNhapHang" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNha__IDnha__46E78A0C" FromRole="HoaDonNhapHang" ToRole="NhanVien" />
+          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhoa__5812160E" FromRole="HoaDonNhapHang" ToRole="ChiTietHoaDonNhapHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNha__IDnha__5AEE82B9" FromRole="HoaDonNhapHang" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="KhoHang">
           <Key>
@@ -1005,7 +829,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="DonViTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
           <Property Name="DonGia" Type="Single" Nullable="false" />
-          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhan__4CA06362" FromRole="KhoHang" ToRole="ChiTietHoaDonNhapHang" />
+          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhan__571DF1D5" FromRole="KhoHang" ToRole="ChiTietHoaDonNhapHang" />
         </EntityType>
         <EntityType Name="LoaiThucDon">
           <Key>
@@ -1013,7 +837,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenloaiThucDon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IDloaiT__30F848ED" FromRole="LoaiThucDon" ToRole="ThucDon" />
+          <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IDloaiT__5CD6CB2B" FromRole="LoaiThucDon" ToRole="ThucDon" />
         </EntityType>
         <EntityType Name="LoginNhanVien">
           <Key>
@@ -1024,7 +848,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Permission" Type="Boolean" Nullable="false" />
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__LoginNhan__IDNha__37A5467C" FromRole="LoginNhanVien" ToRole="NhanVien" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__LoginNhan__IDNha__5BE2A6F2" FromRole="LoginNhanVien" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -1037,9 +861,9 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NgayVaoLam" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NgayNghiViec" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDnha__3D5E1FD2" FromRole="NhanVien" ToRole="HoaDonBanHang" />
-          <NavigationProperty Name="HoaDonNhapHangs" Relationship="Self.FK__HoaDonNha__IDnha__46E78A0C" FromRole="NhanVien" ToRole="HoaDonNhapHang" />
-          <NavigationProperty Name="LoginNhanViens" Relationship="Self.FK__LoginNhan__IDNha__37A5467C" FromRole="NhanVien" ToRole="LoginNhanVien" />
+          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDnha__59FA5E80" FromRole="NhanVien" ToRole="HoaDonBanHang" />
+          <NavigationProperty Name="HoaDonNhapHangs" Relationship="Self.FK__HoaDonNha__IDnha__5AEE82B9" FromRole="NhanVien" ToRole="HoaDonNhapHang" />
+          <NavigationProperty Name="LoginNhanViens" Relationship="Self.FK__LoginNhan__IDNha__5BE2A6F2" FromRole="NhanVien" ToRole="LoginNhanVien" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1060,8 +884,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="DonViTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DonGia" Type="Single" Nullable="false" />
           <Property Name="IDloaiThucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDthu__4316F928" FromRole="ThucDon" ToRole="ChiTietHoaDonBanHang" />
-          <NavigationProperty Name="LoaiThucDon" Relationship="Self.FK__ThucDon__IDloaiT__30F848ED" FromRole="ThucDon" ToRole="LoaiThucDon" />
+          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDthu__5629CD9C" FromRole="ThucDon" ToRole="ChiTietHoaDonBanHang" />
+          <NavigationProperty Name="LoaiThucDon" Relationship="Self.FK__ThucDon__IDloaiT__5CD6CB2B" FromRole="ThucDon" ToRole="LoaiThucDon" />
         </EntityType>
         <EntityType Name="BaoCaoBanHang">
           <Key>
@@ -1083,115 +907,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ThanhTien" Type="Single" />
         </EntityType>
-        <EntityType Name="ChiTietBanHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonBH" />
-            <PropertyRef Name="Ngaytao" />
-          </Key>
-          <Property Name="IDhoaDonBH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SoLuong" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ChiTietNhapHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonNH" />
-            <PropertyRef Name="Ngaytao" />
-          </Key>
-          <Property Name="IDhoaDonNH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SoLuong" Type="Int32" />
-        </EntityType>
-        <EntityType Name="TimKiemNhanVien">
-          <Key>
-            <PropertyRef Name="HoTen" />
-            <PropertyRef Name="LoginName" />
-            <PropertyRef Name="Permission" />
-          </Key>
-          <Property Name="IDNhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Permission" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="v_Ban">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="TenBan" />
-            <PropertyRef Name="TrangThai" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenBan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="v_ChiTietHoaDonBanHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonBH" />
-            <PropertyRef Name="IDthucDon" />
-            <PropertyRef Name="soLuong" />
-          </Key>
-          <Property Name="IDhoaDonBH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDthucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="soLuong" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="v_ChiTietHoaDonNhapHang">
-          <Key>
-            <PropertyRef Name="IDhoaDonNH" />
-            <PropertyRef Name="IDhang" />
-            <PropertyRef Name="soLuong" />
-          </Key>
-          <Property Name="IDhoaDonNH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDhang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="soLuong" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="v_HoaDonBanHang">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Ngaytao" />
-            <PropertyRef Name="DaThanhToan" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="IDban" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DaThanhToan" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="v_HoaDonNhapHang">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="NgayTao" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="v_KhoHang">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Ten" />
-            <PropertyRef Name="DonViTinh" />
-            <PropertyRef Name="soLuong" />
-            <PropertyRef Name="DonGia" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DonViTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="soLuong" Type="Int32" Nullable="false" />
-          <Property Name="DonGia" Type="Single" Nullable="false" />
-        </EntityType>
-        <EntityType Name="v_ThucDon">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Ten" />
-            <PropertyRef Name="DonViTinh" />
-            <PropertyRef Name="DonGia" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DonViTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DonGia" Type="Single" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__HoaDonBan__IDban__3C69FB99">
+        <Association Name="FK__HoaDonBan__IDban__59063A47">
           <End Role="Ban" Type="Self.Ban" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1203,7 +919,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__4222D4EF">
+        <Association Name="FK__ChiTietHo__IDhoa__5535A963">
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1217,7 +933,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDthu__4316F928">
+        <Association Name="FK__ChiTietHo__IDthu__5629CD9C">
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
           <End Role="ChiTietHoaDonBanHang" Type="Self.ChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1229,7 +945,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhan__4CA06362">
+        <Association Name="FK__ChiTietHo__IDhan__571DF1D5">
           <End Role="KhoHang" Type="Self.KhoHang" Multiplicity="1" />
           <End Role="ChiTietHoaDonNhapHang" Type="Self.ChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1241,7 +957,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__4BAC3F29">
+        <Association Name="FK__ChiTietHo__IDhoa__5812160E">
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1255,7 +971,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__IDnha__3D5E1FD2">
+        <Association Name="FK__HoaDonBan__IDnha__59FA5E80">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1267,7 +983,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__IDnha__46E78A0C">
+        <Association Name="FK__HoaDonNha__IDnha__5AEE82B9">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1279,7 +995,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThucDon__IDloaiT__30F848ED">
+        <Association Name="FK__ThucDon__IDloaiT__5CD6CB2B">
           <End Role="LoaiThucDon" Type="Self.LoaiThucDon" Multiplicity="0..1" />
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1291,7 +1007,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LoginNhan__IDNha__37A5467C">
+        <Association Name="FK__LoginNhan__IDNha__5BE2A6F2">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1319,49 +1035,39 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           <EntitySet Name="ThucDons" EntityType="Self.ThucDon" />
           <EntitySet Name="BaoCaoBanHangs" EntityType="Self.BaoCaoBanHang" />
           <EntitySet Name="BaoCaoNhapHangs" EntityType="Self.BaoCaoNhapHang" />
-          <EntitySet Name="ChiTietBanHangs" EntityType="Self.ChiTietBanHang" />
-          <EntitySet Name="ChiTietNhapHangs" EntityType="Self.ChiTietNhapHang" />
-          <EntitySet Name="TimKiemNhanViens" EntityType="Self.TimKiemNhanVien" />
-          <EntitySet Name="v_Ban" EntityType="Self.v_Ban" />
-          <EntitySet Name="v_ChiTietHoaDonBanHang" EntityType="Self.v_ChiTietHoaDonBanHang" />
-          <EntitySet Name="v_ChiTietHoaDonNhapHang" EntityType="Self.v_ChiTietHoaDonNhapHang" />
-          <EntitySet Name="v_HoaDonBanHang" EntityType="Self.v_HoaDonBanHang" />
-          <EntitySet Name="v_HoaDonNhapHang" EntityType="Self.v_HoaDonNhapHang" />
-          <EntitySet Name="v_KhoHang" EntityType="Self.v_KhoHang" />
-          <EntitySet Name="v_ThucDon" EntityType="Self.v_ThucDon" />
-          <AssociationSet Name="FK__HoaDonBan__IDban__3C69FB99" Association="Self.FK__HoaDonBan__IDban__3C69FB99">
+          <AssociationSet Name="FK__HoaDonBan__IDban__59063A47" Association="Self.FK__HoaDonBan__IDban__59063A47">
             <End Role="Ban" EntitySet="Bans" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__4222D4EF" Association="Self.FK__ChiTietHo__IDhoa__4222D4EF">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__5535A963" Association="Self.FK__ChiTietHo__IDhoa__5535A963">
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDthu__4316F928" Association="Self.FK__ChiTietHo__IDthu__4316F928">
+          <AssociationSet Name="FK__ChiTietHo__IDthu__5629CD9C" Association="Self.FK__ChiTietHo__IDthu__5629CD9C">
             <End Role="ThucDon" EntitySet="ThucDons" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhan__4CA06362" Association="Self.FK__ChiTietHo__IDhan__4CA06362">
+          <AssociationSet Name="FK__ChiTietHo__IDhan__571DF1D5" Association="Self.FK__ChiTietHo__IDhan__571DF1D5">
             <End Role="KhoHang" EntitySet="KhoHangs" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__4BAC3F29" Association="Self.FK__ChiTietHo__IDhoa__4BAC3F29">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__5812160E" Association="Self.FK__ChiTietHo__IDhoa__5812160E">
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHangs" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__IDnha__3D5E1FD2" Association="Self.FK__HoaDonBan__IDnha__3D5E1FD2">
+          <AssociationSet Name="FK__HoaDonBan__IDnha__59FA5E80" Association="Self.FK__HoaDonBan__IDnha__59FA5E80">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__IDnha__46E78A0C" Association="Self.FK__HoaDonNha__IDnha__46E78A0C">
+          <AssociationSet Name="FK__HoaDonNha__IDnha__5AEE82B9" Association="Self.FK__HoaDonNha__IDnha__5AEE82B9">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThucDon__IDloaiT__30F848ED" Association="Self.FK__ThucDon__IDloaiT__30F848ED">
+          <AssociationSet Name="FK__ThucDon__IDloaiT__5CD6CB2B" Association="Self.FK__ThucDon__IDloaiT__5CD6CB2B">
             <End Role="LoaiThucDon" EntitySet="LoaiThucDons" />
             <End Role="ThucDon" EntitySet="ThucDons" />
           </AssociationSet>
-          <AssociationSet Name="FK__LoginNhan__IDNha__37A5467C" Association="Self.FK__LoginNhan__IDNha__37A5467C">
+          <AssociationSet Name="FK__LoginNhan__IDNha__5BE2A6F2" Association="Self.FK__LoginNhan__IDNha__5BE2A6F2">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="LoginNhanVien" EntitySet="LoginNhanViens" />
           </AssociationSet>
@@ -1380,6 +1086,12 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
           </FunctionImport>
           <FunctionImport Name="f_DoanhThuNgay_NhapHang" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_DoanhThuNgay_NhapHang_Result)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="f_DoanhThuThang" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_DoanhThuThang_Result)">
+            <Parameter Name="monthBegin" Mode="In" Type="Int32" />
+            <Parameter Name="yearBegin" Mode="In" Type="Int32" />
+            <Parameter Name="monthEnd" Mode="In" Type="Int32" />
+            <Parameter Name="yearEnd" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_KiemTraLoGin" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_KiemTraLoGin_Result)">
             <Parameter Name="LoginName" Mode="In" Type="String" />
@@ -1726,104 +1438,6 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChiTietBanHangs">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.ChiTietBanHang">
-              <MappingFragment StoreEntitySet="ChiTietBanHang">
-                <ScalarProperty Name="IDhoaDonBH" ColumnName="IDhoaDonBH" />
-                <ScalarProperty Name="IDnhanVien" ColumnName="IDnhanVien" />
-                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChiTietNhapHangs">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.ChiTietNhapHang">
-              <MappingFragment StoreEntitySet="ChiTietNhapHang">
-                <ScalarProperty Name="IDhoaDonNH" ColumnName="IDhoaDonNH" />
-                <ScalarProperty Name="IDnhanVien" ColumnName="IDnhanVien" />
-                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TimKiemNhanViens">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.TimKiemNhanVien">
-              <MappingFragment StoreEntitySet="TimKiemNhanVien">
-                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
-                <ScalarProperty Name="Permission" ColumnName="Permission" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_Ban">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_Ban">
-              <MappingFragment StoreEntitySet="v_Ban">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TenBan" ColumnName="TenBan" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_ChiTietHoaDonBanHang">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_ChiTietHoaDonBanHang">
-              <MappingFragment StoreEntitySet="v_ChiTietHoaDonBanHang">
-                <ScalarProperty Name="IDhoaDonBH" ColumnName="IDhoaDonBH" />
-                <ScalarProperty Name="IDthucDon" ColumnName="IDthucDon" />
-                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_ChiTietHoaDonNhapHang">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_ChiTietHoaDonNhapHang">
-              <MappingFragment StoreEntitySet="v_ChiTietHoaDonNhapHang">
-                <ScalarProperty Name="IDhoaDonNH" ColumnName="IDhoaDonNH" />
-                <ScalarProperty Name="IDhang" ColumnName="IDhang" />
-                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_HoaDonBanHang">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_HoaDonBanHang">
-              <MappingFragment StoreEntitySet="v_HoaDonBanHang">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDnhanVien" ColumnName="IDnhanVien" />
-                <ScalarProperty Name="IDban" ColumnName="IDban" />
-                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
-                <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_HoaDonNhapHang">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_HoaDonNhapHang">
-              <MappingFragment StoreEntitySet="v_HoaDonNhapHang">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDnhanVien" ColumnName="IDnhanVien" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_KhoHang">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_KhoHang">
-              <MappingFragment StoreEntitySet="v_KhoHang">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
-                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_ThucDon">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.v_ThucDon">
-              <MappingFragment StoreEntitySet="v_ThucDon">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_ChiTietHoaDonBanHang" FunctionImportName="f_ChiTietHoaDonBanHang">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QuanLyCafeModel.f_ChiTietHoaDonBanHang_Result">
@@ -1871,6 +1485,16 @@ warning 6002: The table/view 'QuanLyCafe.dbo.v_ThucDon' does not have a primary 
               <ComplexTypeMapping TypeName="QuanLyCafeModel.f_DoanhThuNgay_NhapHang_Result">
                 <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
                 <ScalarProperty Name="ChiPhi" ColumnName="ChiPhi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_DoanhThuThang" FunctionImportName="f_DoanhThuThang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_DoanhThuThang_Result">
+                <ScalarProperty Name="ngay" ColumnName="ngay" />
+                <ScalarProperty Name="tienBanHang" ColumnName="tienBanHang" />
+                <ScalarProperty Name="tienNhapHang" ColumnName="tienNhapHang" />
+                <ScalarProperty Name="thunhap" ColumnName="thunhap" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

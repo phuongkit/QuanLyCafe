@@ -30,7 +30,11 @@ namespace QuanLyCafe.DBaccess
             MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);
             return db.f_DoanhThu(daybegin, dayend).ToList();
         }
-
+        public List<MyDatabase.f_DoanhThuThang_Result> GetDoanhThuThang(int monthBegin, int yearBegin, int monthEnd, int yearEnd)
+        {
+            MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);
+            return db.f_DoanhThuThang(monthBegin, yearBegin, monthEnd, yearEnd).ToList();
+        }
         public List<MyDatabase.f_DoanhThuNgay_BanHang_Result> GetDoanhThuNgay_BanHang(DateTime date)
         {
             MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);

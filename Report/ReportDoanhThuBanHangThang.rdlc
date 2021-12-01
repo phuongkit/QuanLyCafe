@@ -7,7 +7,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>d9ff5327-50b0-4965-a4b7-d4f7f50cc535</rd:DataSourceID>
+      <rd:DataSourceID>a4c682eb-2210-48e7-a3eb-c9cd35b1e25a</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -19,7 +19,7 @@
       <Fields>
         <Field Name="ngay">
           <DataField>ngay</DataField>
-          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="thunhap">
           <DataField>thunhap</DataField>
@@ -36,8 +36,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>QuanLyCafe.MyDatabase</rd:DataSetName>
-        <rd:TableName>f_DoanhThu_Result</rd:TableName>
-        <rd:ObjectDataSourceType>QuanLyCafe.MyDatabase.f_DoanhThu_Result, QuanLyCafe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>f_DoanhThuThang_Result</rd:TableName>
+        <rd:ObjectDataSourceType>QuanLyCafe.MyDatabase.f_DoanhThuThang_Result, QuanLyCafe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -83,6 +83,8 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -119,6 +121,8 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -402,7 +406,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Doanh thu theo ngày</Caption>
+                <Caption>Doanh thu theo tháng</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -432,8 +436,8 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet1</DataSetName>
-            <Height>3.81333in</Height>
-            <Width>6.92167in</Width>
+            <Height>3.72167in</Height>
+            <Width>6.5in</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -444,10 +448,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>3.81333in</Height>
+        <Height>3.72167in</Height>
         <Style />
       </Body>
-      <Width>6.92167in</Width>
+      <Width>6.5in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -464,5 +468,5 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>02789198-3144-4d3f-94c0-2b14c4f1a8ec</rd:ReportID>
+  <rd:ReportID>944b5bcc-c29e-4e23-bc17-4cae45b43397</rd:ReportID>
 </Report>

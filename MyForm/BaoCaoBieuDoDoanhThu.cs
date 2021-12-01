@@ -17,8 +17,10 @@ namespace QuanLyCafe.MyForm
         private DBaccess.DoanhThuAccess DTAc;
         private string connectionString;
         private FrmManHinhChinh frmMHC;
+        private bool loai;  //true ngay, false thang
         public BaoCaoBieuDoDoanhThu(string connectionString, FrmManHinhChinh frmMHC)
         {
+            loai = true;
             this.connectionString = connectionString;
             this.frmMHC = frmMHC;
             DTAc = new DBaccess.DoanhThuAccess(connectionString);
@@ -33,28 +35,21 @@ namespace QuanLyCafe.MyForm
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
                 reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
                 reportViewer1.ZoomPercent = 100;
-                reportViewer1.LocalReport.ReportEmbeddedResource = "QuanLyCafe.Report.ReportDoanhThuBanHang.rdlc";
-
                 ReportDataSource reportDataSource = new ReportDataSource();
                 reportDataSource.Name = "DataSet1";
-                //ReportParameter[] param;
-                reportDataSource.Value = DTAc.GetDoanhThu(Date_from.Value, Date_to.Value);
-                //    MyDatabase.HoaDonBanHang hd = HDBHAc.getHoaDonBanHang(soHD);
-                //    tenNhanVien = NVAc.getNhanVien(hd.IDnhanVien).HoTen;
-                //    tenBan = hd.IDban;
-                //    ReportParameter pSoHD = new ReportParameter("SoHD", soHD);
-                //    ReportParameter pNhanVien = new ReportParameter("NhanVien", tenNhanVien);
-                //    ReportParameter pBan = new ReportParameter("Ban", tenBan);
-                //    string tonggia = HDBHAc.getTienHoaDonBH(soHD).TongGia.ToString();
-                //    ReportParameter pTongGia = new ReportParameter("TongGia", tonggia);
-                //    ReportParameter pNgayTao = new ReportParameter("NgayTao", hd.Ngaytao.ToString());
-                //    param = new ReportParameter[] { pSoHD, pNhanVien, pBan, pTongGia, pNgayTao };
-                //reportViewer1.LocalReport.SetParameters(param);
+                if (loai)
+                {
+                    reportDataSource.Value = DTAc.GetDoanhThu(Date_from.Value, Date_to.Value);
+                    reportViewer1.LocalReport.ReportEmbeddedResource = "QuanLyCafe.Report.ReportDoanhThuBanHang.rdlc";
+                }
+                else
+                {
+                    reportDataSource.Value = DTAc.GetDoanhThuThang(int.Parse(Date_from.Value.Month.ToString()), int.Parse(Date_from.Value.Year.ToString()), int.Parse(Date_to.Value.Month.ToString()), int.Parse(Date_to.Value.Year.ToString()));
+                    reportViewer1.LocalReport.ReportEmbeddedResource = "QuanLyCafe.Report.ReportDoanhThuBanHangThang.rdlc";
+                }
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(reportDataSource);
-                //reportViewer1.Show();
                 reportViewer1.RefreshReport();
-                //reportViewer1.Show();
 
             }
             catch (Exception ex)
@@ -133,6 +128,33 @@ namespace QuanLyCafe.MyForm
             }
             return filename;
 
+        }
+
+        private void btnLoai_Click(object sender, EventArgs e)
+        {
+            loai = !loai;
+            if (loai)
+            {
+                Date_from.Format = DateTimePickerFormat.Custom;
+                // Display the date as "Mon 27 Feb 2012".  
+                Date_from.CustomFormat = "dddd dd MMMM yyyy";
+                Date_to.Format = DateTimePickerFormat.Custom;
+                // Display the date as "Mon 27 Feb 2012".  
+                Date_to.CustomFormat = "dddd dd MMMM yyyy";
+                btnLoai.Text = "Tháng";
+                DataBind();
+            }
+            else
+            {
+                Date_from.Format = DateTimePickerFormat.Custom;
+                // Display the date as "Mon 27 Feb 2012".  
+                Date_from.CustomFormat = "MMMM yyyy";
+                Date_to.Format = DateTimePickerFormat.Custom;
+                // Display the date as "Mon 27 Feb 2012".  
+                Date_to.CustomFormat = "MMMM yyyy";
+                btnLoai.Text = "Ngày";
+                DataBind();
+            }
         }
     }
 }

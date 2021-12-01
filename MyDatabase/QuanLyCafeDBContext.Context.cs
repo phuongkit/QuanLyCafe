@@ -21,7 +21,7 @@ namespace QuanLyCafe.MyDatabase
             : base(connectionString)
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -40,16 +40,6 @@ namespace QuanLyCafe.MyDatabase
         public virtual DbSet<ThucDon> ThucDons { get; set; }
         public virtual DbSet<BaoCaoBanHang> BaoCaoBanHangs { get; set; }
         public virtual DbSet<BaoCaoNhapHang> BaoCaoNhapHangs { get; set; }
-        public virtual DbSet<ChiTietBanHang> ChiTietBanHangs { get; set; }
-        public virtual DbSet<ChiTietNhapHang> ChiTietNhapHangs { get; set; }
-        public virtual DbSet<TimKiemNhanVien> TimKiemNhanViens { get; set; }
-        public virtual DbSet<v_Ban> v_Ban { get; set; }
-        public virtual DbSet<v_ChiTietHoaDonBanHang> v_ChiTietHoaDonBanHang { get; set; }
-        public virtual DbSet<v_ChiTietHoaDonNhapHang> v_ChiTietHoaDonNhapHang { get; set; }
-        public virtual DbSet<v_HoaDonBanHang> v_HoaDonBanHang { get; set; }
-        public virtual DbSet<v_HoaDonNhapHang> v_HoaDonNhapHang { get; set; }
-        public virtual DbSet<v_KhoHang> v_KhoHang { get; set; }
-        public virtual DbSet<v_ThucDon> v_ThucDon { get; set; }
     
         [DbFunction("QuanLyCafeEntities", "f_ChiTietHoaDonBanHang")]
         public virtual IQueryable<f_ChiTietHoaDonBanHang_Result> f_ChiTietHoaDonBanHang(string iDHoaDonBH)
@@ -103,6 +93,28 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_DoanhThuNgay_NhapHang_Result>("[QuanLyCafeEntities].[f_DoanhThuNgay_NhapHang](@date)", dateParameter);
+        }
+    
+        [DbFunction("QuanLyCafeEntities", "f_DoanhThuThang")]
+        public virtual IQueryable<f_DoanhThuThang_Result> f_DoanhThuThang(Nullable<int> monthBegin, Nullable<int> yearBegin, Nullable<int> monthEnd, Nullable<int> yearEnd)
+        {
+            var monthBeginParameter = monthBegin.HasValue ?
+                new ObjectParameter("monthBegin", monthBegin) :
+                new ObjectParameter("monthBegin", typeof(int));
+    
+            var yearBeginParameter = yearBegin.HasValue ?
+                new ObjectParameter("yearBegin", yearBegin) :
+                new ObjectParameter("yearBegin", typeof(int));
+    
+            var monthEndParameter = monthEnd.HasValue ?
+                new ObjectParameter("monthEnd", monthEnd) :
+                new ObjectParameter("monthEnd", typeof(int));
+    
+            var yearEndParameter = yearEnd.HasValue ?
+                new ObjectParameter("yearEnd", yearEnd) :
+                new ObjectParameter("yearEnd", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_DoanhThuThang_Result>("[QuanLyCafeEntities].[f_DoanhThuThang](@monthBegin, @yearBegin, @monthEnd, @yearEnd)", monthBeginParameter, yearBeginParameter, monthEndParameter, yearEndParameter);
         }
     
         [DbFunction("QuanLyCafeEntities", "f_KiemTraLoGin")]

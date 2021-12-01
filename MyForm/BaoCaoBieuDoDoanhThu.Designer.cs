@@ -37,6 +37,7 @@ namespace QuanLyCafe.MyForm
             this.Date_from = new System.Windows.Forms.DateTimePicker();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
+            this.btnLoai = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -120,11 +121,22 @@ namespace QuanLyCafe.MyForm
             this.btnXemChiTiet.UseVisualStyleBackColor = true;
             this.btnXemChiTiet.Click += new System.EventHandler(this.btnXemChiTiet_Click);
             // 
+            // btnLoai
+            // 
+            this.btnLoai.Location = new System.Drawing.Point(737, 15);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Size = new System.Drawing.Size(119, 73);
+            this.btnLoai.TabIndex = 23;
+            this.btnLoai.Text = "Ngày";
+            this.btnLoai.UseVisualStyleBackColor = true;
+            this.btnLoai.Click += new System.EventHandler(this.btnLoai_Click);
+            // 
             // BaoCaoBieuDoDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.btnLoai);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnXemChiTiet);
             this.Controls.Add(this.label3);
@@ -151,5 +163,6 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.DateTimePicker Date_from;
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Button btnXemChiTiet;
+        private System.Windows.Forms.Button btnLoai;
     }
 }

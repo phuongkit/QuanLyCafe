@@ -120,16 +120,10 @@
     <Compile Include="MyDatabase\BaoCaoNhapHang.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="MyDatabase\ChiTietBanHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="MyDatabase\ChiTietHoaDonBanHang.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\ChiTietHoaDonNhapHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\ChiTietNhapHang.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_ChiTietHoaDonBanHang_Result.cs">
@@ -142,6 +136,9 @@
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_DoanhThuNgay_NhapHang_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_DoanhThuThang_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_DoanhThu_Result.cs">
@@ -217,30 +214,6 @@
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\ThucDon.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\TimKiemNhanVien.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_Ban.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_ChiTietHoaDonBanHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_ChiTietHoaDonNhapHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_HoaDonBanHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_HoaDonNhapHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_KhoHang.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\v_ThucDon.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyForm\BaoCaoBieuDoDoanhThu.cs">
@@ -402,6 +375,7 @@
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportDoanhThuBanHang.rdlc" />
+    <EmbeddedResource Include="Report\ReportDoanhThuBanHangThang.rdlc" />
     <EmbeddedResource Include="Report\ReportHoaDonNhapHang.rdlc" />
     <EmbeddedResource Include="Report\ReportHoaDonBanHang.rdlc" />
     <EntityDeploy Include="MyDatabase\QuanLyCafeDBContext.edmx">
@@ -415,6 +389,7 @@
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.ChiTietHoaDonNhapHang.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonBanHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_ChiTietHoaDonNhapHang_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThuThang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_DoanhThu_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonBanHang_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_LayCTHoaDonNhapHang_Result.datasource" />
@@ -464,6 +439,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-export-excel-48.png" />
+    <None Include="Resources\message_send_email_icon_191636.png" />
+    <None Include="Resources\add.bmp" />
+    <None Include="Resources\chart_bar.png" />
     <Content Include="MyDatabase\QuanLyCafeDBContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
@@ -474,10 +453,6 @@
       <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
       <LastGenOutput>QuanLyCafeDBContext.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\icons8-export-excel-48.png" />
-    <None Include="Resources\message_send_email_icon_191636.png" />
-    <None Include="Resources\add.bmp" />
-    <None Include="Resources\chart_bar.png" />
     <Content Include="Resources\printer-icon-simple-style-3219886.jpg" />
     <None Include="Resources\Send_mail.jpg" />
     <None Include="Resources\printer.bmp" />

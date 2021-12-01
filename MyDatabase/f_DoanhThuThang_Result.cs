@@ -10,14 +10,12 @@
 namespace QuanLyCafe.MyDatabase
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class v_HoaDonBanHang
+    public partial class f_DoanhThuThang_Result
     {
-        public string ID { get; set; }
-        public string IDnhanVien { get; set; }
-        public string IDban { get; set; }
-        public System.DateTime Ngaytao { get; set; }
-        public bool DaThanhToan { get; set; }
+        public string ngay { get; set; }
+        public Nullable<int> tienBanHang { get; set; }
+        public Nullable<int> tienNhapHang { get; set; }
+        public Nullable<int> thunhap { get; set; }
     }
 }
