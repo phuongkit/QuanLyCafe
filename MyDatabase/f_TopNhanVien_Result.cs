@@ -11,9 +11,9 @@ namespace QuanLyCafe.MyDatabase
 {
     using System;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class f_TopNhanVien_Result
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string TenNhanVien { get; set; }
+        public Nullable<float> SoLuong { get; set; }
     }
 }

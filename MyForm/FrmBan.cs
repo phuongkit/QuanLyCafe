@@ -16,7 +16,6 @@ namespace QuanLyCafe.MyForm
         FrmManHinhChinh frmMHC;
         DBaccess.BanAccess BAc;
         string connectionString;
-        List<Trangthai> trangthai;
         bool Them;
         public FrmBan(FrmManHinhChinh frmMHC, string connectionString)
         {
@@ -32,34 +31,32 @@ namespace QuanLyCafe.MyForm
             {
                 frmMHC.setStatusMenuStrip(true);
             }
-            trangthai = new List<Trangthai>()
+            List<int> SoLuongs = new List<int>()
             {
-                new Trangthai(){Type=true,Name="Có người" },
-                new Trangthai(){Type=false,Name="Trống"}
+                1, 2, 4
             };
             DGVBan.DataSource = BAc.Get();
 
-            (DGVBan.Columns["TrangTha"] as DataGridViewComboBoxColumn).DataSource = trangthai;
-            (DGVBan.Columns["TrangTha"] as DataGridViewComboBoxColumn).DisplayMember = "Name";
-            (DGVBan.Columns["TrangTha"] as DataGridViewComboBoxColumn).ValueMember = "Type";
+            (DGVBan.Columns["MaxSoLuong"] as DataGridViewComboBoxColumn).DataSource = SoLuongs;
 
-            cbbTrangThai.DataSource = trangthai;
-            cbbTrangThai.DisplayMember = "Name";
-            cbbTrangThai.ValueMember = "Type";
+            cbbMaxSL.DataSource = SoLuongs;
 
             txtID.DataBindings.Clear();
             txtTenBan.DataBindings.Clear();
-            cbbTrangThai.DataBindings.Clear();
+            nmSL.DataBindings.Clear();
+            cbbMaxSL.DataBindings.Clear();
             txtID.DataBindings.Add("Text", DGVBan.DataSource, "ID", true, DataSourceUpdateMode.Never);
             txtTenBan.DataBindings.Add("Text", DGVBan.DataSource, "TenBan", true, DataSourceUpdateMode.Never);
-            cbbTrangThai.DataBindings.Add("SelectedValue", DGVBan.DataSource, "TrangThai", true, DataSourceUpdateMode.Never);
+            nmSL.DataBindings.Add("Value", DGVBan.DataSource, "SoLuong", true, DataSourceUpdateMode.Never);
+            cbbMaxSL.DataBindings.Add("SelectedValue", DGVBan.DataSource, "MaxSoLuong", true, DataSourceUpdateMode.Never);
             btnSave.Enabled = btnCancel.Enabled = false;
             btnCreate.Enabled = btnEdit.Enabled = btnDelete.Enabled = true;
-            txtID.Enabled = txtTenBan.Enabled = cbbTrangThai.Enabled = false;
+            txtID.Enabled = txtTenBan.Enabled = nmSL.Enabled = cbbMaxSL.Enabled = false;
         }
         private void clear()
         {
             txtID.Text = txtTenBan.Text = "";
+            nmSL.Value=0;
         }
         private void FormBan_Load(object sender, EventArgs e)
         {
@@ -76,8 +73,7 @@ namespace QuanLyCafe.MyForm
             btnDelete.Enabled = false;
             btnSave.Enabled = true;
             btnCancel.Enabled = true;
-            txtID.Enabled = txtTenBan.Enabled = true;
-            cbbTrangThai.DataBindings.Clear();
+            txtID.Enabled = txtTenBan.Enabled = cbbMaxSL.Enabled = true;
             clear();
             txtID.Focus();
         }
@@ -91,12 +87,8 @@ namespace QuanLyCafe.MyForm
                 {
                     b.ID = txtID.Text.Trim();
                     b.TenBan = txtTenBan.Text.Trim();
-                    if (bool.Parse(cbbTrangThai.SelectedValue.ToString()))
-                    {
-                        MessageBox.Show("Bạn đang tạo trạng thái là trống! Không thể thay đổi");
-                        dataBiding();
-                        return;
-                    }
+                    b.SoLuong = 0;
+                    b.MaxSoLuong = int.Parse(cbbMaxSL.SelectedValue.ToString());
                     BAc.Them(b);
                     MessageBox.Show("Đã thêm thành công");
                     dataBiding();
@@ -110,27 +102,26 @@ namespace QuanLyCafe.MyForm
             {
                 try
                 {
-                    b = BAc.getBan(txtID.Text.Trim());
+                    string ID = txtID.Text.Trim();
+                    b = BAc.getBan(ID);
                     b.TenBan = txtTenBan.Text.Trim();
-                    bool newTrangThai = bool.Parse(cbbTrangThai.SelectedValue.ToString());
-                    bool oldTrangThai = b.TrangThai;
-                    bool IsBanTrong = BAc.IsBanTrong(b.ID);
-                    if (newTrangThai != oldTrangThai)
+                    int oldSL = b.SoLuong, newSL = int.Parse(nmSL.Value.ToString());
+                    int oldMaxSL = b.MaxSoLuong, newMaxSL = int.Parse(cbbMaxSL.SelectedValue.ToString());
+                    if (oldSL != newSL || oldMaxSL != newMaxSL)
                     {
-                        if (newTrangThai == true && IsBanTrong == false)
+                        int curSL = BAc.getSLHoaDonChuaTT(ID);
+                        if (newSL > -1 && newSL == curSL && newSL <= newMaxSL)
                         {
-                            MessageBox.Show("Trạng thái mới không thể được cập nhật! Chưa có hóa đơn bán hàng chưa thanh toán nào trên bàn này!");
-                            dataBiding();
-                            return;
+                            b.SoLuong = newSL;
+                            b.MaxSoLuong = newMaxSL;
                         }
-                        else if (newTrangThai == false && IsBanTrong == true)
+                        else
                         {
-                            MessageBox.Show("Trạng thái mới không thể được cập nhật! Đã tồn tại hóa đơn bán hàng chưa thanh toán trên bàn này!");
+                            MessageBox.Show("Số lượng mới không thể được cập nhật! Vui lòng thử lại sau!");
                             dataBiding();
                             return;
                         }
                     }
-                    b.TrangThai = newTrangThai;
                     BAc.Sua(b);
                     MessageBox.Show("Đã sửa thành công");
                     dataBiding();
@@ -158,7 +149,7 @@ namespace QuanLyCafe.MyForm
             btnSave.Enabled = true;
             btnCancel.Enabled = true;
             txtID.Enabled = false;
-            txtTenBan.Enabled = cbbTrangThai.Enabled = true;
+            txtTenBan.Enabled = cbbMaxSL.Enabled = true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -167,8 +158,8 @@ namespace QuanLyCafe.MyForm
             {
                 MyDatabase.Ban b = new MyDatabase.Ban();
                 b = BAc.getBan(txtID.Text.Trim());
-                bool IsBanTrong = BAc.IsBanTrong(b.ID);
-                if (IsBanTrong == true)
+                bool IsBanTrong = BAc.getSLHoaDonChuaTT(b.ID) == 0 ? true : false;
+                if (!IsBanTrong)
                 {
                     MessageBox.Show("Không thể xóa bàn này! Đã tồn tại hóa đơn bán hàng chưa thanh toán trên bàn này!");
                     dataBiding();
@@ -184,11 +175,6 @@ namespace QuanLyCafe.MyForm
         {
 
         }
-        public class Trangthai
-        {
-            public bool Type { get; set; }
-            public string Name { get; set; }
-        }
 
         private void FrmBan_VisibleChanged(object sender, EventArgs e)
         {
@@ -198,7 +184,7 @@ namespace QuanLyCafe.MyForm
                 dataBiding();
                 btnSave.Enabled = false;
                 btnCancel.Enabled = false;
-                txtID.Enabled = txtTenBan.Enabled = cbbTrangThai.Enabled = false;
+                txtID.Enabled = txtTenBan.Enabled = cbbMaxSL.Enabled = false;
             }
         }
 
@@ -257,6 +243,11 @@ namespace QuanLyCafe.MyForm
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

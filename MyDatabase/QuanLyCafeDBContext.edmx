@@ -11,7 +11,19 @@
           </Key>
           <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="TenBan" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="MaxSoLuong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BangLuong">
+          <Key>
+            <PropertyRef Name="IDnhanVien" />
+            <PropertyRef Name="Thang" />
+            <PropertyRef Name="Nam" />
+          </Key>
+          <Property Name="IDnhanVien" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Thang" Type="int" Nullable="false" />
+          <Property Name="Nam" Type="int" Nullable="false" />
+          <Property Name="Luong" Type="real" />
         </EntityType>
         <EntityType Name="ChiTietHoaDonBanHang">
           <Key>
@@ -37,6 +49,7 @@
           </Key>
           <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="IDnhanVien" Type="nvarchar" MaxLength="10" />
+          <Property Name="IDthanhVien" Type="nvarchar" MaxLength="10" />
           <Property Name="IDban" Type="nvarchar" MaxLength="10" />
           <Property Name="Ngaytao" Type="datetime" Nullable="false" />
           <Property Name="DaThanhToan" Type="bit" Nullable="false" />
@@ -87,16 +100,19 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
           <Property Name="NgayVaoLam" Type="date" Nullable="false" />
           <Property Name="NgayNghiViec" Type="date" />
+          <Property Name="LuongCoBan" Type="real" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="ThanhVien">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CMND" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+          <Property Name="NgayTao" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="ThucDon">
           <Key>
@@ -132,7 +148,21 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="Ngaytao" Type="datetime" Nullable="false" />
           <Property Name="ThanhTien" Type="real" />
         </EntityType>
-        <Association Name="FK__ChiTietHo__IDhan__571DF1D5">
+        <Association Name="FK__BangLuong__IDnha__30F848ED">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BangLuong" Type="Self.BangLuong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BangLuong">
+              <PropertyRef Name="IDnhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHo__IDhan__5629CD9C">
           <End Role="KhoHang" Type="Self.KhoHang" Multiplicity="1" />
           <End Role="ChiTietHoaDonNhapHang" Type="Self.ChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +174,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__5535A963">
+        <Association Name="FK__ChiTietHo__IDhoa__4BAC3F29">
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -158,7 +188,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__5812160E">
+        <Association Name="FK__ChiTietHo__IDhoa__5535A963">
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -172,7 +202,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDthu__5629CD9C">
+        <Association Name="FK__ChiTietHo__IDthu__4CA06362">
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
           <End Role="ChiTietHoaDonBanHang" Type="Self.ChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +214,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__IDban__59063A47">
+        <Association Name="FK__HoaDonBan__IDban__44FF419A">
           <End Role="Ban" Type="Self.Ban" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +226,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__IDnha__59FA5E80">
+        <Association Name="FK__HoaDonBan__IDnha__45F365D3">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +238,19 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__IDnha__5AEE82B9">
+        <Association Name="FK__HoaDonBan__IDtha__46E78A0C">
+          <End Role="ThanhVien" Type="Self.ThanhVien" Multiplicity="0..1" />
+          <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoaDonBanHang">
+              <PropertyRef Name="IDthanhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNha__IDnha__5070F446">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +262,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LoginNhan__IDNha__5BE2A6F2">
+        <Association Name="FK__LoginNhan__IDNha__403A8C7D">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -234,7 +276,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThucDon__IDloaiT__5CD6CB2B">
+        <Association Name="FK__ThucDon__IDloaiT__398D8EEE">
           <End Role="LoaiThucDon" Type="Self.LoaiThucDon" Multiplicity="0..1" />
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -384,6 +426,32 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IDNhanVien" Type="nvarchar" MaxLength="10" />
+                <Property Name="SoLuong" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IDThanhVien" Type="nvarchar" MaxLength="10" />
+                <Property Name="SoLuong" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="f_LaySoLuongThucDonTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="day" Type="int" Mode="In" />
           <Parameter Name="month" Type="int" Mode="In" />
@@ -393,6 +461,20 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               <RowType>
                 <Property Name="IDThucDon" Type="nvarchar" MaxLength="10" />
                 <Property Name="SoLuong" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_LayThanhVienTheoBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDban" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID" Type="nvarchar" MaxLength="10" />
+                <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+                <Property Name="SDT" Type="nvarchar" MaxLength="10" />
+                <Property Name="Email" Type="nvarchar" MaxLength="50" />
+                <Property Name="IDHoaDon" Type="nvarchar" MaxLength="10" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -453,6 +535,32 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_TopNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TenNhanVien" Type="nvarchar" MaxLength="50" />
+                <Property Name="SoLuong" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_TopThanhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TenThanhVien" Type="nvarchar" MaxLength="50" />
+                <Property Name="SoLuong" Type="real" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="f_TopThucDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="day" Type="int" Mode="In" />
           <Parameter Name="month" Type="int" Mode="In" />
@@ -466,21 +574,13 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
         <Function Name="sp_Delete_Ban" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Delete_BangLuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDnhanVien" Type="nvarchar" Mode="In" />
+          <Parameter Name="Thang" Type="int" Mode="In" />
+          <Parameter Name="Nam" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_Delete_ChiTietHoaDonBanHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDhoaDonBH" Type="nvarchar" Mode="In" />
@@ -505,24 +605,22 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
         <Function Name="sp_Delete_NhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_Delete_ThucDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="sp_Delete_ThanhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
+        <Function Name="sp_Delete_ThucDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_Insert_Ban" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
           <Parameter Name="TenBan" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaxSoLuong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_BangLuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Thang" Type="int" Mode="In" />
+          <Parameter Name="Nam" Type="int" Mode="In" />
+          <Parameter Name="Luong" Type="real" Mode="In" />
         </Function>
         <Function Name="sp_Insert_ChiTietHoaDonBanHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDhoaDonBH" Type="nvarchar" Mode="In" />
@@ -537,6 +635,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
         <Function Name="sp_Insert_HoaDonBanHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
           <Parameter Name="IDnhanVien" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDthanhVien" Type="nvarchar" Mode="In" />
           <Parameter Name="IDban" Type="nvarchar" Mode="In" />
           <Parameter Name="Ngaytao" Type="datetime" Mode="In" />
         </Function>
@@ -567,6 +666,16 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
           <Parameter Name="NgayVaoLam" Type="date" Mode="In" />
           <Parameter Name="NgayNghiViec" Type="date" Mode="In" />
+          <Parameter Name="LuongCoBan" Type="real" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_ThanhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="SDT" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="CMND" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayTao" Type="date" Mode="In" />
         </Function>
         <Function Name="sp_Insert_ThucDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
@@ -575,15 +684,17 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Parameter Name="DonGia" Type="real" Mode="In" />
           <Parameter Name="IDloaiThucDon" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="sp_Update_Ban" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
           <Parameter Name="TenBan" Type="nvarchar" Mode="In" />
-          <Parameter Name="TrangThai" Type="bit" Mode="In" />
+          <Parameter Name="SoLuong" Type="int" Mode="In" />
+          <Parameter Name="MaxSoLuong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_BangLuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDnhanVien" Type="nvarchar" Mode="In" />
+          <Parameter Name="Thang" Type="int" Mode="In" />
+          <Parameter Name="Nam" Type="int" Mode="In" />
+          <Parameter Name="Luong" Type="real" Mode="In" />
         </Function>
         <Function Name="sp_Update_ChiTietHoaDonBanHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDhoaDonBH" Type="nvarchar" Mode="In" />
@@ -598,6 +709,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
         <Function Name="sp_Update_HoaDonBanHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
           <Parameter Name="IDnhanVien" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDthanhVien" Type="nvarchar" Mode="In" />
           <Parameter Name="IDban" Type="nvarchar" Mode="In" />
           <Parameter Name="Ngaytao" Type="datetime" Mode="In" />
           <Parameter Name="DaThanhToan" Type="bit" Mode="In" />
@@ -629,6 +741,16 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
           <Parameter Name="NgayVaoLam" Type="date" Mode="In" />
           <Parameter Name="NgayNghiViec" Type="date" Mode="In" />
+          <Parameter Name="LuongCoBan" Type="real" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_ThanhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="SDT" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="CMND" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayTao" Type="date" Mode="In" />
         </Function>
         <Function Name="sp_Update_ThucDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
@@ -641,9 +763,9 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
           <Parameter Name="DaThanhToan" Type="bit" Mode="In" />
         </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="QuanLyCafeModelStoreContainer">
           <EntitySet Name="Ban" EntityType="Self.Ban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BangLuong" EntityType="Self.BangLuong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDonBanHang" EntityType="Self.ChiTietHoaDonBanHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDonNhapHang" EntityType="Self.ChiTietHoaDonNhapHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDonBanHang" EntityType="Self.HoaDonBanHang" Schema="dbo" store:Type="Tables" />
@@ -652,7 +774,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <EntitySet Name="LoaiThucDon" EntityType="Self.LoaiThucDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginNhanVien" EntityType="Self.LoginNhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThanhVien" EntityType="Self.ThanhVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThucDon" EntityType="Self.ThucDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoCaoBanHang" EntityType="Self.BaoCaoBanHang" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -670,39 +792,47 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
     [BaoCaoNhapHang].[ThanhTien] AS [ThanhTien]
     FROM [dbo].[BaoCaoNhapHang] AS [BaoCaoNhapHang]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__ChiTietHo__IDhan__571DF1D5" Association="Self.FK__ChiTietHo__IDhan__571DF1D5">
+          <AssociationSet Name="FK__BangLuong__IDnha__30F848ED" Association="Self.FK__BangLuong__IDnha__30F848ED">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="BangLuong" EntitySet="BangLuong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHo__IDhan__5629CD9C" Association="Self.FK__ChiTietHo__IDhan__5629CD9C">
             <End Role="KhoHang" EntitySet="KhoHang" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__5535A963" Association="Self.FK__ChiTietHo__IDhoa__5535A963">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__4BAC3F29" Association="Self.FK__ChiTietHo__IDhoa__4BAC3F29">
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__5812160E" Association="Self.FK__ChiTietHo__IDhoa__5812160E">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__5535A963" Association="Self.FK__ChiTietHo__IDhoa__5535A963">
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHang" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDthu__5629CD9C" Association="Self.FK__ChiTietHo__IDthu__5629CD9C">
+          <AssociationSet Name="FK__ChiTietHo__IDthu__4CA06362" Association="Self.FK__ChiTietHo__IDthu__4CA06362">
             <End Role="ThucDon" EntitySet="ThucDon" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__IDban__59063A47" Association="Self.FK__HoaDonBan__IDban__59063A47">
+          <AssociationSet Name="FK__HoaDonBan__IDban__44FF419A" Association="Self.FK__HoaDonBan__IDban__44FF419A">
             <End Role="Ban" EntitySet="Ban" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__IDnha__59FA5E80" Association="Self.FK__HoaDonBan__IDnha__59FA5E80">
+          <AssociationSet Name="FK__HoaDonBan__IDnha__45F365D3" Association="Self.FK__HoaDonBan__IDnha__45F365D3">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__IDnha__5AEE82B9" Association="Self.FK__HoaDonNha__IDnha__5AEE82B9">
+          <AssociationSet Name="FK__HoaDonBan__IDtha__46E78A0C" Association="Self.FK__HoaDonBan__IDtha__46E78A0C">
+            <End Role="ThanhVien" EntitySet="ThanhVien" />
+            <End Role="HoaDonBanHang" EntitySet="HoaDonBanHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNha__IDnha__5070F446" Association="Self.FK__HoaDonNha__IDnha__5070F446">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__LoginNhan__IDNha__5BE2A6F2" Association="Self.FK__LoginNhan__IDNha__5BE2A6F2">
+          <AssociationSet Name="FK__LoginNhan__IDNha__403A8C7D" Association="Self.FK__LoginNhan__IDNha__403A8C7D">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="LoginNhanVien" EntitySet="LoginNhanVien" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThucDon__IDloaiT__5CD6CB2B" Association="Self.FK__ThucDon__IDloaiT__5CD6CB2B">
+          <AssociationSet Name="FK__ThucDon__IDloaiT__398D8EEE" Association="Self.FK__ThucDon__IDloaiT__398D8EEE">
             <End Role="LoaiThucDon" EntitySet="LoaiThucDon" />
             <End Role="ThucDon" EntitySet="ThucDon" />
           </AssociationSet>
@@ -767,9 +897,24 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="DonViTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="DonGia" Type="Single" />
         </ComplexType>
+        <ComplexType Name="f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay_Result">
+          <Property Name="IDNhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Single" />
+        </ComplexType>
+        <ComplexType Name="f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay_Result">
+          <Property Name="IDThanhVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Single" />
+        </ComplexType>
         <ComplexType Name="f_LaySoLuongThucDonTheoNgay_Result">
           <Property Name="IDThucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SoLuong" Type="Single" />
+        </ComplexType>
+        <ComplexType Name="f_LayThanhVienTheoBan_Result">
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDHoaDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </ComplexType>
         <ComplexType Name="f_LayThongTinNhanVien_Result">
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -796,6 +941,14 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="TongGia" Type="Single" />
         </ComplexType>
+        <ComplexType Name="f_TopNhanVien_Result">
+          <Property Name="TenNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Single" />
+        </ComplexType>
+        <ComplexType Name="f_TopThanhVien_Result">
+          <Property Name="TenThanhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Single" />
+        </ComplexType>
         <ComplexType Name="f_TopThucDon_Result">
           <Property Name="TenThucDon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoLuong" Type="Single" />
@@ -806,8 +959,21 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenBan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDban__59063A47" FromRole="Ban" ToRole="HoaDonBanHang" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="MaxSoLuong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDban__44FF419A" FromRole="Ban" ToRole="HoaDonBanHang" />
+        </EntityType>
+        <EntityType Name="BangLuong">
+          <Key>
+            <PropertyRef Name="IDnhanVien" />
+            <PropertyRef Name="Thang" />
+            <PropertyRef Name="Nam" />
+          </Key>
+          <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Thang" Type="Int32" Nullable="false" />
+          <Property Name="Nam" Type="Int32" Nullable="false" />
+          <Property Name="Luong" Type="Single" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__BangLuong__IDnha__30F848ED" FromRole="BangLuong" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="ChiTietHoaDonBanHang">
           <Key>
@@ -817,8 +983,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="IDhoaDonBH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDthucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HoaDonBanHang" Relationship="Self.FK__ChiTietHo__IDhoa__5535A963" FromRole="ChiTietHoaDonBanHang" ToRole="HoaDonBanHang" />
-          <NavigationProperty Name="ThucDon" Relationship="Self.FK__ChiTietHo__IDthu__5629CD9C" FromRole="ChiTietHoaDonBanHang" ToRole="ThucDon" />
+          <NavigationProperty Name="HoaDonBanHang" Relationship="Self.FK__ChiTietHo__IDhoa__4BAC3F29" FromRole="ChiTietHoaDonBanHang" ToRole="HoaDonBanHang" />
+          <NavigationProperty Name="ThucDon" Relationship="Self.FK__ChiTietHo__IDthu__4CA06362" FromRole="ChiTietHoaDonBanHang" ToRole="ThucDon" />
         </EntityType>
         <EntityType Name="ChiTietHoaDonNhapHang">
           <Key>
@@ -828,8 +994,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="IDhoaDonNH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDhang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="KhoHang" Relationship="Self.FK__ChiTietHo__IDhan__571DF1D5" FromRole="ChiTietHoaDonNhapHang" ToRole="KhoHang" />
-          <NavigationProperty Name="HoaDonNhapHang" Relationship="Self.FK__ChiTietHo__IDhoa__5812160E" FromRole="ChiTietHoaDonNhapHang" ToRole="HoaDonNhapHang" />
+          <NavigationProperty Name="KhoHang" Relationship="Self.FK__ChiTietHo__IDhan__5629CD9C" FromRole="ChiTietHoaDonNhapHang" ToRole="KhoHang" />
+          <NavigationProperty Name="HoaDonNhapHang" Relationship="Self.FK__ChiTietHo__IDhoa__5535A963" FromRole="ChiTietHoaDonNhapHang" ToRole="HoaDonNhapHang" />
         </EntityType>
         <EntityType Name="HoaDonBanHang">
           <Key>
@@ -837,12 +1003,14 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IDthanhVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="IDban" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DaThanhToan" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDonBan__IDban__59063A47" FromRole="HoaDonBanHang" ToRole="Ban" />
-          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDhoa__5535A963" FromRole="HoaDonBanHang" ToRole="ChiTietHoaDonBanHang" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__IDnha__59FA5E80" FromRole="HoaDonBanHang" ToRole="NhanVien" />
+          <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDonBan__IDban__44FF419A" FromRole="HoaDonBanHang" ToRole="Ban" />
+          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDhoa__4BAC3F29" FromRole="HoaDonBanHang" ToRole="ChiTietHoaDonBanHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__IDnha__45F365D3" FromRole="HoaDonBanHang" ToRole="NhanVien" />
+          <NavigationProperty Name="ThanhVien" Relationship="Self.FK__HoaDonBan__IDtha__46E78A0C" FromRole="HoaDonBanHang" ToRole="ThanhVien" />
         </EntityType>
         <EntityType Name="HoaDonNhapHang">
           <Key>
@@ -851,8 +1019,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDnhanVien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhoa__5812160E" FromRole="HoaDonNhapHang" ToRole="ChiTietHoaDonNhapHang" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNha__IDnha__5AEE82B9" FromRole="HoaDonNhapHang" ToRole="NhanVien" />
+          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhoa__5535A963" FromRole="HoaDonNhapHang" ToRole="ChiTietHoaDonNhapHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNha__IDnha__5070F446" FromRole="HoaDonNhapHang" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="KhoHang">
           <Key>
@@ -863,7 +1031,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="DonViTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
           <Property Name="DonGia" Type="Single" Nullable="false" />
-          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhan__571DF1D5" FromRole="KhoHang" ToRole="ChiTietHoaDonNhapHang" />
+          <NavigationProperty Name="ChiTietHoaDonNhapHangs" Relationship="Self.FK__ChiTietHo__IDhan__5629CD9C" FromRole="KhoHang" ToRole="ChiTietHoaDonNhapHang" />
         </EntityType>
         <EntityType Name="LoaiThucDon">
           <Key>
@@ -871,7 +1039,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenloaiThucDon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IDloaiT__5CD6CB2B" FromRole="LoaiThucDon" ToRole="ThucDon" />
+          <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IDloaiT__398D8EEE" FromRole="LoaiThucDon" ToRole="ThucDon" />
         </EntityType>
         <EntityType Name="LoginNhanVien">
           <Key>
@@ -882,7 +1050,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Permission" Type="Boolean" Nullable="false" />
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__LoginNhan__IDNha__5BE2A6F2" FromRole="LoginNhanVien" ToRole="NhanVien" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__LoginNhan__IDNha__403A8C7D" FromRole="LoginNhanVien" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -895,19 +1063,24 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NgayVaoLam" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NgayNghiViec" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDnha__59FA5E80" FromRole="NhanVien" ToRole="HoaDonBanHang" />
-          <NavigationProperty Name="HoaDonNhapHangs" Relationship="Self.FK__HoaDonNha__IDnha__5AEE82B9" FromRole="NhanVien" ToRole="HoaDonNhapHang" />
-          <NavigationProperty Name="LoginNhanViens" Relationship="Self.FK__LoginNhan__IDNha__5BE2A6F2" FromRole="NhanVien" ToRole="LoginNhanVien" />
+          <Property Name="LuongCoBan" Type="Single" Nullable="false" />
+          <NavigationProperty Name="BangLuongs" Relationship="Self.FK__BangLuong__IDnha__30F848ED" FromRole="NhanVien" ToRole="BangLuong" />
+          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDnha__45F365D3" FromRole="NhanVien" ToRole="HoaDonBanHang" />
+          <NavigationProperty Name="HoaDonNhapHangs" Relationship="Self.FK__HoaDonNha__IDnha__5070F446" FromRole="NhanVien" ToRole="HoaDonNhapHang" />
+          <NavigationProperty Name="LoginNhanViens" Relationship="Self.FK__LoginNhan__IDNha__403A8C7D" FromRole="NhanVien" ToRole="LoginNhanVien" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="ThanhVien">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CMND" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HoaDonBanHangs" Relationship="Self.FK__HoaDonBan__IDtha__46E78A0C" FromRole="ThanhVien" ToRole="HoaDonBanHang" />
         </EntityType>
         <EntityType Name="ThucDon">
           <Key>
@@ -918,8 +1091,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="DonViTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DonGia" Type="Single" Nullable="false" />
           <Property Name="IDloaiThucDon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDthu__5629CD9C" FromRole="ThucDon" ToRole="ChiTietHoaDonBanHang" />
-          <NavigationProperty Name="LoaiThucDon" Relationship="Self.FK__ThucDon__IDloaiT__5CD6CB2B" FromRole="ThucDon" ToRole="LoaiThucDon" />
+          <NavigationProperty Name="ChiTietHoaDonBanHangs" Relationship="Self.FK__ChiTietHo__IDthu__4CA06362" FromRole="ThucDon" ToRole="ChiTietHoaDonBanHang" />
+          <NavigationProperty Name="LoaiThucDon" Relationship="Self.FK__ThucDon__IDloaiT__398D8EEE" FromRole="ThucDon" ToRole="LoaiThucDon" />
         </EntityType>
         <EntityType Name="BaoCaoBanHang">
           <Key>
@@ -941,7 +1114,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ThanhTien" Type="Single" />
         </EntityType>
-        <Association Name="FK__HoaDonBan__IDban__59063A47">
+        <Association Name="FK__HoaDonBan__IDban__44FF419A">
           <End Role="Ban" Type="Self.Ban" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -953,7 +1126,21 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__5535A963">
+        <Association Name="FK__BangLuong__IDnha__30F848ED">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BangLuong" Type="Self.BangLuong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BangLuong">
+              <PropertyRef Name="IDnhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHo__IDhoa__4BAC3F29">
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -967,7 +1154,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDthu__5629CD9C">
+        <Association Name="FK__ChiTietHo__IDthu__4CA06362">
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
           <End Role="ChiTietHoaDonBanHang" Type="Self.ChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -979,7 +1166,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhan__571DF1D5">
+        <Association Name="FK__ChiTietHo__IDhan__5629CD9C">
           <End Role="KhoHang" Type="Self.KhoHang" Multiplicity="1" />
           <End Role="ChiTietHoaDonNhapHang" Type="Self.ChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -991,7 +1178,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHo__IDhoa__5812160E">
+        <Association Name="FK__ChiTietHo__IDhoa__5535A963">
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1005,7 +1192,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__IDnha__59FA5E80">
+        <Association Name="FK__HoaDonBan__IDnha__45F365D3">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1017,7 +1204,19 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__IDnha__5AEE82B9">
+        <Association Name="FK__HoaDonBan__IDtha__46E78A0C">
+          <End Role="ThanhVien" Type="Self.ThanhVien" Multiplicity="0..1" />
+          <End Role="HoaDonBanHang" Type="Self.HoaDonBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoaDonBanHang">
+              <PropertyRef Name="IDthanhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNha__IDnha__5070F446">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhapHang" Type="Self.HoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1029,7 +1228,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThucDon__IDloaiT__5CD6CB2B">
+        <Association Name="FK__ThucDon__IDloaiT__398D8EEE">
           <End Role="LoaiThucDon" Type="Self.LoaiThucDon" Multiplicity="0..1" />
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1041,7 +1240,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LoginNhan__IDNha__5BE2A6F2">
+        <Association Name="FK__LoginNhan__IDNha__403A8C7D">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1057,6 +1256,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
         </Association>
         <EntityContainer Name="QuanLyCafeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bans" EntityType="Self.Ban" />
+          <EntitySet Name="BangLuongs" EntityType="Self.BangLuong" />
           <EntitySet Name="ChiTietHoaDonBanHangs" EntityType="Self.ChiTietHoaDonBanHang" />
           <EntitySet Name="ChiTietHoaDonNhapHangs" EntityType="Self.ChiTietHoaDonNhapHang" />
           <EntitySet Name="HoaDonBanHangs" EntityType="Self.HoaDonBanHang" />
@@ -1065,43 +1265,51 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <EntitySet Name="LoaiThucDons" EntityType="Self.LoaiThucDon" />
           <EntitySet Name="LoginNhanViens" EntityType="Self.LoginNhanVien" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="ThanhViens" EntityType="Self.ThanhVien" />
           <EntitySet Name="ThucDons" EntityType="Self.ThucDon" />
           <EntitySet Name="BaoCaoBanHangs" EntityType="Self.BaoCaoBanHang" />
           <EntitySet Name="BaoCaoNhapHangs" EntityType="Self.BaoCaoNhapHang" />
-          <AssociationSet Name="FK__HoaDonBan__IDban__59063A47" Association="Self.FK__HoaDonBan__IDban__59063A47">
+          <AssociationSet Name="FK__HoaDonBan__IDban__44FF419A" Association="Self.FK__HoaDonBan__IDban__44FF419A">
             <End Role="Ban" EntitySet="Bans" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__5535A963" Association="Self.FK__ChiTietHo__IDhoa__5535A963">
+          <AssociationSet Name="FK__BangLuong__IDnha__30F848ED" Association="Self.FK__BangLuong__IDnha__30F848ED">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="BangLuong" EntitySet="BangLuongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__4BAC3F29" Association="Self.FK__ChiTietHo__IDhoa__4BAC3F29">
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDthu__5629CD9C" Association="Self.FK__ChiTietHo__IDthu__5629CD9C">
+          <AssociationSet Name="FK__ChiTietHo__IDthu__4CA06362" Association="Self.FK__ChiTietHo__IDthu__4CA06362">
             <End Role="ThucDon" EntitySet="ThucDons" />
             <End Role="ChiTietHoaDonBanHang" EntitySet="ChiTietHoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhan__571DF1D5" Association="Self.FK__ChiTietHo__IDhan__571DF1D5">
+          <AssociationSet Name="FK__ChiTietHo__IDhan__5629CD9C" Association="Self.FK__ChiTietHo__IDhan__5629CD9C">
             <End Role="KhoHang" EntitySet="KhoHangs" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHo__IDhoa__5812160E" Association="Self.FK__ChiTietHo__IDhoa__5812160E">
+          <AssociationSet Name="FK__ChiTietHo__IDhoa__5535A963" Association="Self.FK__ChiTietHo__IDhoa__5535A963">
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHangs" />
             <End Role="ChiTietHoaDonNhapHang" EntitySet="ChiTietHoaDonNhapHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__IDnha__59FA5E80" Association="Self.FK__HoaDonBan__IDnha__59FA5E80">
+          <AssociationSet Name="FK__HoaDonBan__IDnha__45F365D3" Association="Self.FK__HoaDonBan__IDnha__45F365D3">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__IDnha__5AEE82B9" Association="Self.FK__HoaDonNha__IDnha__5AEE82B9">
+          <AssociationSet Name="FK__HoaDonBan__IDtha__46E78A0C" Association="Self.FK__HoaDonBan__IDtha__46E78A0C">
+            <End Role="ThanhVien" EntitySet="ThanhViens" />
+            <End Role="HoaDonBanHang" EntitySet="HoaDonBanHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNha__IDnha__5070F446" Association="Self.FK__HoaDonNha__IDnha__5070F446">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDonNhapHang" EntitySet="HoaDonNhapHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThucDon__IDloaiT__5CD6CB2B" Association="Self.FK__ThucDon__IDloaiT__5CD6CB2B">
+          <AssociationSet Name="FK__ThucDon__IDloaiT__398D8EEE" Association="Self.FK__ThucDon__IDloaiT__398D8EEE">
             <End Role="LoaiThucDon" EntitySet="LoaiThucDons" />
             <End Role="ThucDon" EntitySet="ThucDons" />
           </AssociationSet>
-          <AssociationSet Name="FK__LoginNhan__IDNha__5BE2A6F2" Association="Self.FK__LoginNhan__IDNha__5BE2A6F2">
+          <AssociationSet Name="FK__LoginNhan__IDNha__403A8C7D" Association="Self.FK__LoginNhan__IDNha__403A8C7D">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="LoginNhanVien" EntitySet="LoginNhanViens" />
           </AssociationSet>
@@ -1140,10 +1348,23 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="f_LayCTLoaiThucDon" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LayCTLoaiThucDon_Result)">
             <Parameter Name="IDloaiThucDon" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay_Result)">
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay_Result)">
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="f_LaySoLuongThucDonTheoNgay" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LaySoLuongThucDonTheoNgay_Result)">
             <Parameter Name="day" Mode="In" Type="Int32" />
             <Parameter Name="month" Mode="In" Type="Int32" />
             <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_LayThanhVienTheoBan" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LayThanhVienTheoBan_Result)">
+            <Parameter Name="IDban" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_LayThongTinNhanVien" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_LayThongTinNhanVien_Result)">
             <Parameter Name="ID" Mode="In" Type="String" />
@@ -1152,25 +1373,28 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="f_TaoIDHoaDonNhapHangMoi" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TaoIDHoaDonNhapHangMoi_Result)" />
           <FunctionImport Name="f_TinhTienHoaDonBH" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TinhTienHoaDonBH_Result)" />
           <FunctionImport Name="f_TinhTienHoaDonNH" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TinhTienHoaDonNH_Result)" />
+          <FunctionImport Name="f_TopNhanVien" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TopNhanVien_Result)">
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_TopThanhVien" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TopThanhVien_Result)">
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="f_TopThucDon" IsComposable="true" ReturnType="Collection(QuanLyCafeModel.f_TopThucDon_Result)">
             <Parameter Name="day" Mode="In" Type="Int32" />
             <Parameter Name="month" Mode="In" Type="Int32" />
             <Parameter Name="year" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
           <FunctionImport Name="sp_Delete_Ban">
             <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Delete_BangLuong">
+            <Parameter Name="IDnhanVien" Mode="In" Type="String" />
+            <Parameter Name="Thang" Mode="In" Type="Int32" />
+            <Parameter Name="Nam" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Delete_ChiTietHoaDonBanHang">
             <Parameter Name="IDhoaDonBH" Mode="In" Type="String" />
@@ -1195,24 +1419,22 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="sp_Delete_NhanVien">
             <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_Delete_ThucDon">
+          <FunctionImport Name="sp_Delete_ThanhVien">
             <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QuanLyCafeModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QuanLyCafeModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          <FunctionImport Name="sp_Delete_ThucDon">
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Insert_Ban">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="TenBan" Mode="In" Type="String" />
+            <Parameter Name="MaxSoLuong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_BangLuong">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="Thang" Mode="In" Type="Int32" />
+            <Parameter Name="Nam" Mode="In" Type="Int32" />
+            <Parameter Name="Luong" Mode="In" Type="Single" />
           </FunctionImport>
           <FunctionImport Name="sp_Insert_ChiTietHoaDonBanHang">
             <Parameter Name="IDhoaDonBH" Mode="In" Type="String" />
@@ -1227,6 +1449,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="sp_Insert_HoaDonBanHang">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="IDnhanVien" Mode="In" Type="String" />
+            <Parameter Name="IDthanhVien" Mode="In" Type="String" />
             <Parameter Name="IDban" Mode="In" Type="String" />
             <Parameter Name="Ngaytao" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1257,6 +1480,16 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             <Parameter Name="DiaChi" Mode="In" Type="String" />
             <Parameter Name="NgayVaoLam" Mode="In" Type="DateTime" />
             <Parameter Name="NgayNghiViec" Mode="In" Type="DateTime" />
+            <Parameter Name="LuongCoBan" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_ThanhVien">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="SDT" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="CMND" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="NgayTao" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_Insert_ThucDon">
             <Parameter Name="ID" Mode="In" Type="String" />
@@ -1265,15 +1498,17 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             <Parameter Name="DonGia" Mode="In" Type="Single" />
             <Parameter Name="IDloaiThucDon" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="sp_Update_Ban">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="TenBan" Mode="In" Type="String" />
-            <Parameter Name="TrangThai" Mode="In" Type="Boolean" />
+            <Parameter Name="SoLuong" Mode="In" Type="Int32" />
+            <Parameter Name="MaxSoLuong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_BangLuong">
+            <Parameter Name="IDnhanVien" Mode="In" Type="String" />
+            <Parameter Name="Thang" Mode="In" Type="Int32" />
+            <Parameter Name="Nam" Mode="In" Type="Int32" />
+            <Parameter Name="Luong" Mode="In" Type="Single" />
           </FunctionImport>
           <FunctionImport Name="sp_Update_ChiTietHoaDonBanHang">
             <Parameter Name="IDhoaDonBH" Mode="In" Type="String" />
@@ -1288,6 +1523,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImport Name="sp_Update_HoaDonBanHang">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="IDnhanVien" Mode="In" Type="String" />
+            <Parameter Name="IDthanhVien" Mode="In" Type="String" />
             <Parameter Name="IDban" Mode="In" Type="String" />
             <Parameter Name="Ngaytao" Mode="In" Type="DateTime" />
             <Parameter Name="DaThanhToan" Mode="In" Type="Boolean" />
@@ -1319,6 +1555,16 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             <Parameter Name="DiaChi" Mode="In" Type="String" />
             <Parameter Name="NgayVaoLam" Mode="In" Type="DateTime" />
             <Parameter Name="NgayNghiViec" Mode="In" Type="DateTime" />
+            <Parameter Name="LuongCoBan" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_ThanhVien">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="SDT" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="CMND" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="NgayTao" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_Update_ThucDon">
             <Parameter Name="ID" Mode="In" Type="String" />
@@ -1331,19 +1577,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="DaThanhToan" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1355,7 +1589,18 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               <MappingFragment StoreEntitySet="Ban">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenBan" ColumnName="TenBan" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="MaxSoLuong" ColumnName="MaxSoLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BangLuongs">
+            <EntityTypeMapping TypeName="QuanLyCafeModel.BangLuong">
+              <MappingFragment StoreEntitySet="BangLuong">
+                <ScalarProperty Name="IDnhanVien" ColumnName="IDnhanVien" />
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1382,6 +1627,7 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               <MappingFragment StoreEntitySet="HoaDonBanHang">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDnhanVien" ColumnName="IDnhanVien" />
+                <ScalarProperty Name="IDthanhVien" ColumnName="IDthanhVien" />
                 <ScalarProperty Name="IDban" ColumnName="IDban" />
                 <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
                 <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
@@ -1437,17 +1683,20 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
                 <ScalarProperty Name="NgayNghiViec" ColumnName="NgayNghiViec" />
+                <ScalarProperty Name="LuongCoBan" ColumnName="LuongCoBan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QuanLyCafeModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="ThanhViens">
+            <EntityTypeMapping TypeName="QuanLyCafeModel.ThanhVien">
+              <MappingFragment StoreEntitySet="ThanhVien">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1577,11 +1826,38 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay" FunctionImportName="f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay" FunctionImportName="f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay_Result">
+                <ScalarProperty Name="IDThanhVien" ColumnName="IDThanhVien" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_LaySoLuongThucDonTheoNgay" FunctionImportName="f_LaySoLuongThucDonTheoNgay">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QuanLyCafeModel.f_LaySoLuongThucDonTheoNgay_Result">
                 <ScalarProperty Name="IDThucDon" ColumnName="IDThucDon" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_LayThanhVienTheoBan" FunctionImportName="f_LayThanhVienTheoBan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_LayThanhVienTheoBan_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IDHoaDon" ColumnName="IDHoaDon" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1630,6 +1906,22 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_TopNhanVien" FunctionImportName="f_TopNhanVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_TopNhanVien_Result">
+                <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_TopThanhVien" FunctionImportName="f_TopThanhVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyCafeModel.f_TopThanhVien_Result">
+                <ScalarProperty Name="TenThanhVien" ColumnName="TenThanhVien" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="QuanLyCafeModel.Store.f_TopThucDon" FunctionImportName="f_TopThucDon">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QuanLyCafeModel.f_TopThucDon_Result">
@@ -1638,9 +1930,8 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QuanLyCafeModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QuanLyCafeModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_Delete_Ban" FunctionName="QuanLyCafeModel.Store.sp_Delete_Ban" />
+          <FunctionImportMapping FunctionImportName="sp_Delete_BangLuong" FunctionName="QuanLyCafeModel.Store.sp_Delete_BangLuong" />
           <FunctionImportMapping FunctionImportName="sp_Delete_ChiTietHoaDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Delete_ChiTietHoaDonBanHang" />
           <FunctionImportMapping FunctionImportName="sp_Delete_ChiTietHoaDonNhapHang" FunctionName="QuanLyCafeModel.Store.sp_Delete_ChiTietHoaDonNhapHang" />
           <FunctionImportMapping FunctionImportName="sp_Delete_HoaDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Delete_HoaDonBanHang" />
@@ -1648,28 +1939,10 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImportMapping FunctionImportName="sp_Delete_KhoHang" FunctionName="QuanLyCafeModel.Store.sp_Delete_KhoHang" />
           <FunctionImportMapping FunctionImportName="sp_Delete_LoginNhanVien" FunctionName="QuanLyCafeModel.Store.sp_Delete_LoginNhanVien" />
           <FunctionImportMapping FunctionImportName="sp_Delete_NhanVien" FunctionName="QuanLyCafeModel.Store.sp_Delete_NhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_Delete_ThanhVien" FunctionName="QuanLyCafeModel.Store.sp_Delete_ThanhVien" />
           <FunctionImportMapping FunctionImportName="sp_Delete_ThucDon" FunctionName="QuanLyCafeModel.Store.sp_Delete_ThucDon" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QuanLyCafeModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QuanLyCafeModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QuanLyCafeModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QuanLyCafeModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QuanLyCafeModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_Insert_Ban" FunctionName="QuanLyCafeModel.Store.sp_Insert_Ban" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_BangLuong" FunctionName="QuanLyCafeModel.Store.sp_Insert_BangLuong" />
           <FunctionImportMapping FunctionImportName="sp_Insert_ChiTietHoaDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Insert_ChiTietHoaDonBanHang" />
           <FunctionImportMapping FunctionImportName="sp_Insert_ChiTietHoaDonNhapHang" FunctionName="QuanLyCafeModel.Store.sp_Insert_ChiTietHoaDonNhapHang" />
           <FunctionImportMapping FunctionImportName="sp_Insert_HoaDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Insert_HoaDonBanHang" />
@@ -1677,9 +1950,10 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImportMapping FunctionImportName="sp_Insert_KhoHang" FunctionName="QuanLyCafeModel.Store.sp_Insert_KhoHang" />
           <FunctionImportMapping FunctionImportName="sp_Insert_LoginNhanVien" FunctionName="QuanLyCafeModel.Store.sp_Insert_LoginNhanVien" />
           <FunctionImportMapping FunctionImportName="sp_Insert_NhanVien" FunctionName="QuanLyCafeModel.Store.sp_Insert_NhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_ThanhVien" FunctionName="QuanLyCafeModel.Store.sp_Insert_ThanhVien" />
           <FunctionImportMapping FunctionImportName="sp_Insert_ThucDon" FunctionName="QuanLyCafeModel.Store.sp_Insert_ThucDon" />
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QuanLyCafeModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_Update_Ban" FunctionName="QuanLyCafeModel.Store.sp_Update_Ban" />
+          <FunctionImportMapping FunctionImportName="sp_Update_BangLuong" FunctionName="QuanLyCafeModel.Store.sp_Update_BangLuong" />
           <FunctionImportMapping FunctionImportName="sp_Update_ChiTietHoaDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Update_ChiTietHoaDonBanHang" />
           <FunctionImportMapping FunctionImportName="sp_Update_ChiTietHoaDonNhapHang" FunctionName="QuanLyCafeModel.Store.sp_Update_ChiTietHoaDonNhapHang" />
           <FunctionImportMapping FunctionImportName="sp_Update_HoaDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Update_HoaDonBanHang" />
@@ -1687,9 +1961,9 @@ warning 6002: The table/view 'QuanLyCafe.dbo.BaoCaoNhapHang' does not have a pri
           <FunctionImportMapping FunctionImportName="sp_Update_KhoHang" FunctionName="QuanLyCafeModel.Store.sp_Update_KhoHang" />
           <FunctionImportMapping FunctionImportName="sp_Update_LoginNhanVien" FunctionName="QuanLyCafeModel.Store.sp_Update_LoginNhanVien" />
           <FunctionImportMapping FunctionImportName="sp_Update_NhanVien" FunctionName="QuanLyCafeModel.Store.sp_Update_NhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_Update_ThanhVien" FunctionName="QuanLyCafeModel.Store.sp_Update_ThanhVien" />
           <FunctionImportMapping FunctionImportName="sp_Update_ThucDon" FunctionName="QuanLyCafeModel.Store.sp_Update_ThucDon" />
           <FunctionImportMapping FunctionImportName="sp_Update_TrangThaiHoanDonBanHang" FunctionName="QuanLyCafeModel.Store.sp_Update_TrangThaiHoanDonBanHang" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QuanLyCafeModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

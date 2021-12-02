@@ -58,6 +58,7 @@ namespace QuanLyCafe.MyForm
             txtCMND.DataBindings.Clear();
             dtNgayVaoLam.DataBindings.Clear();
             dtNgayNghiViec.DataBindings.Clear();
+            nmLuong.DataBindings.Clear();
             txtID.DataBindings.Add("Text", dgvNhanVien.DataSource, "ID", true, DataSourceUpdateMode.Never);
             txtTen.DataBindings.Add("Text", dgvNhanVien.DataSource, "HoTen", true, DataSourceUpdateMode.Never);
             txtDiaChi.DataBindings.Add("Text", dgvNhanVien.DataSource, "DiaChi", true, DataSourceUpdateMode.Never);
@@ -65,6 +66,7 @@ namespace QuanLyCafe.MyForm
             txtCMND.DataBindings.Add("Text", dgvNhanVien.DataSource, "CMND", true, DataSourceUpdateMode.Never);
             dtNgayVaoLam.DataBindings.Add("Value", dgvNhanVien.DataSource, "NgayVaoLam", true, DataSourceUpdateMode.Never);
             dtNgayNghiViec.DataBindings.Add("Value", dgvNhanVien.DataSource, "NgayNghiViec", true, DataSourceUpdateMode.Never);
+            nmLuong.DataBindings.Add("Value", dgvNhanVien.DataSource, "LuongCoBan", true, DataSourceUpdateMode.Never);
             listquyen = new List<Quyen>(){
                         new Quyen(){Type=true,Name="Admin" },
                         new Quyen(){Type=false,Name="Nhân viên"}
@@ -91,7 +93,7 @@ namespace QuanLyCafe.MyForm
                         cbbQuyen.SelectedValue = lgNV.Permission;
                         dtNgayTao.Value = lgNV.Ngaytao;
                         lblDNhanVien.Visible = lblLoginName.Visible = lblNgayTao.Visible = lblPassword.Visible = lblQuyen.Visible = true;
-                        txtIDNhanVien.Visible = txtLoginName.Visible = txtPassword.Visible = cbbQuyen.Visible = dtNgayTao.Visible = true;
+                        txtIDNhanVien.Visible = txtLoginName.Visible = txtPassword.Visible = cbbQuyen.Visible = dtNgayTao.Visible = nmLuong.Enabled = true;
                         btnXoaTaiKhoan.Visible = btnCapNhatTaiKhoan.Visible = btnResetMatKhau.Visible = true;
                         btnTaoTaiKhoan.Visible = false;
                         lbTaiKhoan.Visible = false;
@@ -119,7 +121,7 @@ namespace QuanLyCafe.MyForm
         {
             frmMHC.setStatusMenuStrip(false);
             Them = true;
-            txtID.Enabled = txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = true;
+            txtID.Enabled = txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = nmLuong.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
             btnLuu.Enabled = btnHuy.Enabled = true;
         }
@@ -128,7 +130,7 @@ namespace QuanLyCafe.MyForm
         {
             frmMHC.setStatusMenuStrip(false);
             Them = false;
-            txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = true;
+            txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = nmLuong.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
             btnLuu.Enabled = btnHuy.Enabled = true;
         }
@@ -139,7 +141,7 @@ namespace QuanLyCafe.MyForm
             {
                 try
                 {
-                    NVAc.Them(new MyDatabase.NhanVien() { ID = txtID.Text, HoTen = txtTen.Text, SDT = txtSDT.Text, CMND = txtCMND.Text, DiaChi = txtDiaChi.Text, NgayVaoLam = dtNgayVaoLam.Value });
+                    NVAc.Them(new MyDatabase.NhanVien() { ID = txtID.Text, HoTen = txtTen.Text, SDT = txtSDT.Text, CMND = txtCMND.Text, DiaChi = txtDiaChi.Text, NgayVaoLam = dtNgayVaoLam.Value, LuongCoBan = float.Parse(nmLuong.Value.ToString()) });
                     MessageBox.Show("Đã thêm thành công");
                     InitGUI();
                     DataBind();
@@ -162,6 +164,7 @@ namespace QuanLyCafe.MyForm
                     nv.DiaChi = txtDiaChi.Text;
                     nv.NgayVaoLam = dtNgayVaoLam.Value;
                     nv.NgayNghiViec = dtNgayNghiViec.Value;
+                    nv.LuongCoBan = float.Parse(nmLuong.Value.ToString());
                     NVAc.Sua(nv);
                     MessageBox.Show("Đã cập nhật thành công");
                     InitGUI();
@@ -471,6 +474,7 @@ namespace QuanLyCafe.MyForm
                     obj.Cells[i + 4, 5] = dgv.Rows[i].Cells[4].Value.ToString();
                     obj.Cells[i + 4, 6] = dgv.Rows[i].Cells[5].Value.ToString();
                     obj.Cells[i + 4, 7] = dgv.Rows[i].Cells[6].Value == null ? "Không có thông tin" : dgv.Rows[i].Cells[6].Value.ToString();
+                    obj.Cells[i + 4, 8] = dgv.Rows[i].Cells[7].Value.ToString();
                     try
                     {
                         MyDatabase.LoginNhanVien lgNV = NVAc.getLoginNhanVien(ID);

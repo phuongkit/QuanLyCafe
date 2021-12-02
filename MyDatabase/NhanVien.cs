@@ -17,6 +17,7 @@ namespace QuanLyCafe.MyDatabase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhanVien()
         {
+            this.BangLuongs = new HashSet<BangLuong>();
             this.HoaDonBanHangs = new HashSet<HoaDonBanHang>();
             this.HoaDonNhapHangs = new HashSet<HoaDonNhapHang>();
             this.LoginNhanViens = new HashSet<LoginNhanVien>();
@@ -29,7 +30,10 @@ namespace QuanLyCafe.MyDatabase
         public string DiaChi { get; set; }
         public System.DateTime NgayVaoLam { get; set; }
         public Nullable<System.DateTime> NgayNghiViec { get; set; }
+        public float LuongCoBan { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BangLuong> BangLuongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDonBanHang> HoaDonBanHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

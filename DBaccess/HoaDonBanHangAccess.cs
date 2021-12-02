@@ -56,25 +56,25 @@ namespace QuanLyCafe.DBaccess
                 return dbCafe.f_TaoIDHoaDonBanHangMoi().ToList().FirstOrDefault().IDHDMoi;
             }
         }
-        public MyDatabase.HoaDonBanHang getHoaDonBHtheoBanChuaThanhToan(string IDban)
+        public MyDatabase.HoaDonBanHang getHoaDonBHtheoBanChuaThanhToan(string IDban, string IDthanhVien)
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                return dbCafe.HoaDonBanHangs.ToList().Find(p => p.IDban == IDban && p.DaThanhToan == false);
+                return dbCafe.HoaDonBanHangs.ToList().Find(p => p.IDban == IDban && p.IDthanhVien == IDthanhVien && p.DaThanhToan == false);
             }
         }
         public void Them(MyDatabase.HoaDonBanHang value)
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                dbCafe.sp_Insert_HoaDonBanHang(value.ID, value.IDnhanVien, value.IDban, value.Ngaytao);
+                dbCafe.sp_Insert_HoaDonBanHang(value.ID, value.IDnhanVien, value.IDthanhVien, value.IDban, value.Ngaytao);
             }
         }
         public void Sua(MyDatabase.HoaDonBanHang value)
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                dbCafe.sp_Update_HoaDonBanHang(value.ID, value.IDnhanVien, value.IDban, value.Ngaytao, value.DaThanhToan);
+                dbCafe.sp_Update_HoaDonBanHang(value.ID, value.IDnhanVien, value.IDthanhVien, value.IDban, value.Ngaytao, value.DaThanhToan);
             }
         }
         public void Xoa(MyDatabase.HoaDonBanHang value)

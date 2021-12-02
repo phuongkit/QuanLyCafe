@@ -4,29 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="271f65c2710c4570a981f561abe14864" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyCafeModel.Ban" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.ChiTietHoaDonBanHang" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.ChiTietHoaDonNhapHang" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.HoaDonBanHang" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.HoaDonNhapHang" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.KhoHang" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.LoaiThucDon" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.LoginNhanVien" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.NhanVien" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.ThucDon" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.BaoCaoBanHang" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCafeModel.BaoCaoNhapHang" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonBan__IDban__59063A47" ManuallyRouted="false" />
+      <Diagram DiagramId="02f5c4c591fa4669989579ec5ec2a67a" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyCafeModel.Ban" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.BangLuong" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.ChiTietHoaDonBanHang" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.ChiTietHoaDonNhapHang" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.HoaDonBanHang" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.HoaDonNhapHang" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.KhoHang" Width="1.5" PointX="3" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.LoaiThucDon" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.LoginNhanVien" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.NhanVien" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.ThanhVien" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.ThucDon" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.BaoCaoBanHang" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafeModel.BaoCaoNhapHang" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonBan__IDban__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__BangLuong__IDnha__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDhoa__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDthu__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDhan__5629CD9C" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDhoa__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDthu__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDhan__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__ChiTietHo__IDhoa__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonBan__IDnha__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonNha__IDnha__5AEE82B9" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__ThucDon__IDloaiT__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyCafeModel.FK__LoginNhan__IDNha__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonBan__IDnha__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonBan__IDtha__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__HoaDonNha__IDnha__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__ThucDon__IDloaiT__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafeModel.FK__LoginNhan__IDNha__403A8C7D" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

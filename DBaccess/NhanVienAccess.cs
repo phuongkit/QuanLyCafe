@@ -76,7 +76,7 @@ namespace QuanLyCafe.DBaccess
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                dbCafe.sp_Insert_NhanVien(value.ID, value.HoTen, value.SDT, value.CMND, value.DiaChi, value.NgayVaoLam, null);
+                dbCafe.sp_Insert_NhanVien(value.ID, value.HoTen, value.SDT, value.CMND, value.DiaChi, value.NgayVaoLam, null, value.LuongCoBan);
 
             }
         }
@@ -84,7 +84,7 @@ namespace QuanLyCafe.DBaccess
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                dbCafe.sp_Update_NhanVien(value.ID, value.HoTen, value.SDT, value.CMND, value.DiaChi, value.NgayVaoLam, value.NgayNghiViec);
+                dbCafe.sp_Update_NhanVien(value.ID, value.HoTen, value.SDT, value.CMND, value.DiaChi, value.NgayVaoLam, value.NgayNghiViec, value.LuongCoBan);
             }
         }
         public void Xoa(MyDatabase.NhanVien value)

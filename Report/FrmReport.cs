@@ -24,6 +24,7 @@ namespace QuanLyCafe.Report
         string connectionString = "";
         string soHD;
         string tenNhanVien;
+        string tenKhachHang;
         string tenBan;
         bool loaiHoaDon; // true: ban hang false: nhap hang
         //private static List<Stream> m_streams;
@@ -32,6 +33,20 @@ namespace QuanLyCafe.Report
         {
             InitializeComponent();
             this.soHD = soHD;
+            this.loaiHoaDon = loaiHoaDon;
+            this.connectionString = connectionString;
+            this.CTHDBHAc = new DBaccess.ChiTietHoaDonBanHangAccess(connectionString);
+            this.CTHDNHAc = new DBaccess.ChiTietHoaDonNhapHangAccess(connectionString);
+            this.HDBHAc = new DBaccess.HoaDonBanHangAccess(connectionString);
+            this.HDNHAc = new DBaccess.HoaDonNhapHangAccess(connectionString);
+            this.NVAc = new DBaccess.NhanVienAccess(connectionString);
+        }
+
+        public FrmReport(string connectionString, string soHD, string tenKhachHang, bool loaiHoaDon)
+        {
+            InitializeComponent();
+            this.soHD = soHD;
+            this.tenKhachHang = tenKhachHang;
             this.loaiHoaDon = loaiHoaDon;
             this.connectionString = connectionString;
             this.CTHDBHAc = new DBaccess.ChiTietHoaDonBanHangAccess(connectionString);
@@ -73,7 +88,8 @@ namespace QuanLyCafe.Report
                     string tonggia = HDBHAc.getTienHoaDonBH(soHD).TongGia.ToString();
                     ReportParameter pTongGia = new ReportParameter("TongGia", tonggia);
                     ReportParameter pNgayTao = new ReportParameter("NgayTao", hd.Ngaytao.ToString());
-                    param = new ReportParameter[] { pSoHD, pNhanVien, pBan, pTongGia, pNgayTao };
+                    ReportParameter pKhachHang = new ReportParameter("KhachHang", tenKhachHang);
+                    param = new ReportParameter[] { pSoHD, pNhanVien, pBan, pTongGia, pNgayTao, pKhachHang };
                 }
                 else
                 {
@@ -117,7 +133,7 @@ namespace QuanLyCafe.Report
                 {
                     path = ExportReportToPDF(link + "\\EXportedReport\\", "HDBH-" + soHD);
                     subject = "Hóa đơn bán hàng với số HD = " + soHD + " vào lúc " + DateTime.Now.ToString();
-                    message = "Hóa đơn bán hàng với số HD = " + soHD + " vào lúc " + DateTime.Now.ToString() + " do nhân viên " + tenNhanVien + " thanh toán ở bàn " + tenBan;
+                    message = "Hóa đơn bán hàng với số HD = " + soHD + " của khách hàng " + tenKhachHang + " vào lúc " + DateTime.Now.ToString() + " do nhân viên " + tenNhanVien + " thanh toán ở bàn " + tenBan;
                 }
                 else
                 {

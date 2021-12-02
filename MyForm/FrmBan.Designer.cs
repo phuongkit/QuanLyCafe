@@ -38,7 +38,8 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btn_ExportExcel = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cbbTrangThai = new System.Windows.Forms.ComboBox();
+            this.cbbMaxSL = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,12 +49,15 @@
             this.DGVBan = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Trangtha = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxSoLuong = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.nmSL = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVBan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSL)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -163,7 +167,9 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.cbbTrangThai);
+            this.panel3.Controls.Add(this.nmSL);
+            this.panel3.Controls.Add(this.cbbMaxSL);
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
@@ -174,25 +180,37 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1500, 100);
             this.panel3.TabIndex = 0;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // cbbTrangThai
+            // cbbMaxSL
             // 
-            this.cbbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTrangThai.FormattingEnabled = true;
-            this.cbbTrangThai.Location = new System.Drawing.Point(688, 36);
-            this.cbbTrangThai.Name = "cbbTrangThai";
-            this.cbbTrangThai.Size = new System.Drawing.Size(202, 24);
-            this.cbbTrangThai.TabIndex = 4;
+            this.cbbMaxSL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbMaxSL.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbbMaxSL.FormattingEnabled = true;
+            this.cbbMaxSL.Location = new System.Drawing.Point(659, 39);
+            this.cbbMaxSL.Name = "cbbMaxSL";
+            this.cbbMaxSL.Size = new System.Drawing.Size(186, 24);
+            this.cbbMaxSL.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(455, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(143, 22);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Số Lượng tối đa:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(555, 38);
+            this.label4.Location = new System.Drawing.Point(455, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 22);
+            this.label4.Size = new System.Drawing.Size(93, 22);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Trạng thái:";
+            this.label4.Text = "Số Lượng:";
             // 
             // label3
             // 
@@ -247,7 +265,8 @@
             this.DGVBan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.TenBan,
-            this.Trangtha});
+            this.SoLuong,
+            this.MaxSoLuong});
             this.DGVBan.Location = new System.Drawing.Point(0, 0);
             this.DGVBan.Name = "DGVBan";
             this.DGVBan.ReadOnly = true;
@@ -276,16 +295,37 @@
             this.TenBan.Name = "TenBan";
             this.TenBan.ReadOnly = true;
             // 
-            // Trangtha
+            // SoLuong
             // 
-            this.Trangtha.DataPropertyName = "TrangThai";
-            this.Trangtha.HeaderText = "Trạng thái";
-            this.Trangtha.MinimumWidth = 6;
-            this.Trangtha.Name = "Trangtha";
-            this.Trangtha.ReadOnly = true;
-            this.Trangtha.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Trangtha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Trangtha.Width = 125;
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số lượng người hiện tại";
+            this.SoLuong.MinimumWidth = 6;
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.ReadOnly = true;
+            this.SoLuong.Width = 125;
+            // 
+            // MaxSoLuong
+            // 
+            this.MaxSoLuong.DataPropertyName = "MaxSoLuong";
+            this.MaxSoLuong.HeaderText = "Số Lượng Tối Đa";
+            this.MaxSoLuong.MinimumWidth = 6;
+            this.MaxSoLuong.Name = "MaxSoLuong";
+            this.MaxSoLuong.ReadOnly = true;
+            this.MaxSoLuong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MaxSoLuong.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.MaxSoLuong.Width = 125;
+            // 
+            // nmSL
+            // 
+            this.nmSL.Location = new System.Drawing.Point(659, 4);
+            this.nmSL.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.nmSL.Name = "nmSL";
+            this.nmSL.Size = new System.Drawing.Size(186, 22);
+            this.nmSL.TabIndex = 9;
             // 
             // FrmBan
             // 
@@ -309,6 +349,7 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVBan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSL)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,9 +373,12 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btn_ExportExcel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbbTrangThai;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbbMaxSL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenBan;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Trangtha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewComboBoxColumn MaxSoLuong;
+        private System.Windows.Forms.NumericUpDown nmSL;
     }
 }

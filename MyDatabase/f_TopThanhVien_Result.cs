@@ -10,14 +10,10 @@
 namespace QuanLyCafe.MyDatabase
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class f_TopThanhVien_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string TenThanhVien { get; set; }
+        public Nullable<float> SoLuong { get; set; }
     }
 }

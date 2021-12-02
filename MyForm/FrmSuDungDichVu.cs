@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace QuanLyCafe.MyForm
 {
@@ -16,18 +17,21 @@ namespace QuanLyCafe.MyForm
         DBaccess.ChiTietHoaDonBanHangAccess CTHDBHAc;
         DBaccess.HoaDonBanHangAccess HDBHAc;
         DBaccess.LoaiThucDonAccess LTDAc;
+        DBaccess.ThanhVienAccess TVAc;
         DBaccess.BanAccess BAc;
         ImageList imgsBan;
         string IDNhanVien;
         string connectionString;
         int indexRowTD = -1;
         int indexRowCTTD = -1;
+        List<MyDatabase.ThanhVien> thanhViens;
         public FrmSuDungDichVu(string IDNhanVien, string connectionString)
         {
             this.connectionString = connectionString;
             CTHDBHAc = new DBaccess.ChiTietHoaDonBanHangAccess(connectionString);
             HDBHAc = new DBaccess.HoaDonBanHangAccess(connectionString);
             LTDAc = new DBaccess.LoaiThucDonAccess(connectionString);
+            TVAc = new DBaccess.ThanhVienAccess(connectionString);
             BAc = new DBaccess.BanAccess(connectionString);
             this.IDNhanVien = IDNhanVien;
             InitializeComponent();
@@ -40,9 +44,14 @@ namespace QuanLyCafe.MyForm
             LoadListViewBan();
             dtNgay.Value = DateTime.Now;
             txtNhanVien.Text = IDNhanVien;
-            dgvChiTietHoaDon.DataSource = null;
+            thanhViens = TVAc.Get();
+            cbbKhachHang.DataSource = thanhViens;
+            cbbKhachHang.DisplayMember = "HoTen";
+            cbbKhachHang.ValueMember = "ID";
+            dgvChiTietHoaDon.DataSource = HDBHAc.getChiTietHoaDonBanHang("-1");
             dgvChiTietHoaDon.ClearSelection();
             dgvThucDon.ClearSelection();
+            dgvKhachHang.ClearSelection();
         }
         public void LoadTreeView()
         {
@@ -83,9 +92,11 @@ namespace QuanLyCafe.MyForm
                 for (int i = 0; i < bans.Count; i++)
                 {
                     ListViewItem lsvItem = new ListViewItem();
-                    lsvItem.Text = bans.ToList()[i].TenBan;
+                    int SL = bans.ToList()[i].SoLuong;
+                    int maxSL = bans.ToList()[i].MaxSoLuong;
+                    lsvItem.Text = bans.ToList()[i].TenBan + " " + SL.ToString() + "/" + maxSL.ToString();
                     lsvItem.Name = bans.ToList()[i].ID;
-                    lsvItem.ImageIndex = bans.ToList()[i].TrangThai == true ? 1 : 0;
+                    lsvItem.ImageIndex = bans.ToList()[i].SoLuong == maxSL ? 1 : 0;
                     lsvBan.Items.Add(lsvItem);
                 }
             }
@@ -155,59 +166,25 @@ namespace QuanLyCafe.MyForm
                     List<MyDatabase.Ban> bans = BAc.Get();
                     for (int i = 0; i < lsvBan.Items.Count; i++)
                     {
-                        lsvBan.Items[i].ImageIndex = bans[i].TrangThai == true ? 1 : 0;
+                        int SL = bans[i].SoLuong;
+                        int maxSL = bans[i].MaxSoLuong;
+                        lsvBan.Items[i].ImageIndex = bans[i].SoLuong == maxSL ? 1 : 0;
+                        lsvBan.Items[i].Text = bans[i].TenBan + " " + SL.ToString() + "/" + maxSL.ToString();
                     }
-                    txtBan.Text = lsvItem.Text;
-                    MyDatabase.HoaDonBanHang hdbh = HDBHAc.getHoaDonBHtheoBanChuaThanhToan(lsvBan.SelectedItems[0].Name);
-                    if (hdbh == null)
-                    {
-                        txtSoHD.Text = HDBHAc.getIDHoaDonBHMoi();
-                        dgvChiTietHoaDon.DataSource = new MyDatabase.f_ChiTietHoaDonBanHang_Result();
-                        if (dgvChiTietHoaDon.Columns.Count == 6)
-                        {
-                            dgvChiTietHoaDon.Columns[0].Width = 30;
-                            dgvChiTietHoaDon.Columns[1].Width = 115;
-                            dgvChiTietHoaDon.Columns[2].Width = 40;
-                            dgvChiTietHoaDon.Columns[3].Width = 50;
-                            dgvChiTietHoaDon.Columns[4].Width = 50;
-                            dgvChiTietHoaDon.Columns[5].Width = 40;
-                            dgvChiTietHoaDon.Columns[0].HeaderText = "ID";
-                            dgvChiTietHoaDon.Columns[1].HeaderText = "Mặt hàng";
-                            dgvChiTietHoaDon.Columns[2].HeaderText = "SL";
-                            dgvChiTietHoaDon.Columns[3].HeaderText = "Đơn Giá";
-                            dgvChiTietHoaDon.Columns[4].HeaderText = "Thành Tiền";
-                            dgvChiTietHoaDon.Columns[5].HeaderText = "ĐVT";
-                        }
-                    }
-                    else
-                    {
-                        dgvChiTietHoaDon.DataSource = HDBHAc.getChiTietHoaDonBanHang(hdbh.ID);
-                        txtSoHD.Text = hdbh.ID;
-                        if (dgvChiTietHoaDon.Columns.Count == 6)
-                        {
-                            dgvChiTietHoaDon.Columns[0].Width = 30;
-                            dgvChiTietHoaDon.Columns[1].Width = 115;
-                            dgvChiTietHoaDon.Columns[2].Width = 40;
-                            dgvChiTietHoaDon.Columns[3].Width = 50;
-                            dgvChiTietHoaDon.Columns[4].Width = 50;
-                            dgvChiTietHoaDon.Columns[5].Width = 40;
-                            dgvChiTietHoaDon.Columns[0].HeaderText = "ID";
-                            dgvChiTietHoaDon.Columns[1].HeaderText = "Mặt hàng";
-                            dgvChiTietHoaDon.Columns[2].HeaderText = "SL";
-                            dgvChiTietHoaDon.Columns[3].HeaderText = "Đơn Giá";
-                            dgvChiTietHoaDon.Columns[4].HeaderText = "Thành Tiền";
-                            dgvChiTietHoaDon.Columns[5].HeaderText = "ĐVT";
-                        }
-                    }
+                    txtBan.Text = lsvItem.Name;
+
+                    dgvKhachHang.DataSource = BAc.getThanhVienTheoBan(lsvBan.SelectedItems[0].Name);
+                    dgvKhachHang.ClearSelection();
+
+                    dgvChiTietHoaDon.DataSource = HDBHAc.getChiTietHoaDonBanHang("-1");
+
+                    btnHuy.Text = "Tạo Hóa Đơn";
+                    btnHuy.Image = global::QuanLyCafe.Properties.Resources.edit_add;
+                    txtSoHD.Text = HDBHAc.getIDHoaDonBHMoi();
+                    btnTim.Enabled = txtIDKhachHang.Enabled = cbbKhachHang.Enabled = true;
                 }
-                MyDatabase.f_TinhTienHoaDonBH_Result tienHD = HDBHAc.getTienHoaDonBH(txtSoHD.Text);
-                txtThanhTien.Text = tienHD != null ? tienHD.TongGia.ToString() : "0";
-                dgvThucDon.ClearSelection();
-                dgvChiTietHoaDon.ClearSelection();
-                indexRowTD = -1;
-                indexRowCTTD = -1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -226,6 +203,7 @@ namespace QuanLyCafe.MyForm
             {
                 int soLuong = int.Parse(nmSoLuong.Value.ToString());
                 string soHD = txtSoHD.Text;
+                string IDThanhVien = cbbKhachHang.SelectedValue.ToString();
                 string IDthucDon;
                 if (index == indexRowTD)
                 {
@@ -237,9 +215,16 @@ namespace QuanLyCafe.MyForm
                 }
                 if (HDBHAc.getHoaDonBanHang(soHD) == null)
                 {
+                    int SLHD = BAc.getSLHoaDonChuaTT(lsvBan.SelectedItems[0].Name), MaxSL = BAc.getBan(lsvBan.SelectedItems[0].Name).MaxSoLuong;
+                    if (SLHD == MaxSL)
+                    {
+                        MessageBox.Show("Bàn này đã đủ người, không thể tạo thêm!");
+                        return;
+                    }
                     try
                     {
-                        HDBHAc.Them(new MyDatabase.HoaDonBanHang() { ID = soHD, IDnhanVien = IDNhanVien, IDban = lsvBan.SelectedItems[0].Name, Ngaytao = dtNgay.Value });
+                        HDBHAc.Them(new MyDatabase.HoaDonBanHang() { ID = soHD, IDnhanVien = IDNhanVien, IDthanhVien = IDThanhVien, IDban = lsvBan.SelectedItems[0].Name, Ngaytao = dtNgay.Value });
+                        dgvKhachHang.DataSource = BAc.getThanhVienTheoBan(lsvBan.SelectedItems[0].Name);
                     }
                     catch (Exception ex)
                     {
@@ -390,7 +375,7 @@ namespace QuanLyCafe.MyForm
             if (index > -1)
             {
                 string soHD = txtSoHD.Text;
-                String IDthucDon = dgvChiTietHoaDon.Rows[index].Cells["IDThucDon"].Value.ToString();
+                string IDthucDon = dgvChiTietHoaDon.Rows[index].Cells["IDThucDon"].Value.ToString();
                 DialogResult result = MessageBox.Show("Bạn có muốn xóa thưc đơn này ra khỏi hóa đơn bán hàng?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.OK)
                 {
@@ -433,52 +418,81 @@ namespace QuanLyCafe.MyForm
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            try
+            if (!txtSoHD.Text.Equals(""))
             {
-                MyDatabase.HoaDonBanHang hd = HDBHAc.getHoaDonBanHang(txtSoHD.Text);
-
-                if (hd != null)
+                try
                 {
-                    hd.DaThanhToan = true;
-                    HDBHAc.Sua(hd);
-                    DialogResult traloi = MessageBox.Show("Thanh toán thành công! Bạn có muốn in hóa đơn không?","Thông báo",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                    if(traloi == DialogResult.OK)
+                    MyDatabase.HoaDonBanHang hd = HDBHAc.getHoaDonBanHang(txtSoHD.Text);
+
+                    if (hd != null)
                     {
-                        Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, true);
-                        frmReport.ShowDialog();
+                        hd.DaThanhToan = true;
+                        HDBHAc.Sua(hd);
+                        DialogResult traloi = MessageBox.Show("Thanh toán thành công! Bạn có muốn in hóa đơn không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (traloi == DialogResult.OK)
+                        {
+                            string tenKhachHang = thanhViens.Find(p => p.ID == cbbKhachHang.SelectedValue.ToString()).HoTen;
+                            Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, tenKhachHang, true);
+                            frmReport.ShowDialog();
+                        }
+                        dgvChiTietHoaDon.DataSource = HDBHAc.getChiTietHoaDonBanHang("-1");
+                        dgvKhachHang.DataSource = BAc.getThanhVienTheoBan(lsvBan.SelectedItems[0].Name);
+                        dgvKhachHang.ClearSelection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng tạo hóa đơn cho bàn này trước!");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Vui lòng tạo hóa đơn cho bàn này trước!");
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-                return;
+                MessageBox.Show("Vui lòng tạo hóa đơn cho bàn này trước!");
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            try
+            string ban = txtBan.Text;
+            if(ban.Equals("") || ban.Equals(null))
             {
-                MyDatabase.HoaDonBanHang hd = HDBHAc.getHoaDonBanHang(txtSoHD.Text);
-                if (hd != null)
-                {
-                    HDBHAc.Xoa(hd);
-                    MessageBox.Show("Đã hủy hóa đơn thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng tạo hóa đơn cho bàn này trước");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Vui lòng chọn bàn trước");
                 return;
+            }
+            string name = btnHuy.Text.ToUpper();
+            if (name.Equals("TẠO HÓA ĐƠN"))
+            {
+                btnHuy.Text = "Hủy Hóa Đơn";
+                btnHuy.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
+            }
+            else
+            {
+                try
+                {
+                    MyDatabase.HoaDonBanHang hd = HDBHAc.getHoaDonBanHang(txtSoHD.Text);
+                    if (hd != null)
+                    {
+                        HDBHAc.Xoa(hd);
+                        MessageBox.Show("Đã hủy hóa đơn thành công");
+                        dgvChiTietHoaDon.DataSource = HDBHAc.getChiTietHoaDonBanHang("-1");
+                        dgvKhachHang.DataSource = BAc.getThanhVienTheoBan(lsvBan.SelectedItems[0].Name);
+                        dgvKhachHang.ClearSelection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng tạo hóa đơn cho bàn này trước");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
             }
         }
 
@@ -497,17 +511,77 @@ namespace QuanLyCafe.MyForm
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (!txtSoHD.Text.Equals(""))
-            {
-                Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, true);
-                frmReport.ShowDialog();
-            }
-            else
+            if (txtSoHD.Text.Equals("") || txtSoHD.Text.Equals(null))
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn cần in!");
             }
-            //BaoCaoBieuDoDoanhThu BCBDDT = new BaoCaoBieuDoDoanhThu(connectionString);
-            //BCBDDT.ShowDialog();
+            else
+            {
+                try
+                {
+                    MyDatabase.HoaDonBanHang hd = HDBHAc.getHoaDonBanHang(txtSoHD.Text);
+                    if (hd != null)
+                    {
+                        string tenKhachHang = thanhViens.Find(p => p.ID == cbbKhachHang.SelectedValue.ToString()).HoTen;
+                        Report.FrmReport frmReport = new Report.FrmReport(connectionString, txtSoHD.Text, tenKhachHang, true);
+                        frmReport.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng tạo hóa đơn trước!");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnHuy.Text = "Hủy Hóa Đơn";
+            btnHuy.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
+            int curRow = dgvKhachHang.CurrentRow.Index;
+            btnTim.Enabled = txtIDKhachHang.Enabled = cbbKhachHang.Enabled = false;
+            if (curRow != -1)
+            {
+                string ID = dgvKhachHang.Rows[curRow].Cells[0].Value.ToString();
+                string IDHoaDon = dgvKhachHang.Rows[curRow].Cells[4].Value.ToString();
+                cbbKhachHang.SelectedItem = thanhViens.Find(p => p.ID == ID);
+                try
+                {
+                    dgvChiTietHoaDon.DataSource = HDBHAc.getChiTietHoaDonBanHang(IDHoaDon);
+                    txtSoHD.Text = IDHoaDon;
+                    MyDatabase.f_TinhTienHoaDonBH_Result tienHD = HDBHAc.getTienHoaDonBH(txtSoHD.Text);
+                    txtThanhTien.Text = tienHD != null ? tienHD.TongGia.ToString() : "0";
+                    dgvThucDon.ClearSelection();
+                    dgvChiTietHoaDon.ClearSelection();
+                    indexRowTD = -1;
+                    indexRowCTTD = -1;
+                }
+                catch(SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại sau!");
+            }
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            MyDatabase.ThanhVien tv = TVAc.getThanhVien(txtIDKhachHang.Text);
+            if (tv == null)
+            {
+                MessageBox.Show("Không tìm thấy");
+            }
+            else
+            {
+                cbbKhachHang.SelectedIndex = cbbKhachHang.Items.IndexOf(thanhViens.Find(p => p.ID == tv.ID));
+            }
         }
     }
 }

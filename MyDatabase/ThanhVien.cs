@@ -12,25 +12,23 @@ namespace QuanLyCafe.MyDatabase
     using System;
     using System.Collections.Generic;
     
-    public partial class HoaDonBanHang
+    public partial class ThanhVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoaDonBanHang()
+        public ThanhVien()
         {
-            this.ChiTietHoaDonBanHangs = new HashSet<ChiTietHoaDonBanHang>();
+            this.HoaDonBanHangs = new HashSet<HoaDonBanHang>();
         }
     
         public string ID { get; set; }
-        public string IDnhanVien { get; set; }
-        public string IDthanhVien { get; set; }
-        public string IDban { get; set; }
-        public System.DateTime Ngaytao { get; set; }
-        public bool DaThanhToan { get; set; }
+        public string HoTen { get; set; }
+        public string SDT { get; set; }
+        public string Email { get; set; }
+        public string CMND { get; set; }
+        public string DiaChi { get; set; }
+        public System.DateTime NgayTao { get; set; }
     
-        public virtual Ban Ban { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDonBanHang> ChiTietHoaDonBanHangs { get; set; }
-        public virtual NhanVien NhanVien { get; set; }
-        public virtual ThanhVien ThanhVien { get; set; }
+        public virtual ICollection<HoaDonBanHang> HoaDonBanHangs { get; set; }
     }
 }

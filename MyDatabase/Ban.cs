@@ -22,7 +22,8 @@ namespace QuanLyCafe.MyDatabase
     
         public string ID { get; set; }
         public string TenBan { get; set; }
-        public bool TrangThai { get; set; }
+        public int SoLuong { get; set; }
+        public int MaxSoLuong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDonBanHang> HoaDonBanHangs { get; set; }

@@ -31,6 +31,7 @@ namespace QuanLyCafe.MyForm
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +41,7 @@ namespace QuanLyCafe.MyForm
             this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayNghiViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LuongCoBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtNgayNghiViec = new System.Windows.Forms.DateTimePicker();
             this.dtNgayVaoLam = new System.Windows.Forms.DateTimePicker();
             this.txtCMND = new System.Windows.Forms.TextBox();
@@ -75,9 +77,11 @@ namespace QuanLyCafe.MyForm
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblDNhanVien = new System.Windows.Forms.Label();
             this.lblLoginName = new System.Windows.Forms.Label();
+            this.nmLuong = new System.Windows.Forms.NumericUpDown();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmLuong)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -91,6 +95,8 @@ namespace QuanLyCafe.MyForm
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.nmLuong);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnExportExcel);
             this.groupBox2.Controls.Add(this.dgvNhanVien);
             this.groupBox2.Controls.Add(this.dtNgayNghiViec);
@@ -119,6 +125,16 @@ namespace QuanLyCafe.MyForm
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách nhân viên";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(266, 162);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Lương:";
+            // 
             // btnExportExcel
             // 
             this.btnExportExcel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,7 +160,8 @@ namespace QuanLyCafe.MyForm
             this.DiaChi,
             this.SDT,
             this.NgayVaoLam,
-            this.NgayNghiViec});
+            this.NgayNghiViec,
+            this.LuongCoBan});
             this.dgvNhanVien.Location = new System.Drawing.Point(24, 207);
             this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
@@ -221,11 +238,20 @@ namespace QuanLyCafe.MyForm
             this.NgayNghiViec.ReadOnly = true;
             this.NgayNghiViec.Width = 70;
             // 
+            // LuongCoBan
+            // 
+            this.LuongCoBan.DataPropertyName = "LuongCoBan";
+            this.LuongCoBan.HeaderText = "Lương";
+            this.LuongCoBan.MinimumWidth = 6;
+            this.LuongCoBan.Name = "LuongCoBan";
+            this.LuongCoBan.ReadOnly = true;
+            this.LuongCoBan.Width = 125;
+            // 
             // dtNgayNghiViec
             // 
             this.dtNgayNghiViec.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtNgayNghiViec.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtNgayNghiViec.Location = new System.Drawing.Point(631, 154);
+            this.dtNgayNghiViec.Location = new System.Drawing.Point(636, 123);
             this.dtNgayNghiViec.Name = "dtNgayNghiViec";
             this.dtNgayNghiViec.Size = new System.Drawing.Size(103, 22);
             this.dtNgayNghiViec.TabIndex = 31;
@@ -234,7 +260,7 @@ namespace QuanLyCafe.MyForm
             // 
             this.dtNgayVaoLam.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtNgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtNgayVaoLam.Location = new System.Drawing.Point(382, 154);
+            this.dtNgayVaoLam.Location = new System.Drawing.Point(387, 123);
             this.dtNgayVaoLam.Name = "dtNgayVaoLam";
             this.dtNgayVaoLam.Size = new System.Drawing.Size(103, 22);
             this.dtNgayVaoLam.TabIndex = 30;
@@ -242,7 +268,7 @@ namespace QuanLyCafe.MyForm
             // txtCMND
             // 
             this.txtCMND.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCMND.Location = new System.Drawing.Point(403, 93);
+            this.txtCMND.Location = new System.Drawing.Point(408, 76);
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.Size = new System.Drawing.Size(158, 26);
             this.txtCMND.TabIndex = 28;
@@ -283,7 +309,7 @@ namespace QuanLyCafe.MyForm
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(261, 156);
+            this.label12.Location = new System.Drawing.Point(266, 125);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(115, 20);
             this.label12.TabIndex = 23;
@@ -293,7 +319,7 @@ namespace QuanLyCafe.MyForm
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(502, 156);
+            this.label11.Location = new System.Drawing.Point(507, 125);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(123, 20);
             this.label11.TabIndex = 22;
@@ -313,7 +339,7 @@ namespace QuanLyCafe.MyForm
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(261, 99);
+            this.label9.Location = new System.Drawing.Point(266, 82);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 20);
             this.label9.TabIndex = 20;
@@ -592,6 +618,18 @@ namespace QuanLyCafe.MyForm
             this.lblLoginName.TabIndex = 0;
             this.lblLoginName.Text = "LoginName:";
             // 
+            // nmLuong
+            // 
+            this.nmLuong.Location = new System.Drawing.Point(367, 162);
+            this.nmLuong.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.nmLuong.Name = "nmLuong";
+            this.nmLuong.Size = new System.Drawing.Size(241, 22);
+            this.nmLuong.TabIndex = 36;
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -610,6 +648,7 @@ namespace QuanLyCafe.MyForm
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmLuong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -638,7 +677,6 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.Label lblLoginName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -651,6 +689,11 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.TextBox txtCMND;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtTen;
+        private System.Windows.Forms.Label lbTaiKhoan;
+        private System.Windows.Forms.ComboBox cbbQuyen;
+        private System.Windows.Forms.Button btnResetMatKhau;
+        private System.Windows.Forms.Button btnExportExcel;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMND;
@@ -658,9 +701,8 @@ namespace QuanLyCafe.MyForm
         private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayVaoLam;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayNghiViec;
-        private System.Windows.Forms.Label lbTaiKhoan;
-        private System.Windows.Forms.ComboBox cbbQuyen;
-        private System.Windows.Forms.Button btnResetMatKhau;
-        private System.Windows.Forms.Button btnExportExcel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LuongCoBan;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown nmLuong;
     }
 }

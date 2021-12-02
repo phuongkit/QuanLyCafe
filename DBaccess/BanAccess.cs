@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace QuanLyCafe.DBaccess
 {
@@ -28,6 +29,31 @@ namespace QuanLyCafe.DBaccess
                 return b;
             }
         }
+        public List<MyDatabase.f_LayThanhVienTheoBan_Result> getThanhVienTheoBan(string IDban)
+        {
+            using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
+            {
+                List<MyDatabase.f_LayThanhVienTheoBan_Result> tv = null;
+                try
+                {
+                    tv = dbCafe.f_LayThanhVienTheoBan(IDban).ToList();
+                }
+                catch (SqlException ex)
+                {
+                    throw ex;
+                }
+                return tv;
+            }
+        }
+
+        public int getSLHoaDonChuaTT(string ID)
+        {
+            using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
+            {
+                int sl = dbCafe.HoaDonBanHangs.ToList().FindAll(p => p.IDban == ID && p.DaThanhToan == false).Count;
+                return sl;
+            }
+        }
         public bool IsBanTrong(string IDBan)
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
@@ -46,14 +72,14 @@ namespace QuanLyCafe.DBaccess
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                dbCafe.sp_Insert_Ban(value.ID, value.TenBan);
+                dbCafe.sp_Insert_Ban(value.ID, value.TenBan, value.MaxSoLuong);
             }
         }
         public void Sua(MyDatabase.Ban value)
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))
             {
-                dbCafe.sp_Update_Ban(value.ID, value.TenBan, value.TrangThai);
+                dbCafe.sp_Update_Ban(value.ID, value.TenBan, value.SoLuong, value.MaxSoLuong);
             }
         }
         public void Xoa(MyDatabase.Ban value)

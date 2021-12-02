@@ -110,8 +110,12 @@
     <Compile Include="DBaccess\LoginNhanVienAccess.cs" />
     <Compile Include="DBaccess\NhanVienAccess.cs" />
     <Compile Include="DBaccess\SqlHelper.cs" />
+    <Compile Include="DBaccess\ThanhVienAccess.cs" />
     <Compile Include="DBaccess\ThucDonAccess.cs" />
     <Compile Include="MyDatabase\Ban.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\BangLuong.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\BaoCaoBanHang.cs">
@@ -156,7 +160,16 @@
     <Compile Include="MyDatabase\f_LayCTLoaiThucDon_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyDatabase\f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="MyDatabase\f_LaySoLuongThucDonTheoNgay_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_LayThanhVienTheoBan_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_LayThongTinNhanVien_Result.cs">
@@ -172,6 +185,12 @@
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_TinhTienHoaDonNH_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TopNhanVien_Result.cs">
+      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyDatabase\f_TopThanhVien_Result.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\f_TopThucDon_Result.cs">
@@ -210,13 +229,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MyDatabase\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\sp_helpdiagrams_Result.cs">
-      <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabase\sysdiagram.cs">
+    <Compile Include="MyDatabase\ThanhVien.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MyDatabase\ThucDon.cs">
@@ -494,6 +507,8 @@
       <DependentUpon>QuanLyCafeDBContext.edmx</DependentUpon>
       <LastGenOutput>QuanLyCafeDBContext.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\document_view1.png" />
+    <None Include="Resources\document_view2.png" />
     <Content Include="Resources\printer-icon-simple-style-3219886.jpg" />
     <None Include="Resources\Send_mail.jpg" />
     <None Include="Resources\printer.bmp" />

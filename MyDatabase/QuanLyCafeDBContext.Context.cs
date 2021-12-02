@@ -28,6 +28,7 @@ namespace QuanLyCafe.MyDatabase
         }
     
         public virtual DbSet<Ban> Bans { get; set; }
+        public virtual DbSet<BangLuong> BangLuongs { get; set; }
         public virtual DbSet<ChiTietHoaDonBanHang> ChiTietHoaDonBanHangs { get; set; }
         public virtual DbSet<ChiTietHoaDonNhapHang> ChiTietHoaDonNhapHangs { get; set; }
         public virtual DbSet<HoaDonBanHang> HoaDonBanHangs { get; set; }
@@ -36,7 +37,7 @@ namespace QuanLyCafe.MyDatabase
         public virtual DbSet<LoaiThucDon> LoaiThucDons { get; set; }
         public virtual DbSet<LoginNhanVien> LoginNhanViens { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ThanhVien> ThanhViens { get; set; }
         public virtual DbSet<ThucDon> ThucDons { get; set; }
         public virtual DbSet<BaoCaoBanHang> BaoCaoBanHangs { get; set; }
         public virtual DbSet<BaoCaoNhapHang> BaoCaoNhapHangs { get; set; }
@@ -161,6 +162,42 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LayCTLoaiThucDon_Result>("[QuanLyCafeEntities].[f_LayCTLoaiThucDon](@IDloaiThucDon)", iDloaiThucDonParameter);
         }
     
+        [DbFunction("QuanLyCafeEntities", "f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay")]
+        public virtual IQueryable<f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay_Result> f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay(Nullable<int> day, Nullable<int> month, Nullable<int> year)
+        {
+            var dayParameter = day.HasValue ?
+                new ObjectParameter("day", day) :
+                new ObjectParameter("day", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay_Result>("[QuanLyCafeEntities].[f_LaySoLuongHoaDonNhanVienThanhToanTheoNgay](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
+        }
+    
+        [DbFunction("QuanLyCafeEntities", "f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay")]
+        public virtual IQueryable<f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay_Result> f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay(Nullable<int> day, Nullable<int> month, Nullable<int> year)
+        {
+            var dayParameter = day.HasValue ?
+                new ObjectParameter("day", day) :
+                new ObjectParameter("day", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay_Result>("[QuanLyCafeEntities].[f_LaySoLuongHoaDonThanhVienThanhToanTheoNgay](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
+        }
+    
         [DbFunction("QuanLyCafeEntities", "f_LaySoLuongThucDonTheoNgay")]
         public virtual IQueryable<f_LaySoLuongThucDonTheoNgay_Result> f_LaySoLuongThucDonTheoNgay(Nullable<int> day, Nullable<int> month, Nullable<int> year)
         {
@@ -177,6 +214,16 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("year", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LaySoLuongThucDonTheoNgay_Result>("[QuanLyCafeEntities].[f_LaySoLuongThucDonTheoNgay](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
+        }
+    
+        [DbFunction("QuanLyCafeEntities", "f_LayThanhVienTheoBan")]
+        public virtual IQueryable<f_LayThanhVienTheoBan_Result> f_LayThanhVienTheoBan(string iDban)
+        {
+            var iDbanParameter = iDban != null ?
+                new ObjectParameter("IDban", iDban) :
+                new ObjectParameter("IDban", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LayThanhVienTheoBan_Result>("[QuanLyCafeEntities].[f_LayThanhVienTheoBan](@IDban)", iDbanParameter);
         }
     
         [DbFunction("QuanLyCafeEntities", "f_LayThongTinNhanVien")]
@@ -213,6 +260,42 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_TinhTienHoaDonNH_Result>("[QuanLyCafeEntities].[f_TinhTienHoaDonNH]()");
         }
     
+        [DbFunction("QuanLyCafeEntities", "f_TopNhanVien")]
+        public virtual IQueryable<f_TopNhanVien_Result> f_TopNhanVien(Nullable<int> day, Nullable<int> month, Nullable<int> year)
+        {
+            var dayParameter = day.HasValue ?
+                new ObjectParameter("day", day) :
+                new ObjectParameter("day", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_TopNhanVien_Result>("[QuanLyCafeEntities].[f_TopNhanVien](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
+        }
+    
+        [DbFunction("QuanLyCafeEntities", "f_TopThanhVien")]
+        public virtual IQueryable<f_TopThanhVien_Result> f_TopThanhVien(Nullable<int> day, Nullable<int> month, Nullable<int> year)
+        {
+            var dayParameter = day.HasValue ?
+                new ObjectParameter("day", day) :
+                new ObjectParameter("day", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_TopThanhVien_Result>("[QuanLyCafeEntities].[f_TopThanhVien](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
+        }
+    
         [DbFunction("QuanLyCafeEntities", "f_TopThucDon")]
         public virtual IQueryable<f_TopThucDon_Result> f_TopThucDon(Nullable<int> day, Nullable<int> month, Nullable<int> year)
         {
@@ -231,48 +314,6 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_TopThucDon_Result>("[QuanLyCafeEntities].[f_TopThucDon](@day, @month, @year)", dayParameter, monthParameter, yearParameter);
         }
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
         public virtual int sp_Delete_Ban(string iD)
         {
             var iDParameter = iD != null ?
@@ -280,6 +321,23 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("ID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete_Ban", iDParameter);
+        }
+    
+        public virtual int sp_Delete_BangLuong(string iDnhanVien, Nullable<int> thang, Nullable<int> nam)
+        {
+            var iDnhanVienParameter = iDnhanVien != null ?
+                new ObjectParameter("IDnhanVien", iDnhanVien) :
+                new ObjectParameter("IDnhanVien", typeof(string));
+    
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("Thang", thang) :
+                new ObjectParameter("Thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete_BangLuong", iDnhanVienParameter, thangParameter, namParameter);
         }
     
         public virtual int sp_Delete_ChiTietHoaDonBanHang(string iDhoaDonBH, string iDthucDon)
@@ -353,6 +411,15 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete_NhanVien", iDParameter);
         }
     
+        public virtual int sp_Delete_ThanhVien(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete_ThanhVien", iDParameter);
+        }
+    
         public virtual int sp_Delete_ThucDon(string iD)
         {
             var iDParameter = iD != null ?
@@ -362,46 +429,7 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete_ThucDon", iDParameter);
         }
     
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_Insert_Ban(string iD, string tenBan)
+        public virtual int sp_Insert_Ban(string iD, string tenBan, Nullable<int> maxSoLuong)
         {
             var iDParameter = iD != null ?
                 new ObjectParameter("ID", iD) :
@@ -411,7 +439,32 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("TenBan", tenBan) :
                 new ObjectParameter("TenBan", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_Ban", iDParameter, tenBanParameter);
+            var maxSoLuongParameter = maxSoLuong.HasValue ?
+                new ObjectParameter("MaxSoLuong", maxSoLuong) :
+                new ObjectParameter("MaxSoLuong", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_Ban", iDParameter, tenBanParameter, maxSoLuongParameter);
+        }
+    
+        public virtual int sp_Insert_BangLuong(string iD, Nullable<int> thang, Nullable<int> nam, Nullable<float> luong)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("Thang", thang) :
+                new ObjectParameter("Thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(int));
+    
+            var luongParameter = luong.HasValue ?
+                new ObjectParameter("Luong", luong) :
+                new ObjectParameter("Luong", typeof(float));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_BangLuong", iDParameter, thangParameter, namParameter, luongParameter);
         }
     
         public virtual int sp_Insert_ChiTietHoaDonBanHang(string iDhoaDonBH, string iDthucDon, Nullable<int> soLuong)
@@ -448,7 +501,7 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_ChiTietHoaDonNhapHang", iDhoaDonNHParameter, iDhangParameter, soLuongParameter);
         }
     
-        public virtual int sp_Insert_HoaDonBanHang(string iD, string iDnhanVien, string iDban, Nullable<System.DateTime> ngaytao)
+        public virtual int sp_Insert_HoaDonBanHang(string iD, string iDnhanVien, string iDthanhVien, string iDban, Nullable<System.DateTime> ngaytao)
         {
             var iDParameter = iD != null ?
                 new ObjectParameter("ID", iD) :
@@ -458,6 +511,10 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("IDnhanVien", iDnhanVien) :
                 new ObjectParameter("IDnhanVien", typeof(string));
     
+            var iDthanhVienParameter = iDthanhVien != null ?
+                new ObjectParameter("IDthanhVien", iDthanhVien) :
+                new ObjectParameter("IDthanhVien", typeof(string));
+    
             var iDbanParameter = iDban != null ?
                 new ObjectParameter("IDban", iDban) :
                 new ObjectParameter("IDban", typeof(string));
@@ -466,7 +523,7 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("Ngaytao", ngaytao) :
                 new ObjectParameter("Ngaytao", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_HoaDonBanHang", iDParameter, iDnhanVienParameter, iDbanParameter, ngaytaoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_HoaDonBanHang", iDParameter, iDnhanVienParameter, iDthanhVienParameter, iDbanParameter, ngaytaoParameter);
         }
     
         public virtual int sp_Insert_HoaDonNhapHang(string iD, string iDnhanVien, Nullable<System.DateTime> ngayTao)
@@ -536,7 +593,7 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_LoginNhanVien", iDNhanVienParameter, loginNameParameter, passwordParameter, permissionParameter, ngaytaoParameter);
         }
     
-        public virtual int sp_Insert_NhanVien(string iD, string hoTen, string sDT, string cMND, string diaChi, Nullable<System.DateTime> ngayVaoLam, Nullable<System.DateTime> ngayNghiViec)
+        public virtual int sp_Insert_NhanVien(string iD, string hoTen, string sDT, string cMND, string diaChi, Nullable<System.DateTime> ngayVaoLam, Nullable<System.DateTime> ngayNghiViec, Nullable<float> luongCoBan)
         {
             var iDParameter = iD != null ?
                 new ObjectParameter("ID", iD) :
@@ -566,7 +623,44 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("NgayNghiViec", ngayNghiViec) :
                 new ObjectParameter("NgayNghiViec", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_NhanVien", iDParameter, hoTenParameter, sDTParameter, cMNDParameter, diaChiParameter, ngayVaoLamParameter, ngayNghiViecParameter);
+            var luongCoBanParameter = luongCoBan.HasValue ?
+                new ObjectParameter("LuongCoBan", luongCoBan) :
+                new ObjectParameter("LuongCoBan", typeof(float));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_NhanVien", iDParameter, hoTenParameter, sDTParameter, cMNDParameter, diaChiParameter, ngayVaoLamParameter, ngayNghiViecParameter, luongCoBanParameter);
+        }
+    
+        public virtual int sp_Insert_ThanhVien(string iD, string hoTen, string sDT, string email, string cMND, string diaChi, Nullable<System.DateTime> ngayTao)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var hoTenParameter = hoTen != null ?
+                new ObjectParameter("HoTen", hoTen) :
+                new ObjectParameter("HoTen", typeof(string));
+    
+            var sDTParameter = sDT != null ?
+                new ObjectParameter("SDT", sDT) :
+                new ObjectParameter("SDT", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var cMNDParameter = cMND != null ?
+                new ObjectParameter("CMND", cMND) :
+                new ObjectParameter("CMND", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var ngayTaoParameter = ngayTao.HasValue ?
+                new ObjectParameter("NgayTao", ngayTao) :
+                new ObjectParameter("NgayTao", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_ThanhVien", iDParameter, hoTenParameter, sDTParameter, emailParameter, cMNDParameter, diaChiParameter, ngayTaoParameter);
         }
     
         public virtual int sp_Insert_ThucDon(string iD, string ten, string donViTinh, Nullable<float> donGia, string iDloaiThucDon)
@@ -594,24 +688,7 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_ThucDon", iDParameter, tenParameter, donViTinhParameter, donGiaParameter, iDloaiThucDonParameter);
         }
     
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_Update_Ban(string iD, string tenBan, Nullable<bool> trangThai)
+        public virtual int sp_Update_Ban(string iD, string tenBan, Nullable<int> soLuong, Nullable<int> maxSoLuong)
         {
             var iDParameter = iD != null ?
                 new ObjectParameter("ID", iD) :
@@ -621,11 +698,36 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("TenBan", tenBan) :
                 new ObjectParameter("TenBan", typeof(string));
     
-            var trangThaiParameter = trangThai.HasValue ?
-                new ObjectParameter("TrangThai", trangThai) :
-                new ObjectParameter("TrangThai", typeof(bool));
+            var soLuongParameter = soLuong.HasValue ?
+                new ObjectParameter("SoLuong", soLuong) :
+                new ObjectParameter("SoLuong", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_Ban", iDParameter, tenBanParameter, trangThaiParameter);
+            var maxSoLuongParameter = maxSoLuong.HasValue ?
+                new ObjectParameter("MaxSoLuong", maxSoLuong) :
+                new ObjectParameter("MaxSoLuong", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_Ban", iDParameter, tenBanParameter, soLuongParameter, maxSoLuongParameter);
+        }
+    
+        public virtual int sp_Update_BangLuong(string iDnhanVien, Nullable<int> thang, Nullable<int> nam, Nullable<float> luong)
+        {
+            var iDnhanVienParameter = iDnhanVien != null ?
+                new ObjectParameter("IDnhanVien", iDnhanVien) :
+                new ObjectParameter("IDnhanVien", typeof(string));
+    
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("Thang", thang) :
+                new ObjectParameter("Thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(int));
+    
+            var luongParameter = luong.HasValue ?
+                new ObjectParameter("Luong", luong) :
+                new ObjectParameter("Luong", typeof(float));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_BangLuong", iDnhanVienParameter, thangParameter, namParameter, luongParameter);
         }
     
         public virtual int sp_Update_ChiTietHoaDonBanHang(string iDhoaDonBH, string iDthucDon, Nullable<int> soLuong)
@@ -662,7 +764,7 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_ChiTietHoaDonNhapHang", iDhoaDonNHParameter, iDhangParameter, soLuongParameter);
         }
     
-        public virtual int sp_Update_HoaDonBanHang(string iD, string iDnhanVien, string iDban, Nullable<System.DateTime> ngaytao, Nullable<bool> daThanhToan)
+        public virtual int sp_Update_HoaDonBanHang(string iD, string iDnhanVien, string iDthanhVien, string iDban, Nullable<System.DateTime> ngaytao, Nullable<bool> daThanhToan)
         {
             var iDParameter = iD != null ?
                 new ObjectParameter("ID", iD) :
@@ -671,6 +773,10 @@ namespace QuanLyCafe.MyDatabase
             var iDnhanVienParameter = iDnhanVien != null ?
                 new ObjectParameter("IDnhanVien", iDnhanVien) :
                 new ObjectParameter("IDnhanVien", typeof(string));
+    
+            var iDthanhVienParameter = iDthanhVien != null ?
+                new ObjectParameter("IDthanhVien", iDthanhVien) :
+                new ObjectParameter("IDthanhVien", typeof(string));
     
             var iDbanParameter = iDban != null ?
                 new ObjectParameter("IDban", iDban) :
@@ -684,7 +790,7 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("DaThanhToan", daThanhToan) :
                 new ObjectParameter("DaThanhToan", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_HoaDonBanHang", iDParameter, iDnhanVienParameter, iDbanParameter, ngaytaoParameter, daThanhToanParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_HoaDonBanHang", iDParameter, iDnhanVienParameter, iDthanhVienParameter, iDbanParameter, ngaytaoParameter, daThanhToanParameter);
         }
     
         public virtual int sp_Update_HoaDonNhapHang(string iD, string iDnhanVien, Nullable<System.DateTime> ngayTao)
@@ -754,7 +860,7 @@ namespace QuanLyCafe.MyDatabase
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_LoginNhanVien", iDNhanVienParameter, loginNameParameter, passwordParameter, permissionParameter, ngaytaoParameter);
         }
     
-        public virtual int sp_Update_NhanVien(string iD, string hoTen, string sDT, string cMND, string diaChi, Nullable<System.DateTime> ngayVaoLam, Nullable<System.DateTime> ngayNghiViec)
+        public virtual int sp_Update_NhanVien(string iD, string hoTen, string sDT, string cMND, string diaChi, Nullable<System.DateTime> ngayVaoLam, Nullable<System.DateTime> ngayNghiViec, Nullable<float> luongCoBan)
         {
             var iDParameter = iD != null ?
                 new ObjectParameter("ID", iD) :
@@ -784,7 +890,44 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("NgayNghiViec", ngayNghiViec) :
                 new ObjectParameter("NgayNghiViec", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_NhanVien", iDParameter, hoTenParameter, sDTParameter, cMNDParameter, diaChiParameter, ngayVaoLamParameter, ngayNghiViecParameter);
+            var luongCoBanParameter = luongCoBan.HasValue ?
+                new ObjectParameter("LuongCoBan", luongCoBan) :
+                new ObjectParameter("LuongCoBan", typeof(float));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_NhanVien", iDParameter, hoTenParameter, sDTParameter, cMNDParameter, diaChiParameter, ngayVaoLamParameter, ngayNghiViecParameter, luongCoBanParameter);
+        }
+    
+        public virtual int sp_Update_ThanhVien(string iD, string hoTen, string sDT, string email, string cMND, string diaChi, Nullable<System.DateTime> ngayTao)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var hoTenParameter = hoTen != null ?
+                new ObjectParameter("HoTen", hoTen) :
+                new ObjectParameter("HoTen", typeof(string));
+    
+            var sDTParameter = sDT != null ?
+                new ObjectParameter("SDT", sDT) :
+                new ObjectParameter("SDT", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var cMNDParameter = cMND != null ?
+                new ObjectParameter("CMND", cMND) :
+                new ObjectParameter("CMND", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var ngayTaoParameter = ngayTao.HasValue ?
+                new ObjectParameter("NgayTao", ngayTao) :
+                new ObjectParameter("NgayTao", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_ThanhVien", iDParameter, hoTenParameter, sDTParameter, emailParameter, cMNDParameter, diaChiParameter, ngayTaoParameter);
         }
     
         public virtual int sp_Update_ThucDon(string iD, string ten, string donViTinh, Nullable<float> donGia, string iDloaiThucDon)
@@ -823,11 +966,6 @@ namespace QuanLyCafe.MyDatabase
                 new ObjectParameter("DaThanhToan", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Update_TrangThaiHoanDonBanHang", iDParameter, daThanhToanParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }
