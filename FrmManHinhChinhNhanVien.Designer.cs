@@ -31,13 +31,12 @@ namespace QuanLyCafe
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManHinhChinhNhanVien));
             this.grbChucNang = new System.Windows.Forms.GroupBox();
             this.grbCongCu = new System.Windows.Forms.GroupBox();
+            this.btnThanhVien = new System.Windows.Forms.Button();
+            this.btnSuDungDichVu = new System.Windows.Forms.Button();
+            this.btnNhapHang = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnTaiKhoanCuaToi = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnBangLuong = new System.Windows.Forms.Button();
-            this.btnNhapHang = new System.Windows.Forms.Button();
-            this.btnSuDungDichVu = new System.Windows.Forms.Button();
-            this.btnThanhVien = new System.Windows.Forms.Button();
             this.grbCongCu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +55,6 @@ namespace QuanLyCafe
             this.grbCongCu.Controls.Add(this.btnThanhVien);
             this.grbCongCu.Controls.Add(this.btnSuDungDichVu);
             this.grbCongCu.Controls.Add(this.btnNhapHang);
-            this.grbCongCu.Controls.Add(this.btnBangLuong);
             this.grbCongCu.Controls.Add(this.btnExit);
             this.grbCongCu.Controls.Add(this.btnTaiKhoanCuaToi);
             this.grbCongCu.Controls.Add(this.pictureBox1);
@@ -66,6 +64,45 @@ namespace QuanLyCafe
             this.grbCongCu.TabIndex = 11;
             this.grbCongCu.TabStop = false;
             this.grbCongCu.Text = "Nhóm công cụ";
+            // 
+            // btnThanhVien
+            // 
+            this.btnThanhVien.BackColor = System.Drawing.Color.White;
+            this.btnThanhVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhVien.Location = new System.Drawing.Point(2, 234);
+            this.btnThanhVien.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThanhVien.Name = "btnThanhVien";
+            this.btnThanhVien.Size = new System.Drawing.Size(155, 49);
+            this.btnThanhVien.TabIndex = 13;
+            this.btnThanhVien.Text = "Khách hàng";
+            this.btnThanhVien.UseVisualStyleBackColor = false;
+            this.btnThanhVien.Click += new System.EventHandler(this.btnThanhVien_Click);
+            // 
+            // btnSuDungDichVu
+            // 
+            this.btnSuDungDichVu.BackColor = System.Drawing.Color.White;
+            this.btnSuDungDichVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuDungDichVu.Location = new System.Drawing.Point(0, 291);
+            this.btnSuDungDichVu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSuDungDichVu.Name = "btnSuDungDichVu";
+            this.btnSuDungDichVu.Size = new System.Drawing.Size(155, 49);
+            this.btnSuDungDichVu.TabIndex = 12;
+            this.btnSuDungDichVu.Text = "Sử dụng dịch vụ";
+            this.btnSuDungDichVu.UseVisualStyleBackColor = false;
+            this.btnSuDungDichVu.Click += new System.EventHandler(this.btnSuDungDichVu_Click);
+            // 
+            // btnNhapHang
+            // 
+            this.btnNhapHang.BackColor = System.Drawing.Color.White;
+            this.btnNhapHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapHang.Location = new System.Drawing.Point(0, 348);
+            this.btnNhapHang.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNhapHang.Name = "btnNhapHang";
+            this.btnNhapHang.Size = new System.Drawing.Size(155, 49);
+            this.btnNhapHang.TabIndex = 11;
+            this.btnNhapHang.Text = "Nhập hàng";
+            this.btnNhapHang.UseVisualStyleBackColor = false;
+            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
             // 
             // btnExit
             // 
@@ -84,7 +121,7 @@ namespace QuanLyCafe
             // btnTaiKhoanCuaToi
             // 
             this.btnTaiKhoanCuaToi.BackColor = System.Drawing.Color.White;
-            this.btnTaiKhoanCuaToi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoanCuaToi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiKhoanCuaToi.Location = new System.Drawing.Point(1, 177);
             this.btnTaiKhoanCuaToi.Margin = new System.Windows.Forms.Padding(4);
             this.btnTaiKhoanCuaToi.Name = "btnTaiKhoanCuaToi";
@@ -104,58 +141,6 @@ namespace QuanLyCafe
             this.pictureBox1.Size = new System.Drawing.Size(155, 143);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnBangLuong
-            // 
-            this.btnBangLuong.BackColor = System.Drawing.Color.White;
-            this.btnBangLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBangLuong.Location = new System.Drawing.Point(0, 405);
-            this.btnBangLuong.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBangLuong.Name = "btnBangLuong";
-            this.btnBangLuong.Size = new System.Drawing.Size(155, 49);
-            this.btnBangLuong.TabIndex = 10;
-            this.btnBangLuong.Text = "Bảng lương";
-            this.btnBangLuong.UseVisualStyleBackColor = false;
-            this.btnBangLuong.Click += new System.EventHandler(this.btnBangLuong_Click);
-            // 
-            // btnNhapHang
-            // 
-            this.btnNhapHang.BackColor = System.Drawing.Color.White;
-            this.btnNhapHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapHang.Location = new System.Drawing.Point(0, 348);
-            this.btnNhapHang.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNhapHang.Name = "btnNhapHang";
-            this.btnNhapHang.Size = new System.Drawing.Size(155, 49);
-            this.btnNhapHang.TabIndex = 11;
-            this.btnNhapHang.Text = "Nhập hàng";
-            this.btnNhapHang.UseVisualStyleBackColor = false;
-            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
-            // 
-            // btnSuDungDichVu
-            // 
-            this.btnSuDungDichVu.BackColor = System.Drawing.Color.White;
-            this.btnSuDungDichVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuDungDichVu.Location = new System.Drawing.Point(0, 291);
-            this.btnSuDungDichVu.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSuDungDichVu.Name = "btnSuDungDichVu";
-            this.btnSuDungDichVu.Size = new System.Drawing.Size(155, 49);
-            this.btnSuDungDichVu.TabIndex = 12;
-            this.btnSuDungDichVu.Text = "Sử dụng dịch vụ";
-            this.btnSuDungDichVu.UseVisualStyleBackColor = false;
-            this.btnSuDungDichVu.Click += new System.EventHandler(this.btnSuDungDichVu_Click);
-            // 
-            // btnThanhVien
-            // 
-            this.btnThanhVien.BackColor = System.Drawing.Color.White;
-            this.btnThanhVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhVien.Location = new System.Drawing.Point(2, 234);
-            this.btnThanhVien.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThanhVien.Name = "btnThanhVien";
-            this.btnThanhVien.Size = new System.Drawing.Size(155, 49);
-            this.btnThanhVien.TabIndex = 13;
-            this.btnThanhVien.Text = "Khách hàng";
-            this.btnThanhVien.UseVisualStyleBackColor = false;
-            this.btnThanhVien.Click += new System.EventHandler(this.btnThanhVien_Click);
             // 
             // FrmManHinhChinhNhanVien
             // 
@@ -189,7 +174,6 @@ namespace QuanLyCafe
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSuDungDichVu;
         private System.Windows.Forms.Button btnNhapHang;
-        private System.Windows.Forms.Button btnBangLuong;
         private System.Windows.Forms.Button btnThanhVien;
     }
 }

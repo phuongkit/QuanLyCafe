@@ -37,7 +37,7 @@ namespace QuanLyCafe.MyForm
         public void DataBind()
         {
             btnTaoThanhVien.Enabled = true;
-            btnCapNhatThanhVien.Enabled = btnXoa.Enabled = btnLuu.Enabled = false;
+            btnCapNhatThanhVien.Enabled = btnXoa.Enabled = btnLuu.Enabled = btnBoQua.Enabled = false;
             txtDiaChi.Enabled = txtIDNhanVien.Enabled = txtHoTen.Enabled = txtSDT.Enabled = txtEmail.Enabled = txtCMND.Enabled = dtNgayTao.Enabled = false;
             dgvKhachHang.DataSource = TVAc.Get();
             dgvKhachHang.Columns["HoaDonBanHangs"].Visible = false;
@@ -63,7 +63,7 @@ namespace QuanLyCafe.MyForm
             Them = true;
             txtDiaChi.Enabled = txtHoTen.Enabled = txtSDT.Enabled = txtEmail.Enabled = txtCMND.Enabled = dtNgayTao.Enabled = true;
             txtIDNhanVien.Text = txtHoTen.Text = txtSDT.Text = txtEmail.Text = txtCMND.Text = "";
-            btnLuu.Enabled = btnXoa.Enabled = true;
+            btnLuu.Enabled = btnXoa.Enabled = btnBoQua.Enabled = true;
             btnTaoThanhVien.Enabled = btnCapNhatThanhVien.Enabled = false;
             dtNgayTao.Value = DateTime.Now;
         }
@@ -72,7 +72,7 @@ namespace QuanLyCafe.MyForm
         {
             txtDiaChi.Enabled = txtIDNhanVien.Enabled = txtHoTen.Enabled = txtSDT.Enabled = txtEmail.Enabled = txtCMND.Enabled = dtNgayTao.Enabled = true;
             Them = false;
-            btnLuu.Enabled = btnXoa.Enabled = true;
+            btnLuu.Enabled = btnXoa.Enabled = btnBoQua.Enabled = true;
             btnTaoThanhVien.Enabled = btnCapNhatThanhVien.Enabled = false;
         }
 
@@ -141,6 +141,11 @@ namespace QuanLyCafe.MyForm
         {
             btnTaoThanhVien.Enabled = btnCapNhatThanhVien.Enabled = btnXoa.Enabled = true;
             btnLuu.Enabled = false;
+        }
+
+        private void btnBoQua_Click(object sender, EventArgs e)
+        {
+            DataBind();
         }
     }
 }

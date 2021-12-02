@@ -206,5 +206,11 @@ namespace QuanLyCafe
             MyForm.BaoCao frmBC = new MyForm.BaoCao(this, connectionString);
             ShowForm(frmBC, btnBCDoanhThu);
         }
+
+        private void btnTaiKhoanCuaToi_Click_1(object sender, EventArgs e)
+        {
+            MyForm.FrmThongTinNhanVien frmTTNV = new MyForm.FrmThongTinNhanVien(this, IDNhanVien, connectionString);
+            ShowForm(frmTTNV, btnTaiKhoanCuaToi);
+        }
     }
 }

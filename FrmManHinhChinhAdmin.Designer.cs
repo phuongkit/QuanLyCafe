@@ -78,7 +78,7 @@ namespace QuanLyCafe
             // btnTaiKhoanCuaToi
             // 
             this.btnTaiKhoanCuaToi.BackColor = System.Drawing.Color.White;
-            this.btnTaiKhoanCuaToi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoanCuaToi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiKhoanCuaToi.Location = new System.Drawing.Point(2, 182);
             this.btnTaiKhoanCuaToi.Margin = new System.Windows.Forms.Padding(4);
             this.btnTaiKhoanCuaToi.Name = "btnTaiKhoanCuaToi";
@@ -86,11 +86,12 @@ namespace QuanLyCafe
             this.btnTaiKhoanCuaToi.TabIndex = 13;
             this.btnTaiKhoanCuaToi.Text = "Tài khoản của tôi";
             this.btnTaiKhoanCuaToi.UseVisualStyleBackColor = false;
+            this.btnTaiKhoanCuaToi.Click += new System.EventHandler(this.btnTaiKhoanCuaToi_Click_1);
             // 
             // btnQL_KhachHang
             // 
             this.btnQL_KhachHang.BackColor = System.Drawing.Color.White;
-            this.btnQL_KhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_KhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_KhachHang.Location = new System.Drawing.Point(1, 507);
             this.btnQL_KhachHang.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_KhachHang.Name = "btnQL_KhachHang";
@@ -103,7 +104,7 @@ namespace QuanLyCafe
             // btnBCDoanhThu
             // 
             this.btnBCDoanhThu.BackColor = System.Drawing.Color.White;
-            this.btnBCDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBCDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBCDoanhThu.Location = new System.Drawing.Point(2, 551);
             this.btnBCDoanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.btnBCDoanhThu.Name = "btnBCDoanhThu";
@@ -116,7 +117,7 @@ namespace QuanLyCafe
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Location = new System.Drawing.Point(1, 744);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
@@ -130,7 +131,7 @@ namespace QuanLyCafe
             // btnQL_tknv
             // 
             this.btnQL_tknv.BackColor = System.Drawing.Color.White;
-            this.btnQL_tknv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_tknv.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_tknv.Location = new System.Drawing.Point(1, 459);
             this.btnQL_tknv.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_tknv.Name = "btnQL_tknv";
@@ -143,7 +144,7 @@ namespace QuanLyCafe
             // btnQL_hđbán
             // 
             this.btnQL_hđbán.BackColor = System.Drawing.Color.White;
-            this.btnQL_hđbán.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_hđbán.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_hđbán.Location = new System.Drawing.Point(1, 411);
             this.btnQL_hđbán.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_hđbán.Name = "btnQL_hđbán";
@@ -156,7 +157,7 @@ namespace QuanLyCafe
             // btnQL_hđnhập
             // 
             this.btnQL_hđnhập.BackColor = System.Drawing.Color.White;
-            this.btnQL_hđnhập.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_hđnhập.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_hđnhập.Location = new System.Drawing.Point(1, 365);
             this.btnQL_hđnhập.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_hđnhập.Name = "btnQL_hđnhập";
@@ -169,7 +170,7 @@ namespace QuanLyCafe
             // btnQL_khohàng
             // 
             this.btnQL_khohàng.BackColor = System.Drawing.Color.White;
-            this.btnQL_khohàng.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_khohàng.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_khohàng.Location = new System.Drawing.Point(1, 320);
             this.btnQL_khohàng.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_khohàng.Name = "btnQL_khohàng";
@@ -182,7 +183,7 @@ namespace QuanLyCafe
             // btnQL_thựcđơn
             // 
             this.btnQL_thựcđơn.BackColor = System.Drawing.Color.White;
-            this.btnQL_thựcđơn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_thựcđơn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_thựcđơn.Location = new System.Drawing.Point(1, 274);
             this.btnQL_thựcđơn.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_thựcđơn.Name = "btnQL_thựcđơn";
@@ -195,7 +196,7 @@ namespace QuanLyCafe
             // btnQL_bàn
             // 
             this.btnQL_bàn.BackColor = System.Drawing.Color.White;
-            this.btnQL_bàn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQL_bàn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQL_bàn.Location = new System.Drawing.Point(1, 229);
             this.btnQL_bàn.Margin = new System.Windows.Forms.Padding(4);
             this.btnQL_bàn.Name = "btnQL_bàn";
