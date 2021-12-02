@@ -160,9 +160,9 @@ namespace QuanLyCafe.MyForm
                     return;
                 }
                 BAc.Xoa(b);
+                MessageBox.Show("Đã xóa thành công");
+                dataBiding();
             }
-            MessageBox.Show("Đã xóa thành công");
-            dataBiding();
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)

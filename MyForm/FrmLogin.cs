@@ -39,9 +39,6 @@ namespace QuanLyCafe.MyForm
         {
             string userName = txbUserName.Text;
             string passWord = txbPassWord.Text;
-            //if (lNVAc.KiemTraLoGin(userName, passWord))
-            //IDNhanVien = lNVAc.getIDNhanVien(userName);
-            //IDNhanVien = "01";
             string dataSource = string.Format(@"{0}\SQLEXPRESS", Environment.MachineName);
             string initialCatalog = "QuanLyCafe";
             DBaccess.AppSetting setting = new DBaccess.AppSetting();

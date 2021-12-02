@@ -29,7 +29,7 @@ namespace QuanLyCafe.MyForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCheckEmail = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnCapNhatThanhVien = new System.Windows.Forms.Button();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -63,17 +63,18 @@ namespace QuanLyCafe.MyForm
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnCheckEmail
+            // btnXoa
             // 
-            this.btnCheckEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckEmail.Image = global::QuanLyCafe.Properties.Resources.resetpassword;
-            this.btnCheckEmail.Location = new System.Drawing.Point(494, 644);
-            this.btnCheckEmail.Name = "btnCheckEmail";
-            this.btnCheckEmail.Size = new System.Drawing.Size(129, 87);
-            this.btnCheckEmail.TabIndex = 17;
-            this.btnCheckEmail.Text = "Kiểm tra mail";
-            this.btnCheckEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCheckEmail.UseVisualStyleBackColor = true;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
+            this.btnXoa.Location = new System.Drawing.Point(494, 644);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(129, 87);
+            this.btnXoa.TabIndex = 17;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnCapNhatThanhVien
             // 
@@ -150,10 +151,10 @@ namespace QuanLyCafe.MyForm
             this.dgvKhachHang.RowHeadersVisible = false;
             this.dgvKhachHang.RowHeadersWidth = 51;
             this.dgvKhachHang.RowTemplate.Height = 24;
-            this.dgvKhachHang.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKhachHang.Size = new System.Drawing.Size(710, 717);
             this.dgvKhachHang.TabIndex = 32;
+            this.dgvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellClick);
             // 
             // ID
             // 
@@ -269,7 +270,7 @@ namespace QuanLyCafe.MyForm
             this.grThongTinKhachHang.Controls.Add(this.txtCMND);
             this.grThongTinKhachHang.Controls.Add(this.label2);
             this.grThongTinKhachHang.Controls.Add(this.label1);
-            this.grThongTinKhachHang.Controls.Add(this.btnCheckEmail);
+            this.grThongTinKhachHang.Controls.Add(this.btnXoa);
             this.grThongTinKhachHang.Controls.Add(this.btnCapNhatThanhVien);
             this.grThongTinKhachHang.Controls.Add(this.btnTaoThanhVien);
             this.grThongTinKhachHang.Controls.Add(this.txtSDT);
@@ -397,7 +398,7 @@ namespace QuanLyCafe.MyForm
 
         #endregion
 
-        private System.Windows.Forms.Button btnCheckEmail;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnCapNhatThanhVien;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtHoTen;

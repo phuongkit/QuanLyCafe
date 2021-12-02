@@ -30,6 +30,7 @@ namespace QuanLyCafe.DBaccess
                 return tv;
             }
         }
+
         public MyDatabase.HoaDonBanHang getHoaDonBanHangTheoKhachHang(string IDKhachHang)
         {
             using (var dbCafe = new MyDatabase.QuanLyCafeEntities(connectionString))

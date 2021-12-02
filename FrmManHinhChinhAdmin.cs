@@ -197,14 +197,14 @@ namespace QuanLyCafe
 
         private void btnQL_KhachHang_Click(object sender, EventArgs e)
         {
-            //MyForm.FrmThanhVien frmTV = new MyForm.FrmThanhVien(this, connectionString);
-            //ShowForm(frmTV, btnQL_KhachHang);
+            MyForm.FrmThanhVien frmTV = new MyForm.FrmThanhVien(this, connectionString);
+            ShowForm(frmTV, btnQL_KhachHang);
         }
 
         private void btnBCDoanhThu_Click(object sender, EventArgs e)
         {
-            MyForm.BaoCaoBieuDoDoanhThu frmBCBDDT = new MyForm.BaoCaoBieuDoDoanhThu(this, connectionString);
-            ShowForm(frmBCBDDT, btnBCDoanhThu);
+            MyForm.BaoCao frmBC = new MyForm.BaoCao(this, connectionString);
+            ShowForm(frmBC, btnBCDoanhThu);
         }
     }
 }

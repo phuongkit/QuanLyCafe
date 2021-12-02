@@ -40,6 +40,16 @@ namespace QuanLyCafe.DBaccess
             MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);
             return db.f_TopThucDon(day, month, year).ToList();
         }
+        public List<MyDatabase.f_TopNhanVien_Result> GetTopNhanVien(int day, int month, int year)
+        {
+            MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);
+            return db.f_TopNhanVien(day, month, year).ToList();
+        }
+        public List<MyDatabase.f_TopThanhVien_Result> GetTopThanhVien(int day, int month, int year)
+        {
+            MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);
+            return db.f_TopThanhVien(day, month, year).ToList();
+        }
         public List<MyDatabase.f_DoanhThuNgay_BanHang_Result> GetDoanhThuNgay_BanHang(DateTime date)
         {
             MyDatabase.QuanLyCafeEntities db = new MyDatabase.QuanLyCafeEntities(connectionString);

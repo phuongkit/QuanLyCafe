@@ -112,6 +112,12 @@
     <Compile Include="DBaccess\SqlHelper.cs" />
     <Compile Include="DBaccess\ThanhVienAccess.cs" />
     <Compile Include="DBaccess\ThucDonAccess.cs" />
+    <Compile Include="FrmManHinhChinhAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManHinhChinhAdmin.Designer.cs">
+      <DependentUpon>FrmManHinhChinhAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmManHinhChinhNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,12 @@
     <Compile Include="MyDatabase\ThucDon.cs">
       <DependentUpon>QuanLyCafeDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyForm\BaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm\BaoCao.Designer.cs">
+      <DependentUpon>BaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyForm\BaoCaoThucDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,12 +331,6 @@
     <Compile Include="MyForm\FrmThongTinNhanVien.Designer.cs">
       <DependentUpon>FrmThongTinNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmManHinhChinhAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmManHinhChinhAdmin.Designer.cs">
-      <DependentUpon>FrmManHinhChinhAdmin.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyForm\FrmSuDungDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,8 +359,14 @@
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FrmManHinhChinhAdmin.resx">
+      <DependentUpon>FrmManHinhChinhAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmManHinhChinhNhanVien.resx">
       <DependentUpon>FrmManHinhChinhNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm\BaoCao.resx">
+      <DependentUpon>BaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm\BaoCaoThucDon.resx">
       <DependentUpon>BaoCaoThucDon.cs</DependentUpon>
@@ -385,9 +397,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm\FrmBan.resx">
       <DependentUpon>FrmBan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmManHinhChinhAdmin.resx">
-      <DependentUpon>FrmManHinhChinhAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm\FrmSuDungDichVu.resx">
       <DependentUpon>FrmSuDungDichVu.cs</DependentUpon>
@@ -420,6 +429,8 @@
     <EmbeddedResource Include="Report\InputMesseageBox.resx">
       <DependentUpon>InputMesseageBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportBaoCaoThanhVien.rdlc" />
+    <EmbeddedResource Include="Report\ReportBaoCaoNhanVien.rdlc" />
     <EmbeddedResource Include="Report\ReportBaoCaoThucDon.rdlc" />
     <EmbeddedResource Include="Report\ReportDoanhThuBanHang.rdlc" />
     <EmbeddedResource Include="Report\ReportDoanhThuBanHangThang.rdlc" />
@@ -453,6 +464,8 @@
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TaoIDHoaDonNhapHangMoi_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TinhTienHoaDonBH_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TinhTienHoaDonNH_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TopNhanVien_Result.datasource" />
+    <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TopThanhVien_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.f_TopThucDon_Result.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.HoaDonBanHang.datasource" />
     <None Include="Properties\DataSources\QuanLyCafe.MyDatabase.HoaDonNhapHang.datasource" />
