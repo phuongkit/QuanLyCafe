@@ -200,6 +200,12 @@ namespace QuanLyCafe.MyForm
                 MessageBox.Show("Vui lòng chọn bàn để đặt hóa đơn!");
                 return;
             }
+            string name = btnHuy.Text.ToUpper();
+            if (name.Equals("TẠO HÓA ĐƠN"))
+            {
+                btnHuy.Text = "Hủy Hóa Đơn";
+                btnHuy.Image = global::QuanLyCafe.Properties.Resources.edit_delete;
+            }
             int index = indexRowTD != -1 ? indexRowTD : indexRowCTTD;
             if (index > -1)
             {

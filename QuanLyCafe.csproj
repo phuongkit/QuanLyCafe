@@ -253,30 +253,6 @@
     <Compile Include="MyForm\BaoCao.Designer.cs">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyForm\BaoCaoThucDon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyForm\BaoCaoThucDon.Designer.cs">
-      <DependentUpon>BaoCaoThucDon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyForm\BaoCaoBieuDoDoanhThu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyForm\BaoCaoBieuDoDoanhThu.Designer.cs">
-      <DependentUpon>BaoCaoBieuDoDoanhThu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyForm\DoanhThu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyForm\DoanhThu.Designer.cs">
-      <DependentUpon>DoanhThu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyForm\DoanhThuNgay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyForm\DoanhThuNgay.Designer.cs">
-      <DependentUpon>DoanhThuNgay.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyForm\FrmHoaDonBanHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,18 +343,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm\BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm\BaoCaoThucDon.resx">
-      <DependentUpon>BaoCaoThucDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm\BaoCaoBieuDoDoanhThu.resx">
-      <DependentUpon>BaoCaoBieuDoDoanhThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm\DoanhThu.resx">
-      <DependentUpon>DoanhThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm\DoanhThuNgay.resx">
-      <DependentUpon>DoanhThuNgay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm\FrmHoaDonBanHang.resx">
       <DependentUpon>FrmHoaDonBanHang.cs</DependentUpon>
