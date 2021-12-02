@@ -16,9 +16,9 @@ namespace QuanLyCafe.MyForm
     {
         private DBaccess.DoanhThuAccess DTAc;
         private string connectionString;
-        private FrmManHinhChinh frmMHC;
+        private FrmManHinhChinhAdmin frmMHC;
         private bool loai;  //true ngay, false thang
-        public BaoCaoBieuDoDoanhThu(string connectionString, FrmManHinhChinh frmMHC)
+        public BaoCaoBieuDoDoanhThu(FrmManHinhChinhAdmin frmMHC, string connectionString)
         {
             loai = true;
             this.connectionString = connectionString;
@@ -81,7 +81,7 @@ namespace QuanLyCafe.MyForm
 
         private void btnXemChiTiet_Click(object sender, EventArgs e)
         {
-            MyForm.DoanhThu frmDT = new MyForm.DoanhThu(connectionString, frmMHC);
+            MyForm.DoanhThu frmDT = new MyForm.DoanhThu(frmMHC, connectionString);
             frmMHC.ShowForm(frmDT);
         }
 

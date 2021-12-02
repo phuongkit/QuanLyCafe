@@ -13,11 +13,11 @@ namespace QuanLyCafe.MyForm
 {
     public partial class FrmBan : Form
     {
-        FrmManHinhChinh frmMHC;
+        FrmManHinhChinhAdmin frmMHC;
         DBaccess.BanAccess BAc;
         string connectionString;
         bool Them;
-        public FrmBan(FrmManHinhChinh frmMHC, string connectionString)
+        public FrmBan(FrmManHinhChinhAdmin frmMHC, string connectionString)
         {
             this.frmMHC = frmMHC;
             this.connectionString = connectionString;
@@ -27,10 +27,6 @@ namespace QuanLyCafe.MyForm
 
         private void dataBiding()
         {
-            if (!frmMHC.getStatusMenuStrip())
-            {
-                frmMHC.setStatusMenuStrip(true);
-            }
             List<int> SoLuongs = new List<int>()
             {
                 1, 2, 4
@@ -67,7 +63,6 @@ namespace QuanLyCafe.MyForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Them = true;
-            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
@@ -142,7 +137,6 @@ namespace QuanLyCafe.MyForm
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Them = false;
-            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;

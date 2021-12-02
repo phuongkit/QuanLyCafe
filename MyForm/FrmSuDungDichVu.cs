@@ -14,6 +14,7 @@ namespace QuanLyCafe.MyForm
 {
     public partial class FrmSuDungDichVu : Form
     {
+        FrmManHinhChinhNhanVien frmNV;
         DBaccess.ChiTietHoaDonBanHangAccess CTHDBHAc;
         DBaccess.HoaDonBanHangAccess HDBHAc;
         DBaccess.LoaiThucDonAccess LTDAc;
@@ -25,8 +26,9 @@ namespace QuanLyCafe.MyForm
         int indexRowTD = -1;
         int indexRowCTTD = -1;
         List<MyDatabase.ThanhVien> thanhViens;
-        public FrmSuDungDichVu(string IDNhanVien, string connectionString)
+        public FrmSuDungDichVu(FrmManHinhChinhNhanVien frmNV, string IDNhanVien, string connectionString)
         {
+            this.frmNV = frmNV;
             this.connectionString = connectionString;
             CTHDBHAc = new DBaccess.ChiTietHoaDonBanHangAccess(connectionString);
             HDBHAc = new DBaccess.HoaDonBanHangAccess(connectionString);

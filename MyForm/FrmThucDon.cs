@@ -15,12 +15,12 @@ namespace QuanLyCafe.MyForm
 {
     public partial class FrmThucDon : Form
     {
-        FrmManHinhChinh frmMHC;
+        FrmManHinhChinhAdmin frmMHC;
         DBaccess.LoaiThucDonAccess LTDAc;
         DBaccess.ThucDonAccess TDAc;
         string connectionString;
         bool Them;
-        public FrmThucDon(FrmManHinhChinh frmMHC, string connectionString)
+        public FrmThucDon(FrmManHinhChinhAdmin frmMHC, string connectionString)
         {
             this.frmMHC = frmMHC;
             this.connectionString = connectionString;
@@ -31,10 +31,6 @@ namespace QuanLyCafe.MyForm
 
         private void loadData()
         {
-            if (!frmMHC.getStatusMenuStrip())
-            {
-                frmMHC.setStatusMenuStrip(true);
-            }
             List<MyDatabase.LoaiThucDon> listloaimon = new List<MyDatabase.LoaiThucDon>();
             listloaimon.Add(new MyDatabase.LoaiThucDon() { ID = null, TenloaiThucDon = null });
             foreach (var item in LTDAc.Get())
@@ -83,7 +79,6 @@ namespace QuanLyCafe.MyForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Them = true;
-            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
@@ -153,7 +148,6 @@ namespace QuanLyCafe.MyForm
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Them = false;
-            frmMHC.setStatusMenuStrip(false);
             btnCreate.Enabled = false;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;

@@ -14,10 +14,10 @@ namespace QuanLyCafe.MyForm
 {
     public partial class FrmKhoHang : Form
     {
-        FrmManHinhChinh frmMHC;
+        FrmManHinhChinhAdmin frmMHC;
         int themFlag = 1;   //Flag = 0 sua, Flag = 1 them
         string connectionString;
-        public FrmKhoHang(FrmManHinhChinh frmMHC, string connectionString)
+        public FrmKhoHang(FrmManHinhChinhAdmin frmMHC, string connectionString)
         {
             this.frmMHC = frmMHC;
             this.connectionString = connectionString;
@@ -26,10 +26,6 @@ namespace QuanLyCafe.MyForm
 
         private new void Load()
         {
-            if (!frmMHC.getStatusMenuStrip())
-            {
-                frmMHC.setStatusMenuStrip(true);
-            }
             dgv_main.DataSource = null;
             dgv_main.Rows.Clear();
             dgv_main.Refresh();
@@ -65,7 +61,6 @@ namespace QuanLyCafe.MyForm
 
         private void Btn_them_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             btn_them.Enabled = btn_xoa.Enabled = btn_sua.Enabled = false;
             btn_ok.Enabled = btn_huy.Enabled = true;
             txt_id.Text = txt_mathang.Text = txt_soluong.Text = txt_donvi.Text = txt_dongia.Text = "";
@@ -141,7 +136,6 @@ namespace QuanLyCafe.MyForm
 
         private void Btn_sua_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             btn_them.Enabled = btn_xoa.Enabled = btn_sua.Enabled = false;
             btn_ok.Enabled = btn_huy.Enabled = true;
             txt_id.Enabled = txt_mathang.Enabled = txt_soluong.Enabled = txt_donvi.Enabled = txt_dongia.Enabled = true;

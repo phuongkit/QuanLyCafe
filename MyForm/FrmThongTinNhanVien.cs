@@ -17,10 +17,23 @@ namespace QuanLyCafe.MyForm
         DBaccess.NhanVienAccess NVAc;
         string IDNhanVien = null;
         string connectionString;
-        FrmManHinhChinh frmMHC;
-        public FrmThongTinNhanVien(FrmManHinhChinh frmMHC,string IDNhanVien, string connectionString)
+        FrmManHinhChinhAdmin frmAdmin;
+        FrmManHinhChinhNhanVien frmNV;
+        bool loai;
+        public FrmThongTinNhanVien(FrmManHinhChinhAdmin frmMHC,string IDNhanVien, string connectionString)
         {
-            this.frmMHC = frmMHC;
+            loai = true;
+            this.frmAdmin = frmMHC;
+            this.IDNhanVien = IDNhanVien;
+            this.connectionString = connectionString;
+            lNVAc = new DBaccess.LoginNhanVienAccess(connectionString);
+            NVAc = new DBaccess.NhanVienAccess(connectionString);
+            InitializeComponent();
+        }
+        public FrmThongTinNhanVien(FrmManHinhChinhNhanVien frmMHC, string IDNhanVien, string connectionString)
+        {
+            loai = false;
+            this.frmNV = frmMHC;
             this.IDNhanVien = IDNhanVien;
             this.connectionString = connectionString;
             lNVAc = new DBaccess.LoginNhanVienAccess(connectionString);
@@ -29,10 +42,6 @@ namespace QuanLyCafe.MyForm
         }
         public void InitGUI()
         {
-            if (!frmMHC.getStatusMenuStrip())
-            {
-                frmMHC.setStatusMenuStrip(true);
-            }
             try
             {
                 MyDatabase.f_LayThongTinNhanVien_Result nv = NVAc.getThongTinNhanVien(IDNhanVien);
@@ -75,7 +84,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             txtTen.Enabled = true;
             txtSDT.Enabled = true;
             txtCMND.Enabled = true;
@@ -177,7 +185,10 @@ namespace QuanLyCafe.MyForm
                                     lNVAc.Sua(lg);
                                     MessageBox.Show("Cập nhật thông tin cá nhân và mật khẩu thành công! Vui lòng đăng nhập lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     this.Close();
-                                    frmMHC.LoadLogin();
+                                    if (loai)
+                                        frmAdmin.LoadLogin();
+                                    else
+                                        frmNV.LoadLogin();
                                     return;
                                 }
                                 catch (SqlException ex)
@@ -234,7 +245,10 @@ namespace QuanLyCafe.MyForm
                                     lNVAc.Sua(lg);
                                     MessageBox.Show("Cập nhật mật khẩu thành công! Vui lòng đăng nhập lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information); this.Close();
                                     this.Close();
-                                    frmMHC.LoadLogin();
+                                    if (loai)
+                                        frmAdmin.LoadLogin();
+                                    else
+                                        frmNV.LoadLogin();
                                     return;
                                 }
                                 catch (SqlException ex)

@@ -14,14 +14,14 @@ namespace QuanLyCafe.MyForm
 {
     public partial class FrmNhanVien : Form
     {
-        FrmManHinhChinh frmMHC;
+        FrmManHinhChinhAdmin frmMHC;
         DBaccess.NhanVienAccess NVAc;
         DBaccess.LoginNhanVienAccess LGNVAc;
         List<Quyen> listquyen;
         string IDNhanVien;
         string connectionString;
         bool Them;
-        public FrmNhanVien(FrmManHinhChinh frmMHC, string IDNhanVien, string connectionString)
+        public FrmNhanVien(FrmManHinhChinhAdmin frmMHC, string IDNhanVien, string connectionString)
         {
             this.frmMHC = frmMHC;
             this.IDNhanVien = IDNhanVien;
@@ -32,10 +32,6 @@ namespace QuanLyCafe.MyForm
         }
         public void InitGUI()
         {
-            if (!frmMHC.getStatusMenuStrip())
-            {
-                frmMHC.setStatusMenuStrip(true);
-            }
             txtIDNhanVien.Enabled = txtID.Enabled = txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = false;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
             btnLuu.Enabled = btnHuy.Enabled = false;
@@ -119,7 +115,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             Them = true;
             txtID.Enabled = txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = nmLuong.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
@@ -128,7 +123,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             Them = false;
             txtTen.Enabled = txtSDT.Enabled = txtCMND.Enabled = txtDiaChi.Enabled = dtNgayVaoLam.Enabled = dtNgayNghiViec.Enabled = nmLuong.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;

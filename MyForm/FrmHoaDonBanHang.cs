@@ -13,7 +13,7 @@ namespace QuanLyCafe.MyForm
 {
     public partial class FrmHoaDonBanHang : Form
     {
-        FrmManHinhChinh frmMHC;
+        FrmManHinhChinhAdmin frmMHC;
         DBaccess.HoaDonBanHangAccess HDBHAc;
         DBaccess.ChiTietHoaDonBanHangAccess CTHDBHAc;
         string connectionString;
@@ -22,7 +22,7 @@ namespace QuanLyCafe.MyForm
         List<MyDatabase.Ban> listBan;
         List<MyDatabase.ThucDon> listThucDon;
         bool Them, ThemCT;
-        public FrmHoaDonBanHang(FrmManHinhChinh frmMHC, string connectionString)
+        public FrmHoaDonBanHang(FrmManHinhChinhAdmin frmMHC, string connectionString)
         {
             this.frmMHC = frmMHC;
             this.connectionString = connectionString;
@@ -32,10 +32,6 @@ namespace QuanLyCafe.MyForm
         }
         public void InitGUI()
         {
-            if (!frmMHC.getStatusMenuStrip())
-            {
-                frmMHC.setStatusMenuStrip(true);
-            }
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
             btnLuu.Enabled = btnBoQua.Enabled = false;
             txtIDHoaDon.Enabled = cbbNhanVien.Enabled = cbbBan.Enabled = cbbTinhTrang.Enabled = dtNgayTao.Enabled = false;
@@ -98,7 +94,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             Them = true;
             txtIDHoaDon.Enabled = cbbNhanVien.Enabled = cbbBan.Enabled = cbbTinhTrang.Enabled = dtNgayTao.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
@@ -112,7 +107,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             Them = false;
             txtIDHoaDon.Enabled = cbbNhanVien.Enabled = cbbBan.Enabled = cbbTinhTrang.Enabled = dtNgayTao.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
@@ -233,7 +227,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnChiTietThem_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             ThemCT = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnLuu.Enabled = btnBoQua.Enabled = false;
             btnChiTietThem.Enabled = btnChiTietSua.Enabled = btnChiTietXoa.Enabled = false;
@@ -243,7 +236,6 @@ namespace QuanLyCafe.MyForm
 
         private void btnChiTietSua_Click(object sender, EventArgs e)
         {
-            frmMHC.setStatusMenuStrip(false);
             ThemCT = false;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnLuu.Enabled = btnBoQua.Enabled = false;
             btnChiTietThem.Enabled = btnChiTietSua.Enabled = btnChiTietXoa.Enabled = false;

@@ -13,8 +13,8 @@ namespace QuanLyCafe.MyForm
     public partial class DoanhThu : Form
     {
         private string connectionString;
-        private FrmManHinhChinh frmMHC;
-        public DoanhThu(string connectionString, FrmManHinhChinh frmMHC)
+        private FrmManHinhChinhAdmin frmMHC;
+        public DoanhThu(FrmManHinhChinhAdmin frmMHC, string connectionString)
         {
             this.frmMHC = frmMHC;
             this.connectionString = connectionString;
@@ -72,7 +72,7 @@ namespace QuanLyCafe.MyForm
 
         private void btnBieuDoDoanhThu_Click(object sender, EventArgs e)
         {
-            MyForm.BaoCaoBieuDoDoanhThu frmBDDT = new MyForm.BaoCaoBieuDoDoanhThu(connectionString, frmMHC);
+            MyForm.BaoCaoBieuDoDoanhThu frmBDDT = new MyForm.BaoCaoBieuDoDoanhThu(frmMHC, connectionString);
             frmMHC.ShowForm(frmBDDT);
         }
     }
